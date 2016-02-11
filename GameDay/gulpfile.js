@@ -11,9 +11,10 @@ var gulp = require("gulp"),
     rimraf = require("rimraf"),
     concat = require("gulp-concat"),
     cssmin = require("gulp-cssmin"),
-    uglify = require("gulp-uglify"),
+    uglify = require("gulp-uglifyjs"),
     util = require("gulp-util"),
-    sass = require("gulp-sass");
+    sass = require("gulp-sass"),
+    ts = require("gulp-typescript");
 
 var paths = {
     webroot: "./"

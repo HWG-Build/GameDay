@@ -1,0 +1,7 @@
+﻿/// <reference path="jquery-1.10.2.js" />
+/// <autosync enabled="true" />
+/// <reference path="../gulpfile.js" />
+/// <reference path="js/site.js" />
+/// <reference path="modernizr-2.6.2.js" />
+/// <reference path="respond.js" />
+/// <reference path="jquery.signalR-2.1.2.js" />

@@ -26,6 +26,7 @@ paths.css = paths.webroot + "Content/*.css";
 paths.minCss = paths.webroot + "Content/*.min.css";
 paths.concatJsDest = paths.webroot + "Scripts/js/site.min.js";
 paths.concatCssDest = paths.webroot + "Content/site.min.css";
+paths.concatJsMapDest = paths.webroot + "Scripts/js/site.min.js.map";
 paths.sass = paths.webroot + "Content/*.scss";
 
 gulp.task("clean:js", function (cb) {
@@ -36,7 +37,11 @@ gulp.task("clean:css", function (cb) {
     rimraf(paths.concatCssDest, cb);
 });
 
-gulp.task("clean", ["clean:js", "clean:css"]);
+gulp.task("clean:jsmap", function (cb) {
+    rimraf(paths.concatJsMapDest, cb);
+});
+
+gulp.task("clean", ["clean:js", "clean:css", "clean:jsmap"]);
 
 
 

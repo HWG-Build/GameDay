@@ -18,3 +18,55 @@ input,
 select,
 textarea {
   max-width: 280px; }
+
+.names-text {
+  font-family: Calibri;
+  font-weight: bold;
+  font-size: large;
+  border-radius: 10px;
+  margin: 5px;
+  background: grey;
+  color: ghostwhite;
+  width: 8em; }
+
+.panel-title {
+  font-family: Calibri;
+  color: ghostwhite;
+  font-size: large; }
+
+#addButton {
+  font-family: Calibri;
+  font-weight: bold;
+  font-size: xx-large;
+  border-radius: 10px;
+  margin: 5px;
+  background-color: cornflowerblue;
+  color: ghostwhite;
+  width: 5em; }
+
+#addPlayerButton {
+  font-family: Calibri;
+  font-weight: bold;
+  font-size: large;
+  border-radius: 10px;
+  margin: 5px;
+  background-color: cornflowerblue;
+  color: ghostwhite;
+  width: 7em; }
+
+#removePlayerButton {
+  font-family: Calibri;
+  font-weight: bold;
+  font-size: large;
+  border-radius: 10px;
+  margin: 5px;
+  background-color: orangered;
+  color: ghostwhite;
+  width: 7em; }
+
+#playerContainer {
+  border-color: black;
+  width: auto; }
+
+#eventContainer {
+  border-color: black; }

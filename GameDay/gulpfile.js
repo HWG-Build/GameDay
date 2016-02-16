@@ -1,4 +1,4 @@
-﻿/// <binding BeforeBuild='clean, min, styles' />
+﻿/// <binding BeforeBuild='clean, typescript, min, styles' ProjectOpened='watch' />
 /*
 This file in the main entry point for defining Gulp tasks and using Gulp plugins.
 Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
@@ -28,6 +28,8 @@ paths.concatJsDest = paths.webroot + "Scripts/js/site.min.js";
 paths.concatCssDest = paths.webroot + "Content/site.min.css";
 paths.concatJsMapDest = paths.webroot + "Scripts/js/site.min.js.map";
 paths.sass = paths.webroot + "Content/*.scss";
+paths.typescript = paths.webroot + "Scripts/js/*.ts";
+
 
 gulp.task("clean:js", function (cb) {
     rimraf(paths.concatJsDest, cb);
@@ -71,6 +73,16 @@ gulp.task('styles', function () {
 });
 
 //Watch task
-gulp.task('watchSass', function () {
+gulp.task('watch', function () {
     gulp.watch(paths.sass, ['styles']);
+    gulp.watch(paths.typescript, ['typescript']);
+});
+
+gulp.task('typescript', function () {
+    return gulp.src(paths.typescript)
+		.pipe(ts({
+		    noImplicitAny: true,
+		    out: 'site.js'
+		}))
+		.pipe(gulp.dest(paths.js));
 });

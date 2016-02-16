@@ -2,71 +2,29 @@ body {
   padding-top: 50px;
   padding-bottom: 20px; }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-  padding-left: 15px;
-  padding-right: 15px; }
+.eventContainer {
+  box-shadow: #808080 1px 1px 1px 1px;
+  width: 100%;
+  height: 5em;
+  border-radius: 4px;
+  margin-bottom: 1em; }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-  white-space: normal; }
+.verticalLine {
+  border-left: solid #f18c2c;
+  height: 4.5em; }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-  max-width: 280px; }
+img {
+  max-width: 100%;
+  height: auto; }
 
-.names-text {
-  font-family: Calibri;
-  font-weight: bold;
-  font-size: large;
-  border-radius: 10px;
-  margin: 5px;
-  background: grey;
-  color: ghostwhite;
-  width: 8em; }
+.detail-control {
+  margin-top: .5em;
+  margin-bottom: 1.7em; }
 
-.panel-title {
-  font-family: Calibri;
-  color: ghostwhite;
-  font-size: large; }
-
-#addButton {
-  font-family: Calibri;
-  font-weight: bold;
-  font-size: xx-large;
-  border-radius: 10px;
-  margin: 5px;
-  background-color: cornflowerblue;
-  color: ghostwhite;
-  width: 5em; }
-
-#addPlayerButton {
-  font-family: Calibri;
-  font-weight: bold;
-  font-size: large;
-  border-radius: 10px;
-  margin: 5px;
-  background-color: cornflowerblue;
-  color: ghostwhite;
-  width: 7em; }
-
-#removePlayerButton {
-  font-family: Calibri;
-  font-weight: bold;
-  font-size: large;
-  border-radius: 10px;
-  margin: 5px;
-  background-color: orangered;
-  color: ghostwhite;
-  width: 7em; }
-
-#playerContainer {
-  border-color: black;
-  width: auto; }
-
-#eventContainer {
-  border-color: black; }
+#playerBox {
+  min-height: 8em;
+  height: auto;
+  width: 100%;
+  border: solid 2px #808080;
+  border-radius: 4px;
+  margin-bottom: 2em; }

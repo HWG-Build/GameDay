@@ -1,39 +1,190 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<div class="container">
-    <div class="row">
-        <div class="col-md-2 panel" id="playerContainer">
-            <div class="panel-heading" id="playerList">
-                <div class="table-bordered panel-heading text-center names-text dragme player">Jonathan</div>
+<div>
+    <div class="col-xs-3 col-md-2 col-lg-2 clearfix">
+        <h5>Create</h5>
+        <hr />
+        <form>
+            <div class="form-group">
+                <label for="EventNameTextBox">Event Name:</label>
+                <input type="text" class="form-control" id="EventNameTextBox" placeholder="Name">
             </div>
-            <div class="form-group hidden" id="playerField">
-                <input type="text" class="form-control" placeholder="Enter Name Here" id="playerName">
+            <div class="form-group">
+                <label for="GameTypeDropDown">Type:</label>
+                <select class="form-control" id="GameTypeDropDown">
+                    <option value="" selected disabled>Please select</option>
+                </select>
             </div>
-            <div class="panel text-center">
-                <div>
-                    <button id="addPlayerButton" onclick="addPlayerField()">Add</button>
+            <div class="form-group">
+                <label for="EventDate">Date:</label>
+                <input type="date" id="EventDateTime" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="EventTime">Time:</label>
+                <input type="time" id="EventTime" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="LocationDropDown">Location:</label>
+                <select class="form-control" id="LocationDropDown">
+                    <option value="" selected disabled>Pick a location</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class="col-xs-6 col-md-4 col-lg-4 clearfix">
+        <h5>Events</h5>
+        <hr />
+        <div class="template eventContainer bg-info">
+            <div class="col-xs-3 col-md-2 col-lg-2">
+                <img src="~/Content/Images/NoImage.png" />
+            </div>
+            <div class="col-xs-12 col-md-10 col-lg-10 verticalLine">
+                <div class="form-inline" style="margin-top:.7em;">
+                    <label class="col-xs-2" for="EventDateTimeLabel">Date/Time:</label>
+                    <p class="col-xs-4" id="EventDateTimeLabel">2/11/16 11:00pm</p>
+                    <label class="col-xs-2" for="LocationLabel">Location:</label>
+                    <p class="col-xs-4" id="LocationLabel">Soccer Time Park</p>
                 </div>
-                <div>
-                    <button id="removePlayerButton" onclick="removePlayer()">Remove</button>
-
+                <div class="form-inline">
+                    <label class="col-xs-2" for="EventNameLabel">Name:</label>
+                    <p class="col-xs-4" id="EventNameLabel">Soccer</p>
+                    <label class="col-xs-2" for="OrganizerLabel">Organizer:</label>
+                    <p class="col-xs-4" id="OrganizerLabel">Jonathan Lee</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-8 pre-scrollable" id="eventContainer">
-            <div class="panel-group panel" id="title0">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h4 class="text-center panel-title">
-                            <a data-toggle="collapse" data-target="#details0" href="#details0">TEST</a>
-                        </h4>
-                    </div>
-                    <div id="details0" class="panel panel-body panel-collapse collapse in">SDFSDF</div>
+        <div class="template eventContainer">
+            <div class="col-xs-3 col-md-2 col-lg-2">
+                <img src="~/Content/Images/football.png" />
+            </div>
+            <div class="col-xs-12 col-md-10 col-lg-10 verticalLine">
+                <div class="form-inline" style="margin-top:.7em;">
+                    <label class="col-xs-2" for="EventDateTimeLabel">Date/Time:</label>
+                    <p class="col-xs-4" id="EventDateTimeLabel">2/11/16 11:00pm</p>
+                    <label class="col-xs-2" for="LocationLabel">Location:</label>
+                    <p class="col-xs-4" id="LocationLabel">Soccer Time Park</p>
+                </div>
+                <div class="form-inline">
+                    <label class="col-xs-2" for="EventNameLabel">Name:</label>
+                    <p class="col-xs-4" id="EventNameLabel">Soccer</p>
+                    <label class="col-xs-2" for="OrganizerLabel">Organizer:</label>
+                    <p class="col-xs-4" id="OrganizerLabel">Jonathan Lee</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-2">
-            <button id="addButton" onclick="addNewEvent()">+</button>
+        <div class="template eventContainer bg-primary">
+            <div class="col-xs-3 col-md-2 col-lg-2">
+                <img src="~/Content/Images/Soccer.png" />
+            </div>
+            <div class="col-xs-12 col-md-10 col-lg-10 verticalLine">
+                <div class="form-inline" style="margin-top:.7em;">
+                    <label class="col-xs-2" for="EventDateTimeLabel">Date/Time:</label>
+                    <p class="col-xs-4" id="EventDateTimeLabel">2/11/16 11:00pm</p>
+                    <label class="col-xs-2" for="LocationLabel">Location:</label>
+                    <p class="col-xs-4" id="LocationLabel">Soccer Time Park</p>
+                </div>
+                <div class="form-inline">
+                    <label class="col-xs-2" for="EventNameLabel">Name:</label>
+                    <p class="col-xs-4" id="EventNameLabel">Soccer</p>
+                    <label class="col-xs-2" for="OrganizerLabel">Organizer:</label>
+                    <p class="col-xs-4" id="OrganizerLabel">Jonathan Lee</p>
+                </div>
+            </div>
+        </div>
+        <div class="template eventContainer bg-warning">
+            <div class="col-xs-3 col-md-2 col-lg-2">
+                <img src="~/Content/Images/playingcards.png" />
+            </div>
+            <div class="col-xs-12 col-md-10 col-lg-10 verticalLine">
+                <div class="form-inline" style="margin-top:.7em;">
+                    <label class="col-xs-2" for="EventDateTimeLabel">Date/Time:</label>
+                    <p class="col-xs-4" id="EventDateTimeLabel">2/11/16 11:00pm</p>
+                    <label class="col-xs-2" for="LocationLabel">Location:</label>
+                    <p class="col-xs-4" id="LocationLabel">Soccer Time Park</p>
+                </div>
+                <div class="form-inline">
+                    <label class="col-xs-2" for="EventNameLabel">Name:</label>
+                    <p class="col-xs-4" id="EventNameLabel">Soccer</p>
+                    <label class="col-xs-2" for="OrganizerLabel">Organizer:</label>
+                    <p class="col-xs-4" id="OrganizerLabel">Jonathan Lee</p>
+                </div>
+            </div>
         </div>
     </div>
+    <div class="col-xs-8 col-sm-5 col-md-5 col-lg-5 clearfix">
+        <h5>Details</h5>
+        <hr />
+        <form id="detail-form">
+            <div class="col-md-2">
+                <div class="form-group detail-control">
+                    <label for="DetailEventNameTextBox">Event Name:</label>
+                </div>
+                <div class="form-group detail-control">
+                    <label for="DetailGameTypeDropDown">Type:</label>
+                </div>
+                <div class="form-group detail-control">
+                    <label for="DetailEventDate">Date:</label>
+                </div>
+                <div class="form-group detail-control">
+                    <label for="DetailEventTime">Time:</label>
+                </div>
+                <div class="form-group detail-control">
+                    <label for="LocationDropDown">Location:</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="DetailEventNameTextBox" placeholder="Name" disabled>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" id="DetailGameTypeDropDown" disabled>
+                        <option value="" selected disabled>Please select</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="date" id="DetailEventDateTime" class="form-control" disabled>
+                </div>
+                <div class="form-group">
+                    <input type="time" id="DetailEventTime" class="form-control" disabled>
+                </div>
+                <div class="form-group">
+                    <select class="form-control" id="LocationDropDown">
+                        <option value="" selected disabled>Pick a location</option>
+                    </select>
+                </div>
+                <address>
+                    1355 Market Street, Suite 900<br>
+                    San Francisco, CA 94103<br>
+                </address>
+            </div>
+            <div class="col-md-6">
+                <img src="~/Content/Images/map.png"/>
+            </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <label for="DetailPlayerList">Attending:</label>
+                    <div class="alert-warning" id="playerBox">
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-primary clearfix">Edit</button>
+            </div>
+        </form>
+    </div>
 </div>
+
+
+@*<div class="form-group">
+        <label for="DetailLine1TextBox">Address:</label>
+        <input type="text" id="DetailLine1TextBox" class="form-control" placeholder="Line 1">
+        <input type="text" id="DetailLine2TextBox" class="form-control" placeholder="Line 2">
+        <input type="text" id="DetailCityTextBox" class="form-control" placeholder="City">
+        <select class="form-control" id="DetailStateDropDown">
+            <option value="" selected disabled>State</option>
+        </select>
+        <input type="number" id="DetailZipTextBox" class="form-control" placeholder="ZipCode">
+    </div>*@

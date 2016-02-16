@@ -8,6 +8,7 @@ namespace GameDay.Models
     public class Address
     {
         public int ID { get; set; }
+        public string Name { get; set; }
         public string Line1 { get; set; }
         public string Line2 { get; set; }
         public string City { get; set; }

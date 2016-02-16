@@ -204,6 +204,14 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Images\baseball.png" />
+    <Content Include="Content\Images\basketball.png" />
+    <Content Include="Content\Images\football.jpg" />
+    <Content Include="Content\Images\football.png" />
+    <Content Include="Content\Images\map.png" />
+    <Content Include="Content\Images\NoImage.png" />
+    <Content Include="Content\Images\playingcards.png" />
+    <Content Include="Content\Images\Soccer.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />

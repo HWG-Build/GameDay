@@ -9,15 +9,16 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace GameDay.DataAccessLayer
 {
-    public class GameDayContext : IdentityDbContext<ApplicationUser>
+    public class GameDayContext : DbContext
     {
-        public GameDayContext() : base("GameDayContext", throwIfV1Schema: false)
+        public GameDayContext() : base("GameDayContext")
         {
         }
 
         public DbSet<Player> Players { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Address> Locations { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

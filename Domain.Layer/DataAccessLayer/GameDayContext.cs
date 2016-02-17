@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using GameDay.Models;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using Microsoft.AspNet.Identity.EntityFramework;
+using Domain.Layer.Models;
 
-namespace GameDay.DataAccessLayer
+namespace Domain.Layer.DataAccessLayer
 {
     public class GameDayContext : DbContext
     {
-        public GameDayContext() : base("GameDayContext")
+        public GameDayContext() : base("GameDay")
         {
         }
 
@@ -19,7 +14,7 @@ namespace GameDay.DataAccessLayer
         public DbSet<Event> Events { get; set; }
         public DbSet<Address> Locations { get; set; }
 
-
+       
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
@@ -30,5 +25,6 @@ namespace GameDay.DataAccessLayer
             return new GameDayContext();
         }
     }
+
 }
 

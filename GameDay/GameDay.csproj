@@ -186,20 +186,18 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AddressController.cs" />
+    <Compile Include="Controllers\EventController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="DataAccessLayer\GameDayContext.cs" />
+    <Compile Include="Controllers\PlayerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\GameDayHub.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\Address.cs" />
-    <Compile Include="Models\Event.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1329,6 +1327,21 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Event\Create.cshtml" />
+    <Content Include="Views\Event\Delete.cshtml" />
+    <Content Include="Views\Event\Details.cshtml" />
+    <Content Include="Views\Event\Edit.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
+    <Content Include="Views\Player\Create.cshtml" />
+    <Content Include="Views\Player\Delete.cshtml" />
+    <Content Include="Views\Player\Details.cshtml" />
+    <Content Include="Views\Player\Edit.cshtml" />
+    <Content Include="Views\Player\Index.cshtml" />
+    <Content Include="Views\Address\Create.cshtml" />
+    <Content Include="Views\Address\Delete.cshtml" />
+    <Content Include="Views\Address\Details.cshtml" />
+    <Content Include="Views\Address\Edit.cshtml" />
+    <Content Include="Views\Address\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1346,6 +1359,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain.Layer\Domain.Layer.csproj">
+      <Project>{f4ae97f9-742a-4653-bf04-9323ab3cebc0}</Project>
+      <Name>Domain.Layer</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

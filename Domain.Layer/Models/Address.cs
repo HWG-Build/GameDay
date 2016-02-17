@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 
-namespace GameDay.Models
+namespace Domain.Layer.Models
 {
     public class Address
     {
@@ -14,7 +11,7 @@ namespace GameDay.Models
         public string City { get; set; }
         public State State { get; set; }
         public float Zip { get; set; }
-
+        public string test { get; set; }
         public virtual ICollection<Event> Events { get; set; }
     }
 

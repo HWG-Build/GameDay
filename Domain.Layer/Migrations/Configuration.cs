@@ -1,18 +1,18 @@
-namespace GameDay.Migrations
+namespace Domain.Layer.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<GameDay.DataAccessLayer.GameDayContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Domain.Layer.DataAccessLayer.GameDayContext>
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(GameDay.DataAccessLayer.GameDayContext context)
+        protected override void Seed(Domain.Layer.DataAccessLayer.GameDayContext context)
         {
             //  This method will be called after migrating to the latest version.
 

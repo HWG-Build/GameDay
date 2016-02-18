@@ -8,9 +8,10 @@ namespace Domain.Layer.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public GameType Game { get; set; }
-        public DateTime DateTime { get; set; }
-        public Address Location { get; set; }
-        public string Organizer { get; set; }
+        public String Date { get; set; }
+        public String Time { get; set; }
+        public AddressType Location { get; set; }
+        
 
         public virtual ICollection<Player> Players { get; set; }
     }
@@ -18,6 +19,11 @@ namespace Domain.Layer.Models
     public enum GameType
     {
         Baseball, Basketball, Football, Poker, Soccer
+    }
+    
+    public enum AddressType
+    {
+        
     }
 
 

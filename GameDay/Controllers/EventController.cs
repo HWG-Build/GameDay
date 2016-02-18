@@ -51,7 +51,7 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Game,DateTime,Organizer")] Event @event)
+        public ActionResult Create([Bind(Include = "ID,Name,Game,Date,Time,Location")] Event @event)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Game,DateTime,Organizer")] Event @event)
+        public ActionResult Edit([Bind(Include = "ID,Name,Game,Date,Time,Location")] Event @event)
         {
             if (ModelState.IsValid)
             {

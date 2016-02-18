@@ -1,13 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using GameDay.Services.Interfaces;
 
 namespace GameDay.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IDependency dependency;
+        public HomeController(IDependency dependency)
+        {
+            this.dependency = dependency;
+        }
+
         public ActionResult Index()
         {
             return View();

@@ -9,7 +9,7 @@ namespace Domain.Layer.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(Domain.Layer.DataAccessLayer.GameDayContext context)

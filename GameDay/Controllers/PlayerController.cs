@@ -4,12 +4,19 @@ using System.Net;
 using System.Web.Mvc;
 using Domain.Layer.DataAccessLayer;
 using Domain.Layer.Models;
+using GameDay.Services.Interfaces;
 
 namespace GameDay.Controllers
 {
     public class PlayerController : Controller
     {
         private GameDayContext db = new GameDayContext();
+
+        private readonly IDependency dependency;
+        public PlayerController(IDependency dependency)
+        {
+            this.dependency = dependency;
+        }
 
         // GET: Player
         public ActionResult Index()

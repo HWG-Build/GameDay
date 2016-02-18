@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Domain.Layer.DataAccessLayer;
+using GameDay.Services.Interfaces;
 using Domain.Layer.Models;
 
 
@@ -15,6 +12,12 @@ namespace GameDay.Controllers
     public class EventController : Controller
     {
         private GameDayContext db = new GameDayContext();
+
+        private readonly IDependency dependency;
+        public EventController(IDependency dependency)
+        {
+            this.dependency = dependency;
+       }
 
         // GET: Event
         public ActionResult Index()

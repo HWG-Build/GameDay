@@ -1,18 +1,33 @@
-﻿body {
+﻿//Variables
+$ThemeGray: #808080;
+$ThemeOrangeYellow: #f18c2c;
+
+//Mixins
+@mixin border-radius-shadow($radius, $shadow){
+    box-shadow:$shadow;
+    border-radius:$radius;
+}
+
+@mixin height-width($height, $width){
+    height:$height;
+    width:$width;
+}
+
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
 .eventContainer{
-    box-shadow:#808080 1px 1px 1px 1px;
-    width:100%;
-    height:5em;
+    box-shadow:$ThemeGray 1px 1px 1px 1px;
+    @include height-width(5em, 100%);
     border-radius:4px;
     margin-bottom:1em
 }
 
 .verticalLine{
-    border-left: solid #f18c2c;
+    border-left: solid $ThemeOrangeYellow;
     height:4.5em
 }
 
@@ -28,9 +43,11 @@ img {
 
 #playerBox{
     min-height:8em;
-    height:auto;
-    width:100%;
-    border:solid 2px #808080;
+    @include height-width(auto, 100%);
+    border:solid 2px $ThemeGray;
     border-radius:4px;
     margin-bottom:2em;
 }
+
+
+

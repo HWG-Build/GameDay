@@ -11,9 +11,10 @@ namespace Domain.Layer.Models
         public string City { get; set; }
         public State State { get; set; }
         public float Zip { get; set; }
-        public string test { get; set; }
+
         public virtual ICollection<Event> Events { get; set; }
     }
+
 
     public enum State
     {

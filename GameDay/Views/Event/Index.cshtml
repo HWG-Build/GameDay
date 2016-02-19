@@ -18,10 +18,13 @@
             @Html.DisplayNameFor(model => model.Game)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateTime)
+            @Html.DisplayNameFor(model => model.Date)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Organizer)
+            @Html.DisplayNameFor(model => model.Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
         </th>
         <th></th>
     </tr>
@@ -35,10 +38,13 @@
             @Html.DisplayFor(modelItem => item.Game)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateTime)
+            @Html.DisplayFor(modelItem => item.Date)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Organizer)
+            @Html.DisplayFor(modelItem => item.Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |

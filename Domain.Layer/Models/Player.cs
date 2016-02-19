@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Layer.Models
 {
+    [TrackChanges]
     public class Player
     {
         public int ID { get; set; }

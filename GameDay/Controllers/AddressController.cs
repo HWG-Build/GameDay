@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
@@ -119,6 +121,12 @@ namespace GameDay.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public string GetAddresses()
+        {
+            return String.Join(",", db.Locations.ToList());
+        } 
+
 
         protected override void Dispose(bool disposing)
         {

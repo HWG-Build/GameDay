@@ -1,10 +1,15 @@
-﻿using System.Web.Mvc;
+﻿using System.Dynamic;
+using System.Web.Mvc;
+using Domain.Layer.DataAccessLayer;
+using Domain.Layer.Models;
 using GameDay.Services.Interfaces;
 
 namespace GameDay.Controllers
 {
     public class HomeController : Controller
     {
+        GameDayContext db = new GameDayContext();
+
         private readonly IDependency dependency;
         public HomeController(IDependency dependency)
         {
@@ -13,20 +18,6 @@ namespace GameDay.Controllers
 
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }

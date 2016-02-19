@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Domain.Layer.Models
 {
+    [TrackChanges]
     public class Address
     {
         public int ID { get; set; }
@@ -13,6 +15,8 @@ namespace Domain.Layer.Models
         public float Zip { get; set; }
 
         public virtual ICollection<Event> Events { get; set; }
+
+
     }
 
 

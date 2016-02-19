@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Domain.Layer.Models.Event>
+@foreach (var item in Model)
+{
+    <div class="eventContainer">
+        <div class="col-xs-3 col-md-2 col-lg-2">
+            <img src="~/Content/Images/@Html.DisplayFor(modelItem=> item.Game)'.png"/>
+        </div>
+        <div class="col-xs-12 col-md-10 col-lg-10 verticalLine">
+            <div class="form-inline" style="margin-top: .7em;">
+                <label class="col-xs-2" for="EventDateTimeLabel">@Html.DisplayNameFor(model => model.Date):</label>
+                <p class="col-xs-4" id="EventDateTimeLabel">@Html.DisplayFor(modelItem => item.Date)</p>
+                <label class="col-xs-2" for="EventDateTimeLabel">@Html.DisplayNameFor(model => model.Time):</label>
+                <p class="col-xs-4" id="EventDateTimeLabel">@Html.DisplayFor(modelItem => item.Time)</p>
+            </div>
+            <div class="form-inline">
+                <label class="col-xs-2" for="EventNameLabel">@Html.DisplayNameFor(model => model.Name):</label>
+                <p class="col-xs-4" id="EventNameLabel">@Html.DisplayFor(modelItem => item.Name)</p>
+                <label class="col-xs-2" for="LocationLabel">@Html.DisplayNameFor(model => model.Location):</label>
+                <p class="col-xs-4" id="LocationLabel">@Html.DisplayFor(modelItem => item.Location)</p>
+            </div>
+        </div>
+    </div>
+}

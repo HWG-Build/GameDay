@@ -1,10 +1,12 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Domain.Layer.DataAccessLayer;
 using GameDay.Services.Interfaces;
 using Domain.Layer.Models;
+using GameDay.Controllers;
 
 
 namespace GameDay.Controllers
@@ -17,12 +19,12 @@ namespace GameDay.Controllers
         public EventController(IDependency dependency)
         {
             this.dependency = dependency;
-       }
+        }
 
         // GET: Event
         public ActionResult Index()
         {
-            return View(db.Events.ToList());
+            return View("_EventListPartial",db.Events.ToList());
         }
 
         // GET: Event/Details/5
@@ -41,23 +43,23 @@ namespace GameDay.Controllers
         }
 
         // GET: Event/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+        //public ActionResult Create()
+        //{
+        //    return View();
+        //}
 
         // POST: Event/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,Game,Date,Time,Location")] Event @event)
         {
             if (ModelState.IsValid)
             {
                 db.Events.Add(@event);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Home");
             }
 
             return View(@event);

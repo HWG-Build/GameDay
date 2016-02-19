@@ -50,6 +50,10 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework.MappingAPI, Version=6.1.0.9, Culture=neutral, PublicKeyToken=7ee2e825d201459e, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.MappingAPI.6.1.0.9\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.1.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.1.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
       <Private>True</Private>
@@ -131,6 +135,14 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="TrackerEnabledDbContext.Common, Version=3.5.2.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TrackerEnabledDbContext.Common.3.5.2\lib\net45\TrackerEnabledDbContext.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="TrackerEnabledDbContext.Identity, Version=3.5.2.0, Culture=neutral, PublicKeyToken=4f92af0b908c4a0a, processorArchitecture=MSIL">
+      <HintPath>..\packages\TrackerEnabledDbContext.Identity.3.5.2\lib\net45\TrackerEnabledDbContext.Identity.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
@@ -215,14 +227,13 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Images\baseball.png" />
-    <Content Include="Content\Images\basketball.png" />
-    <Content Include="Content\Images\football.jpg" />
-    <Content Include="Content\Images\football.png" />
+    <Content Include="Content\Images\Baseball%27.png" />
+    <Content Include="Content\Images\Basketball%27.png" />
+    <Content Include="Content\Images\Football%27.png" />
     <Content Include="Content\Images\map.png" />
     <Content Include="Content\Images\NoImage.png" />
-    <Content Include="Content\Images\playingcards.png" />
-    <Content Include="Content\Images\Soccer.png" />
+    <Content Include="Content\Images\Poker%27.png" />
+    <Content Include="Content\Images\Soccer%27.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
@@ -1305,6 +1316,10 @@
     <Content Include="Scripts\jquery.signalR-2.1.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\js\site.js" />
+    <Content Include="Views\Event\Delete.cshtml" />
+    <Content Include="Views\Event\Details.cshtml" />
+    <Content Include="Views\Event\Edit.cshtml" />
+    <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1341,11 +1356,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Event\Create.cshtml" />
-    <Content Include="Views\Event\Delete.cshtml" />
-    <Content Include="Views\Event\Details.cshtml" />
-    <Content Include="Views\Event\Edit.cshtml" />
-    <Content Include="Views\Event\Index.cshtml" />
     <Content Include="Views\Player\Create.cshtml" />
     <Content Include="Views\Player\Delete.cshtml" />
     <Content Include="Views\Player\Details.cshtml" />
@@ -1356,6 +1366,7 @@
     <Content Include="Views\Address\Details.cshtml" />
     <Content Include="Views\Address\Edit.cshtml" />
     <Content Include="Views\Address\Index.cshtml" />
+    <Content Include="Views\Shared\_EventListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

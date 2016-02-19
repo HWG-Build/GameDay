@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using GameDay.Models;
+using Domain.Layer.DataAccessLayer;
 
 namespace GameDay.Controllers
 {

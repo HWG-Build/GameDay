@@ -1,17 +1,24 @@
 body {
   padding-top: 50px;
-  padding-bottom: 20px; }
+  padding-bottom: 20px;
+  overflow: hidden; }
 
 .eventContainer {
-  box-shadow: #808080 1px 1px 1px 1px;
-  height: 5em;
-  width: 100%;
+  box-shadow: -4px 1px 2px #808080;
+  height: 6em;
+  width: 95%;
   border-radius: 4px;
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  margin-left: 2px; }
 
 .verticalLine {
   border-left: solid #f18c2c;
-  height: 4.5em; }
+  height: 75%; }
+
+.pageVerticalLine {
+  border-left: solid #808080;
+  border-right: solid #808080;
+  height: 100%; }
 
 img {
   max-width: 100%;
@@ -28,3 +35,7 @@ img {
   border: solid 2px #808080;
   border-radius: 4px;
   margin-bottom: 2em; }
+
+.Scollable {
+  height: 67em;
+  overflow-y: auto; }

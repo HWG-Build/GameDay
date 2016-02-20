@@ -8,13 +8,6 @@ namespace GameDay.Controllers
 {
     public class HomeController : Controller
     {
-        GameDayContext db = new GameDayContext();
-
-        private readonly IDependency dependency;
-        public HomeController(IDependency dependency)
-        {
-            this.dependency = dependency;
-        }
 
         public ActionResult Index()
         {

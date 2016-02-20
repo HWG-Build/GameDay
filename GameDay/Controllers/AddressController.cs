@@ -13,18 +13,17 @@ namespace GameDay.Controllers
 {
     public class AddressController : Controller
     {
-        private GameDayContext db = new GameDayContext();
-
-        private readonly IDependency dependency;
-        public AddressController(IDependency dependency)
+        
+        private readonly IAddress addressservice;
+        public AddressController(IAddress addressservice)
         {
-            this.dependency = dependency;
+            this.addressservice = addressservice;
         }
 
         // GET: Address
         public ActionResult Index()
         {
-            return View(db.Locations.ToList());
+            return View(addressservice.GetAddresses());
         }
 
         // GET: Address/Details/5
@@ -34,7 +33,7 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Address address = db.Locations.Find(id);
+            Address address = addressservice.FindAddress(id);
             if (address == null)
             {
                 return HttpNotFound();
@@ -57,8 +56,7 @@ namespace GameDay.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Locations.Add(address);
-                db.SaveChanges();
+                addressservice.AddAddress(address);
                 return RedirectToAction("Index");
             }
 
@@ -72,7 +70,7 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Address address = db.Locations.Find(id);
+            Address address = addressservice.FindAddress(id);
             if (address == null)
             {
                 return HttpNotFound();
@@ -89,8 +87,7 @@ namespace GameDay.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(address).State = EntityState.Modified;
-                db.SaveChanges();
+                addressservice.EditAddress(address);
                 return RedirectToAction("Index");
             }
             return View(address);
@@ -103,7 +100,7 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Address address = db.Locations.Find(id);
+            Address address = addressservice.FindAddress(id);
             if (address == null)
             {
                 return HttpNotFound();
@@ -116,23 +113,16 @@ namespace GameDay.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Address address = db.Locations.Find(id);
-            db.Locations.Remove(address);
-            db.SaveChanges();
+            Address address = addressservice.FindAddress(id);
+            addressservice.DeleteAddress(address);
             return RedirectToAction("Index");
         }
-
-        public string GetAddresses()
-        {
-            return String.Join(",", db.Locations.ToList());
-        } 
-
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                addressservice.Dispose();
             }
             base.Dispose(disposing);
         }

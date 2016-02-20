@@ -10,18 +10,16 @@ namespace GameDay.Controllers
 {
     public class PlayerController : Controller
     {
-        private GameDayContext db = new GameDayContext();
-
-        private readonly IDependency dependency;
-        public PlayerController(IDependency dependency)
+        private readonly IPlayer playerservice;
+        public PlayerController(IPlayer playerservice)
         {
-            this.dependency = dependency;
+            this.playerservice = playerservice;
         }
 
         // GET: Player
         public ActionResult Index()
         {
-            return View(db.Players.ToList());
+            return View(playerservice.GetPlayers());
         }
 
         // GET: Player/Details/5
@@ -31,7 +29,7 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = db.Players.Find(id);
+            Player player = playerservice.FindPlayer(id);
             if (player == null)
             {
                 return HttpNotFound();
@@ -54,8 +52,7 @@ namespace GameDay.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Players.Add(player);
-                db.SaveChanges();
+                playerservice.AddPlayer(player);
                 return RedirectToAction("Index");
             }
 
@@ -69,7 +66,7 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = db.Players.Find(id);
+            Player player = playerservice.FindPlayer(id);
             if (player == null)
             {
                 return HttpNotFound();
@@ -86,8 +83,7 @@ namespace GameDay.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(player).State = EntityState.Modified;
-                db.SaveChanges();
+                playerservice.EditPlayer(player);
                 return RedirectToAction("Index");
             }
             return View(player);
@@ -100,7 +96,7 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Player player = db.Players.Find(id);
+            Player player = playerservice.FindPlayer(id);
             if (player == null)
             {
                 return HttpNotFound();
@@ -113,9 +109,8 @@ namespace GameDay.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Player player = db.Players.Find(id);
-            db.Players.Remove(player);
-            db.SaveChanges();
+            Player player = playerservice.FindPlayer(id);
+            playerservice.DeletePlayer(player);
             return RedirectToAction("Index");
         }
 
@@ -123,7 +118,7 @@ namespace GameDay.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                playerservice.Dispose();
             }
             base.Dispose(disposing);
         }

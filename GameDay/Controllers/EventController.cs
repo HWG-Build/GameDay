@@ -7,6 +7,7 @@ using Domain.Layer.DataAccessLayer;
 using GameDay.Services.Interfaces;
 using Domain.Layer.Models;
 using GameDay.Controllers;
+using GameDay.Services;
 
 
 namespace GameDay.Controllers
@@ -15,16 +16,16 @@ namespace GameDay.Controllers
     {
         private GameDayContext db = new GameDayContext();
 
-        private readonly IDependency dependency;
-        public EventController(IDependency dependency)
+        private readonly IGame gameservice;
+        public EventController(IGame game)
         {
-            this.dependency = dependency;
+            this.gameservice = game;
         }
 
         // GET: Event
         public ActionResult Index()
         {
-            return View("_EventListPartial",db.Events.ToList());
+            return View("_EventListPartial",gameservice.GetEvents());
         }
 
         // GET: Event/Details/5
@@ -34,7 +35,7 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
+            Event @event =gameservice.FindEvent(id);
             if (@event == null)
             {
                 return HttpNotFound();
@@ -52,13 +53,12 @@ namespace GameDay.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        //[ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,Game,Date,Time,Location")] Event @event)
         {
             if (ModelState.IsValid)
             {
-                db.Events.Add(@event);
-                db.SaveChanges();
+                gameservice.AddEvent(@event);
                 return RedirectToAction("Index","Home");
             }
 
@@ -72,7 +72,7 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
+            Event @event = gameservice.FindEvent(id);
             if (@event == null)
             {
                 return HttpNotFound();
@@ -89,8 +89,7 @@ namespace GameDay.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(@event).State = EntityState.Modified;
-                db.SaveChanges();
+                gameservice.EditEvent(@event);
                 return RedirectToAction("Index");
             }
             return View(@event);
@@ -103,7 +102,7 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = db.Events.Find(id);
+            Event @event = gameservice.FindEvent(id);
             if (@event == null)
             {
                 return HttpNotFound();
@@ -116,9 +115,8 @@ namespace GameDay.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Event @event = db.Events.Find(id);
-            db.Events.Remove(@event);
-            db.SaveChanges();
+            Event @event = gameservice.FindEvent(id);
+            gameservice.DeleteEvent(@event);
             return RedirectToAction("Index");
         }
 
@@ -126,7 +124,7 @@ namespace GameDay.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                gameservice.Dispose();
             }
             base.Dispose(disposing);
         }

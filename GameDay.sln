@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDay", "GameDay\GameDay.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Layer", "Domain.Layer\Domain.Layer.csproj", "{F4AE97F9-742A-4653-BF04-9323AB3CEBC0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Service", "Domain.Service\Domain.Service.csproj", "{449B3195-DF92-4F6B-BC54-F466967666D4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{F4AE97F9-742A-4653-BF04-9323AB3CEBC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4AE97F9-742A-4653-BF04-9323AB3CEBC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4AE97F9-742A-4653-BF04-9323AB3CEBC0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{449B3195-DF92-4F6B-BC54-F466967666D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{449B3195-DF92-4F6B-BC54-F466967666D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{449B3195-DF92-4F6B-BC54-F466967666D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{449B3195-DF92-4F6B-BC54-F466967666D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

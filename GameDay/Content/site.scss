@@ -17,18 +17,26 @@ $ThemeOrangeYellow: #f18c2c;
 body {
     padding-top: 50px;
     padding-bottom: 20px;
+    overflow:hidden;
 }
 
 .eventContainer{
-    box-shadow:$ThemeGray 1px 1px 1px 1px;
-    @include height-width(5em, 100%);
+    box-shadow: -4px 1px 2px $ThemeGray;
+    @include height-width(6em, 95%);
     border-radius:4px;
-    margin-bottom:1em
+    margin-bottom:1em;
+    margin-left:2px;
 }
 
 .verticalLine{
     border-left: solid $ThemeOrangeYellow;
-    height:4.5em
+    height:75%
+}
+
+.pageVerticalLine{
+    border-left: solid $ThemeGray;
+    border-right: solid $ThemeGray;
+    height:100%
 }
 
 img { 
@@ -49,5 +57,9 @@ img {
     margin-bottom:2em;
 }
 
+.Scollable{
+    height:67em;
+    overflow-y:auto;
+}
 
 

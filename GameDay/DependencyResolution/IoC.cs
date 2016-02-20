@@ -24,12 +24,13 @@ namespace GameDay.DependencyResolution {
 	
     public static class IoC {
         public static IContainer Initialize() {
-            //Container container = new Container(r =>
-            //{
-            //    r.For<IDependency>().Use<ConcreteDependency>();
-            //    r.For<IContainer>().Use<IContainer>()
-            //});
-            return new Container(c => c.For<IDependency>().Use<ConcreteDependency>());
+            Container container = new Container(r =>
+            {
+                r.For<IGame>().Use<GameService>();
+                r.For<IAddress>().Use<AddressService>();
+                r.For<IPlayer>().Use<PlayerService>();
+            });
+            return container;
         }
     }
 }

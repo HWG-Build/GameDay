@@ -1,6 +1,7 @@
 ﻿//Variables
 $ThemeGray: #808080;
 $ThemeOrangeYellow: #f18c2c;
+$LightLateGrey: #928c8c;
 
 //Mixins
 @mixin border-radius-shadow($radius, $shadow){
@@ -13,6 +14,13 @@ $ThemeOrangeYellow: #f18c2c;
     width:$width;
 }
 
+.leftMargin{
+    margin-left:2em;
+}
+
+.grayFont{
+    color:$LightLateGrey;
+}
 
 body {
     padding-top: 50px;
@@ -21,7 +29,7 @@ body {
 }
 
 .eventContainer{
-    box-shadow: -4px 1px 2px $ThemeGray;
+    box-shadow:  $ThemeGray 1px 1px 1px 1px;
     @include height-width(6em, 95%);
     border-radius:4px;
     margin-bottom:1em;

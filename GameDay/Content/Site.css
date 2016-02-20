@@ -1,10 +1,16 @@
+.leftMargin {
+  margin-left: 2em; }
+
+.grayFont {
+  color: #928c8c; }
+
 body {
   padding-top: 50px;
   padding-bottom: 20px;
   overflow: hidden; }
 
 .eventContainer {
-  box-shadow: -4px 1px 2px #808080;
+  box-shadow: #808080 1px 1px 1px 1px;
   height: 6em;
   width: 95%;
   border-radius: 4px;

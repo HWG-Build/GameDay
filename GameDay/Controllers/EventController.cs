@@ -14,9 +14,12 @@ namespace GameDay.Controllers
 {
     public class EventController : Controller
     {
-        private GameDayContext db = new GameDayContext();
-
         private readonly IGame gameservice;
+
+        //public EventController()
+        //{
+        //}
+
         public EventController(IGame game)
         {
             this.gameservice = game;

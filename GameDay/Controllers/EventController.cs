@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -16,12 +17,9 @@ namespace GameDay.Controllers
     {
         private readonly IGame gameservice;
 
-        //public EventController()
-        //{
-        //}
-
-        public EventController(IGame game)
+       public EventController(IGame game)
         {
+            //throw new NullReferenceException();
             this.gameservice = game;
         }
 
@@ -32,6 +30,7 @@ namespace GameDay.Controllers
         }
 
         // GET: Event/Details/5
+        //[HandleError(ExceptionType = typeof(CustomException), View = "CustomError")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -43,14 +42,8 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return View("_EventDetailPartial",@event);
         }
-
-        // GET: Event/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
 
         // POST: Event/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -80,7 +73,7 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return View("_EditDetailPartial",@event);
         }
 
         // POST: Event/Edit/5
@@ -88,14 +81,12 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Game,Date,Time,Location")] Event @event)
+        public void Edit([Bind(Include = "ID,Name,Game,Date,Time,Location")] Event @event)
         {
             if (ModelState.IsValid)
             {
                 gameservice.EditEvent(@event);
-                return RedirectToAction("Index");
             }
-            return View(@event);
         }
 
         // GET: Event/Delete/5
@@ -110,7 +101,7 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            return View("_EventDetailPartial",@event);
         }
 
         // POST: Event/Delete/5

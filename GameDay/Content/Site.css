@@ -1,6 +1,10 @@
 .leftMargin {
   margin-left: 2em; }
 
+.marginDetails {
+  margin-top: 1em;
+  margin-bottom: 2.2em; }
+
 .grayFont {
   color: #928c8c; }
 
@@ -20,11 +24,6 @@ body {
 .verticalLine {
   border-left: solid #f18c2c;
   height: 75%; }
-
-.pageVerticalLine {
-  border-left: solid #808080;
-  border-right: solid #808080;
-  height: 100%; }
 
 img {
   max-width: 100%;

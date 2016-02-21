@@ -1,0 +1,59 @@
+﻿@model Domain.Layer.Models.Event
+
+
+<div id="detail-form">
+        <div class="col-md-2">
+            <div class="form-group detail-control">
+                <label>@Html.DisplayNameFor(model => model.Name):</label>
+            </div>
+            <div class="form-group detail-control">
+                <label>@Html.DisplayNameFor(model => model.Game):</label>
+            </div>
+            <div class="form-group detail-control">
+                <label>@Html.DisplayNameFor(model => model.Date):</label>
+            </div>
+            <div class="form-group detail-control">
+                <label>@Html.DisplayNameFor(model => model.Time):</label>
+            </div>
+            <div class="form-group detail-control">
+                <label>@Html.DisplayNameFor(model => model.Location):</label>
+            </div>
+        </div>
+        <div class="col-md-4 verticalLine">
+            <div class="form-group detail-control">
+                <label id="DetailEventNameLabel">@Html.DisplayFor(model => model.Name)</label>
+            </div>
+            <div class="form-group detail-control">
+                <label id="DetailGameTypeLabel">@Html.DisplayFor(model => model.Game)</label>
+            </div>
+            <div class="form-group detail-control">
+                <label id="DetailEventDateLabel">@Html.DisplayFor(model => model.Date)</label>
+            </div>
+            <div class="form-group detail-control">
+                <label id="DetailEventTimeLabel">@Html.DisplayFor(model => model.Time)</label>
+            </div>
+            <div class="form-group detail-control">
+                <label id="LocationLabel">Parky Park</label>@*@Html.DisplayFor(model => model.Location)</label>*@
+                <address>
+                    1355 Market Street, Suite 900<br>
+                    San Francisco, CA 94103<br>
+                </address>
+            </div>
+
+        </div>
+        <div class="col-md-6">
+            <img src="~/Content/Images/map.png"/>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                <label for="DetailPlayerList">Attending:</label>
+                <div class="alert-warning" id="playerBox">
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <button type="button" class="btn btn-primary clearfix" id="editButton" onclick="loadEditScreen(@Html.DisplayFor(model=>model.ID));">Edit</button>
+            <button type="button" class="btn btn-danger clearfix" id="deleteButton" onclick="">Delete</button>
+        </div>
+    </div>

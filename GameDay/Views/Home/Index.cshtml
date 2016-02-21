@@ -21,7 +21,7 @@
                 @Html.ValidationMessageFor(model => model.Game, "", new {@class = "text-danger"})
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.Date, htmlAttributes: new {@for = "EventDatee"})
+                @Html.LabelFor(model => model.Date, htmlAttributes: new {@for = "EventDate"})
                 @Html.EditorFor(model => model.Date, new {htmlAttributes = new {@type = "date", @class = "form-control", @id = "EventDate"}})
                 @Html.ValidationMessageFor(model => model.Date, "", new {@class = "text-danger"})
             </div>
@@ -45,61 +45,8 @@
         <div class="col-xs-8 col-sm-5 col-md-5 col-lg-5 clearfix">
             <h5>Details</h5>
             <hr/>
-            <form id="detail-form">
-                <div class="col-md-2">
-                    <div class="form-group detail-control">
-                        <label>Event Name:</label>
-                    </div>
-                    <div class="form-group detail-control">
-                        <label>Type:</label>
-                    </div>
-                    <div class="form-group detail-control">
-                        <label>Date:</label>
-                    </div>
-                    <div class="form-group detail-control">
-                        <label>Time:</label>
-                    </div>
-                    <div class="form-group detail-control">
-                        <label>Location:</label>
-                    </div>
-                </div>
-                <div class="col-md-4 verticalLine">
-                    <div class="form-group detail-control">
-                        <label id="DetailEventNameLabel">Test Event</label>
-                    </div>
-                    <div class="form-group detail-control">
-                        <label id="DetailGameTypeLabel">BasketBall</label>
-                    </div>
-                    <div class="form-group detail-control">
-                        <label id="DetailEventDateLabel">2015-11-30</label>
-                    </div>
-                    <div class="form-group detail-control">
-                        <label id="DetailEventTimeLabel">23:58</label>
-                    </div>
-                    <div class="form-group detail-control">
-                        <label id="LocationLabel">After Party Park</label>
-                        <address>
-                            1355 Market Street, Suite 900<br>
-                            San Francisco, CA 94103<br>
-                        </address>
-                    </div>
-
-                </div>
-                <div class="col-md-6">
-                    <img src="~/Content/Images/map.png"/>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-12">
-                        <label for="DetailPlayerList">Attending:</label>
-                        <div class="alert-warning" id="playerBox">
-
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <button type="button" class="btn btn-primary clearfix">Edit</button>
-                </div>
-            </form>
+            <div id="DetailsContainer">
+            </div>
         </div>
     </div>
 }

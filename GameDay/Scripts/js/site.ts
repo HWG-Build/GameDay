@@ -10,3 +10,4 @@ function loadEditScreen(id: number) {
     $('#DetailsContainer').load(url);
 }
 
+

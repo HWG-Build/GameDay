@@ -58,7 +58,7 @@ namespace GameDay.Controllers
                 return RedirectToAction("Index","Home");
             }
 
-            return View(@event);
+            return View("Index","Home");
         }
 
         // GET: Event/Edit/5
@@ -81,12 +81,14 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public void Edit([Bind(Include = "ID,Name,Game,Date,Time,Location")] Event @event)
+        public ActionResult Edit([Bind(Include = "ID,Name,Game,Date,Time,Location")] Event @event)
         {
             if (ModelState.IsValid)
             {
                 gameservice.EditEvent(@event);
+                return RedirectToAction("Index", "Home");
             }
+            return View(@event);
         }
 
         // GET: Event/Delete/5
@@ -101,7 +103,7 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View("_EventDetailPartial",@event);
+            return View(@event);
         }
 
         // POST: Event/Delete/5
@@ -111,7 +113,7 @@ namespace GameDay.Controllers
         {
             Event @event = gameservice.FindEvent(id);
             gameservice.DeleteEvent(@event);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
 
         protected override void Dispose(bool disposing)

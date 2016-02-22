@@ -54,6 +54,6 @@
         </div>
         <div class="row">
             <button type="button" class="btn btn-primary clearfix" id="editButton" onclick="loadEditScreen(@Html.DisplayFor(model=>model.ID));">Edit</button>
-            <button type="button" class="btn btn-danger clearfix" id="deleteButton" onclick="">Delete</button>
+            @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "btn btn-danger clearfix" })
         </div>
     </div>

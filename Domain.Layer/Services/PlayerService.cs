@@ -5,37 +5,37 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using Domain.Layer.Models;
-using GameDay.Services.Interfaces;
+using Domain.Layer.Interfaces;
 
-namespace GameDay.Services
+namespace Domain.Layer.Services
 {
-    public class PlayerService : IPlayer
+    public class PlayerService : IService<Player>
     {
         GameDayContext db = new GameDayContext();
 
-        public List<Player> GetPlayers()
+        public List<Player> GetRecords()
         {
             return db.Players.ToList();
         }
 
-        public Player FindPlayer(int? id)
+        public Player FindRecord(int? id)
         {
             return db.Players.Find(id);
         }
 
-        public void AddPlayer(Player p)
+        public void AddRecord(Player p)
         {
             db.Players.Add(p);
             SaveChanges();
         }
 
-        public void EditPlayer(Player p)
+        public void EditRecord(Player p)
         {
             db.Entry(p).State = EntityState.Modified;
             SaveChanges();
         }
 
-        public void DeletePlayer(Player p)
+        public void DeleteRecord(Player p)
         {
             db.Players.Remove(p);
             SaveChanges();

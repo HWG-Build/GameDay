@@ -83,6 +83,10 @@
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="StructureMap, Version=3.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\structuremap.3.1.1.134\lib\net40\StructureMap.dll</HintPath>
       <Private>True</Private>
@@ -230,16 +234,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\GameDayHub.cs" />
-    <Compile Include="Services\AddressService.cs" />
-    <Compile Include="Services\GameService.cs" />
-    <Compile Include="Services\Interfaces\IAddress.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\Interfaces\IGame.cs" />
-    <Compile Include="Services\Interfaces\IPlayer.cs" />
-    <Compile Include="Services\PlayerService.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1228,12 +1226,6 @@
     <Content Include="lib\angular\bower.json" />
     <Content Include="lib\angular\package.json" />
     <Content Include="lib\angular\README.md" />
-    <Content Include="ClassDiagram1.cd" />
-    <Content Include="ClassDiagram2.cd" />
-    <Content Include="ClassDiagram3.cd" />
-    <Content Include="ClassDiagram4.cd" />
-    <Content Include="ClassDiagram5.cd" />
-    <Content Include="ClassDiagram6.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="lib\jquery\dist\jquery.js" />
     <Content Include="lib\jquery\dist\jquery.min.js" />
@@ -1407,10 +1399,9 @@
       <Project>{f4ae97f9-742a-4653-bf04-9323ab3cebc0}</Project>
       <Name>Domain.Layer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Domain.Service\Domain.Service.csproj">
-      <Project>{449b3195-df92-4f6b-bc54-f466967666d4}</Project>
-      <Name>Domain.Service</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

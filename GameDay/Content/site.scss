@@ -39,14 +39,14 @@ body {
     border-radius:4px;
     margin-bottom:1em;
     margin-left:2px;
+    overflow-x:scroll;
+    overflow-y:hidden;
 }
 
 .verticalLine{
     border-left: solid $ThemeOrangeYellow;
     height:75%;
 }
-
-
 
 img { 
     max-width: 100%; 
@@ -69,6 +69,10 @@ img {
 .Scollable{
     height:67em;
     overflow-y:auto;
+}
+
+.NavbarBackgroup{
+    background-color:#f18c2c;
 }
 
 

@@ -4,37 +4,37 @@ using System.Data.Entity;
 using System.Linq;
 using Domain.Layer.DataAccessLayer;
 using Domain.Layer.Models;
-using GameDay.Services.Interfaces;
+using Domain.Layer.Interfaces;
 
-namespace GameDay.Services
+namespace Domain.Layer.Services
 {
-    public class AddressService : IAddress
+    public class AddressService : IService<Address>
     {
         GameDayContext db = new GameDayContext();
 
-        public List<Address> GetAddresses()
+        public List<Address> GetRecords()
         {
             return db.Locations.ToList();
         }
 
-        public Address FindAddress(int? id)
+        public Address FindRecord(int? id)
         {
             return db.Locations.Find(id);
         }
 
-        public void AddAddress(Address a)
+        public void AddRecord(Address a)
         {
             db.Locations.Add(a);
             SaveChanges();
         }
 
-        public void EditAddress(Address a)
+        public void EditRecord(Address a)
         {
             db.Entry(a).State = EntityState.Modified;
             SaveChanges();
         }
 
-        public void DeleteAddress(Address a)
+        public void DeleteRecord(Address a)
         {
             db.Locations.Remove(a);
             SaveChanges();

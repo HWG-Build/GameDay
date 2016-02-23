@@ -1,32 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Web.Mvc;
-using Domain.Layer.DataAccessLayer;
-using GameDay.Services.Interfaces;
+using Domain.Layer.Interfaces;
 using Domain.Layer.Models;
-using GameDay.Controllers;
-using GameDay.Services;
 
 
 namespace GameDay.Controllers
 {
+    [Authorize]
     public class EventController : Controller
     {
-        private readonly IGame gameservice;
+        
+        private readonly IService<Event> _gameservice;
 
-       public EventController(IGame game)
+       public EventController(IService<Event> game)
         {
             //throw new NullReferenceException();
-            this.gameservice = game;
+            this._gameservice = game;
         }
 
         // GET: Event
         public ActionResult Index()
         {
-            return View("_EventListPartial",gameservice.GetEvents());
+            return View("_EventListPartial",_gameservice.GetRecords());
         }
 
         // GET: Event/Details/5
@@ -37,7 +32,7 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event =gameservice.FindEvent(id);
+            Event @event =_gameservice.FindRecord(id);
             if (@event == null)
             {
                 return HttpNotFound();
@@ -54,11 +49,11 @@ namespace GameDay.Controllers
         {
             if (ModelState.IsValid)
             {
-                gameservice.AddEvent(@event);
+                _gameservice.AddRecord(@event);
                 return RedirectToAction("Index","Home");
             }
 
-            return View("Index","Home");
+            return RedirectToAction("Index","Home");
         }
 
         // GET: Event/Edit/5
@@ -68,7 +63,7 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = gameservice.FindEvent(id);
+            Event @event = _gameservice.FindRecord(id);
             if (@event == null)
             {
                 return HttpNotFound();
@@ -85,7 +80,7 @@ namespace GameDay.Controllers
         {
             if (ModelState.IsValid)
             {
-                gameservice.EditEvent(@event);
+                _gameservice.EditRecord(@event);
                 return RedirectToAction("Index", "Home");
             }
             return View(@event);
@@ -98,7 +93,7 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Event @event = gameservice.FindEvent(id);
+            Event @event = _gameservice.FindRecord(id);
             if (@event == null)
             {
                 return HttpNotFound();
@@ -111,8 +106,8 @@ namespace GameDay.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Event @event = gameservice.FindEvent(id);
-            gameservice.DeleteEvent(@event);
+            Event @event = _gameservice.FindRecord(id);
+            _gameservice.DeleteRecord(@event);
             return RedirectToAction("Index","Home");
         }
 
@@ -120,7 +115,7 @@ namespace GameDay.Controllers
         {
             if (disposing)
             {
-                gameservice.Dispose();
+                _gameservice.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Dynamic;
-using System.Web.Mvc;
-using Domain.Layer.DataAccessLayer;
-using Domain.Layer.Models;
-using GameDay.Services.Interfaces;
+﻿using System.Web.Mvc;
 
 namespace GameDay.Controllers
 {

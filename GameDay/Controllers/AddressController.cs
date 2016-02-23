@@ -1,29 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
+﻿using System.Net;
 using System.Web.Mvc;
-using Domain.Layer.DataAccessLayer;
-using GameDay.Services.Interfaces;
+using Domain.Layer.Interfaces;
 using Domain.Layer.Models;
 
 
 namespace GameDay.Controllers
 {
+    [Authorize]
     public class AddressController : Controller
     {
         
-        private readonly IAddress addressservice;
-        public AddressController(IAddress addressservice)
+        private readonly IService<Address> _addressservice;
+        public AddressController(IService<Address> addressservice)
         {
-            this.addressservice = addressservice;
+            this._addressservice = addressservice;
         }
 
         // GET: Address
         public ActionResult Index()
         {
-            return View(addressservice.GetAddresses());
+            return View(_addressservice.GetRecords());
         }
 
         // GET: Address/Details/5
@@ -33,7 +29,7 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Address address = addressservice.FindAddress(id);
+            Address address = _addressservice.FindRecord(id);
             if (address == null)
             {
                 return HttpNotFound();
@@ -56,7 +52,7 @@ namespace GameDay.Controllers
         {
             if (ModelState.IsValid)
             {
-                addressservice.AddAddress(address);
+                _addressservice.AddRecord(address);
                 return RedirectToAction("Index");
             }
 
@@ -70,7 +66,7 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Address address = addressservice.FindAddress(id);
+            Address address = _addressservice.FindRecord(id);
             if (address == null)
             {
                 return HttpNotFound();
@@ -87,7 +83,7 @@ namespace GameDay.Controllers
         {
             if (ModelState.IsValid)
             {
-                addressservice.EditAddress(address);
+                _addressservice.EditRecord(address);
                 return RedirectToAction("Index");
             }
             return View(address);
@@ -100,7 +96,7 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Address address = addressservice.FindAddress(id);
+            Address address = _addressservice.FindRecord(id);
             if (address == null)
             {
                 return HttpNotFound();
@@ -113,8 +109,8 @@ namespace GameDay.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Address address = addressservice.FindAddress(id);
-            addressservice.DeleteAddress(address);
+            Address address = _addressservice.FindRecord(id);
+            _addressservice.DeleteRecord(address);
             return RedirectToAction("Index");
         }
 
@@ -122,7 +118,7 @@ namespace GameDay.Controllers
         {
             if (disposing)
             {
-                addressservice.Dispose();
+                _addressservice.Dispose();
             }
             base.Dispose(disposing);
         }

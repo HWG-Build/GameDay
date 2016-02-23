@@ -19,7 +19,9 @@ body {
   width: 95%;
   border-radius: 4px;
   margin-bottom: 1em;
-  margin-left: 2px; }
+  margin-left: 2px;
+  overflow-x: scroll;
+  overflow-y: hidden; }
 
 .verticalLine {
   border-left: solid #f18c2c;
@@ -44,3 +46,6 @@ img {
 .Scollable {
   height: 67em;
   overflow-y: auto; }
+
+.NavbarBackgroup {
+  background-color: #f18c2c; }

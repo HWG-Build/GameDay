@@ -15,9 +15,10 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Domain.Layer.Models;
 using StructureMap;
-using GameDay.Services.Interfaces;
-using GameDay.Services;
+using Domain.Layer.Services;
+using Domain.Layer.Interfaces;
 
 namespace GameDay.DependencyResolution {
     
@@ -26,9 +27,9 @@ namespace GameDay.DependencyResolution {
         public static IContainer Initialize() {
             Container container = new Container(r =>
             {
-                r.For<IGame>().Use<GameService>();
-                r.For<IAddress>().Use<AddressService>();
-                r.For<IPlayer>().Use<PlayerService>();
+                r.For<IService<Address>>().Use<AddressService>();
+                r.For<IService<Event>>().Use<GameService>();
+                r.For<IService<Player>>().Use<PlayerService>();
             });
             return container;
         }

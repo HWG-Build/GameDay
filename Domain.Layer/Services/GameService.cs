@@ -3,37 +3,37 @@ using System.Data.Entity;
 using System.Linq;
 using Domain.Layer.DataAccessLayer;
 using Domain.Layer.Models;
-using GameDay.Services.Interfaces;
+using Domain.Layer.Interfaces;
 
-namespace GameDay.Services
+namespace Domain.Layer.Services
 {
-    public class GameService : IGame
+    public class GameService : IService<Event>
     {
         GameDayContext db = new GameDayContext();
 
-        public List<Event> GetEvents()
+        public List<Event> GetRecords()
         {
             return db.Events.ToList();
         }
 
-        public Event FindEvent(int? id)
+        public Event FindRecord(int? id)
         {
             return db.Events.Find(id);
         }
 
-        public void AddEvent(Event e)
+        public void AddRecord(Event e)
         {
             db.Events.Add(e);
             SaveChanges();
         }
 
-        public void EditEvent(Event e)
+        public void EditRecord(Event e)
         {
             db.Entry(e).State = EntityState.Modified;
             SaveChanges();
         }
 
-        public void DeleteEvent(Event e)
+        public void DeleteRecord(Event e)
         {
             db.Events.Remove(e);
             SaveChanges();

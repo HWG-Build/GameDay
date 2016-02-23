@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNet.SignalR;
 
 
@@ -9,9 +6,17 @@ namespace GameDay.Hubs
 {
     public class GameDayHub : Hub
     {
-        public void Hello()
+        public override Task OnConnected()
         {
-            Clients.All.hello();
+            string name = Context.User.Identity.Name;
+            //Clients.All.Hello(name);
+
+            return base.OnConnected();
+        }
+
+        public override Task OnDisconnected(bool b)
+        {
+            return base.OnDisconnected(b);
         }
     }
 }

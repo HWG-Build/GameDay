@@ -94,6 +94,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="DataAccessLayer\GameDayContext.cs" />
     <Compile Include="Migrations\201602182104482_CreateDatabase.cs" />
     <Compile Include="Migrations\201602182104482_CreateDatabase.Designer.cs">

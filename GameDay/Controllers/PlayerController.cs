@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Web.Mvc;
+using Domain.Layer;
 using Domain.Layer.Models;
 using Domain.Layer.Interfaces;
 
@@ -47,12 +48,12 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,FirstName,LastName,Position,Phone")] Player player)
+        public ActionResult Create([Bind(Include = Constants.Controller.PlayerFields)] Player player)
         {
             if (ModelState.IsValid)
             {
                 _playerservice.AddRecord(player);
-                return RedirectToAction("Index");
+                return RedirectToAction(Constants.Controller.Index);
             }
 
             return View(player);
@@ -78,12 +79,12 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,FirstName,LastName,Position,Phone")] Player player)
+        public ActionResult Edit([Bind(Include = Constants.Controller.PlayerFields)] Player player)
         {
             if (ModelState.IsValid)
             {
                 _playerservice.EditRecord(player);
-                return RedirectToAction("Index");
+                return RedirectToAction(Constants.Controller.Index);
             }
             return View(player);
         }
@@ -104,13 +105,13 @@ namespace GameDay.Controllers
         }
 
         // POST: Player/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName(Constants.Controller.Delete)]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Player player = _playerservice.FindRecord(id);
             _playerservice.DeleteRecord(player);
-            return RedirectToAction("Index");
+            return RedirectToAction(Constants.Controller.Index);
         }
 
         protected override void Dispose(bool disposing)

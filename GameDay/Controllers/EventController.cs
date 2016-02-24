@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using Domain.Layer.Interfaces;
 using Domain.Layer.Models;
+using GameDay.Models;
 
 
 namespace GameDay.Controllers
@@ -10,7 +11,7 @@ namespace GameDay.Controllers
     public class EventController : Controller
     {
         
-        private readonly IService<Event> _gameservice;
+       private readonly IService<Event> _gameservice;
 
        public EventController(IService<Event> game)
         {

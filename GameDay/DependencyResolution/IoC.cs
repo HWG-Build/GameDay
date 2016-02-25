@@ -17,7 +17,7 @@
 
 using Domain.Layer.Models;
 using StructureMap;
-using Domain.Layer.Services;
+using Domain.Service.Services;
 using Domain.Layer.Interfaces;
 
 namespace GameDay.DependencyResolution {

@@ -8,14 +8,22 @@ namespace Domain.Layer.Models
     [TrackChanges]
     public class Event
     {
-        public int ID { get; set; }
         [Required]
+        public int ID { get; set; }
+
+        [Required]
+        [StringLength(50)]
         public string Name { get; set; }
+
         [Required]
         public GameType Game { get; set; }
+
         [Required]
+        [StringLength(50)]
         public string Date { get; set; }
+
         [Required]
+        [StringLength(50)]
         public string Time { get; set; }
         public Address Location { get; set; }
         

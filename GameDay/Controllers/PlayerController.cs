@@ -3,6 +3,8 @@ using System.Web.Mvc;
 using Domain.Layer;
 using Domain.Layer.Models;
 using Domain.Layer.Interfaces;
+using GameDay.Models;
+using System.Linq;
 
 namespace GameDay.Controllers
 {
@@ -19,7 +21,14 @@ namespace GameDay.Controllers
         // GET: Player
         public ActionResult Index()
         {
-            return View(_playerservice.GetRecords());
+            return View(_playerservice.GetRecords().Select(x => new PlayerVM()
+            {
+                ID = x.ID,
+                FirstName = x.FirstName,
+                LastName = x.LastName,
+                Position = x.Position,
+                Phone = x.Phone
+        }));
         }
 
         // GET: Player/Details/5
@@ -34,7 +43,8 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View(player);
+            PlayerVM playerVM = MapModelVM(player);
+            return View(playerVM);
         }
 
         // GET: Player/Create
@@ -48,15 +58,17 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = Constant.Controller.PlayerFields)] Player player)
+        public ActionResult Create(PlayerVM player)
         {
+            Player p = new Player();
             if (ModelState.IsValid)
             {
-                _playerservice.AddRecord(player);
+                p = MapModel(player);
+                _playerservice.AddRecord(p);
                 return RedirectToAction(Constant.Controller.Index);
             }
 
-            return View(player);
+            return View(p);
         }
 
         // GET: Player/Edit/5
@@ -71,7 +83,8 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View(player);
+            PlayerVM playerVM = MapModelVM(player);
+            return View(playerVM);
         }
 
         // POST: Player/Edit/5
@@ -79,14 +92,16 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = Constant.Controller.PlayerFields)] Player player)
+        public ActionResult Edit(/*[Bind(Include = Constant.Controller.PlayerFields)]*/ PlayerVM player)
         {
+            Player p = new Player();
             if (ModelState.IsValid)
             {
-                _playerservice.EditRecord(player);
+                p = MapModel(player);
+                _playerservice.EditRecord(p);
                 return RedirectToAction(Constant.Controller.Index);
             }
-            return View(player);
+            return View(p);
         }
 
         // GET: Player/Delete/5
@@ -101,7 +116,8 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View(player);
+            PlayerVM playerVM = MapModelVM(player);
+            return View(playerVM);
         }
 
         // POST: Player/Delete/5
@@ -121,6 +137,32 @@ namespace GameDay.Controllers
                 _playerservice.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private PlayerVM MapModelVM(Player player)
+        {
+            PlayerVM playerVM = new PlayerVM
+            {
+                ID = player.ID,
+                FirstName = player.FirstName,
+                LastName = player.LastName,
+                Position = player.Position,
+                Phone = player.Phone,
+            };
+            return playerVM;
+        }
+
+        private Player MapModel(PlayerVM playerVM)
+        {
+            Player p = new Player
+            {
+                ID = playerVM.ID,
+                FirstName = playerVM.FirstName,
+                LastName = playerVM.LastName,
+                Position = playerVM.Position,
+                Phone = playerVM.Phone,
+            };
+            return p;
         }
     }
 }

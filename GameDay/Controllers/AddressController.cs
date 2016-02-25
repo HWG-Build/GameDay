@@ -3,6 +3,8 @@ using System.Web.Mvc;
 using Domain.Layer.Interfaces;
 using Domain.Layer.Models;
 using Domain.Layer;
+using GameDay.Models;
+using System.Linq;
 
 namespace GameDay.Controllers
 {
@@ -19,7 +21,17 @@ namespace GameDay.Controllers
         // GET: Address
         public ActionResult Index()
         {
-            return View(_addressservice.GetRecords());
+
+            return View(_addressservice.GetRecords().Select(x=>new AddressVM()
+            {
+                ID = x.ID,
+                Name = x.Name,
+                Line1 = x.Line1,
+                Line2 = x.Line2,
+                City = x.City,
+                State = x.State,
+                Zip = x.Zip
+        }));
         }
 
         // GET: Address/Details/5
@@ -34,7 +46,8 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View(address);
+            AddressVM addressVM = MapModelVM(address);            
+            return View(addressVM);
         }
 
         // GET: Address/Create
@@ -48,15 +61,17 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = Constant.Controller.AddressFields)] Address address)
+        public ActionResult Create(/*[Bind(Include = Constant.Controller.AddressFields)]*/ AddressVM address)
         {
+            Address a = new Address();
             if (ModelState.IsValid)
             {
-                _addressservice.AddRecord(address);
+                a = MapModel(address);
+                _addressservice.AddRecord(a);
                 return RedirectToAction(Constant.Controller.Index);
             }
 
-            return View(address);
+            return View(a);
         }
 
         // GET: Address/Edit/5
@@ -71,7 +86,8 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View(address);
+            AddressVM addressVM = MapModelVM(address);
+            return View(addressVM);
         }
 
         // POST: Address/Edit/5
@@ -79,14 +95,16 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = Constant.Controller.AddressFields)] Address address)
+        public ActionResult Edit([Bind(Include = Constant.Controller.AddressFields)] AddressVM address)
         {
+            Address a = new Address();
             if (ModelState.IsValid)
             {
-                _addressservice.EditRecord(address);
+                a = MapModel(address);
+                _addressservice.EditRecord(a);
                 return RedirectToAction(Constant.Controller.Index);
             }
-            return View(address);
+            return View(a);
         }
 
         // GET: Address/Delete/5
@@ -101,7 +119,8 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View(address);
+            AddressVM addressVM = MapModelVM(address);
+            return View(addressVM);
         }
 
         // POST: Address/Delete/5
@@ -121,6 +140,36 @@ namespace GameDay.Controllers
                 _addressservice.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private AddressVM MapModelVM(Address address)
+        {
+            AddressVM addressVM = new AddressVM
+            {
+                ID = address.ID,
+                Name = address.Name,
+                Line1 = address.Line1,
+                Line2 = address.Line2,
+                City = address.City,
+                State = address.State,
+                Zip = address.Zip
+            };
+            return addressVM;
+        }
+
+        private Address MapModel(AddressVM address)
+        {
+            Address a = new Address
+            {
+                ID = address.ID,
+                Name = address.Name,
+                Line1 = address.Line1,
+                Line2 = address.Line2,
+                City = address.City,
+                State = address.State,
+                Zip = address.Zip
+            };
+            return a;
         }
     }
 }

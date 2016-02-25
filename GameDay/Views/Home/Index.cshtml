@@ -1,4 +1,4 @@
-﻿@model Domain.Layer.Models.Event
+﻿@model GameDay.Models.EventVM
 
 @using (Html.BeginForm("Create", "Event"))
 {
@@ -9,22 +9,22 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Name, htmlAttributes: new {@for = "EventNameTextBox"})
                 @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control", @id = "EventNameTextBox"}})
-                @Html.ValidationMessageFor(model => model.Name, "", new {@class = "text-danger"})
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.Game, htmlAttributes: new {@for = "GameTypeDropDown"})
                 @Html.EnumDropDownListFor(model => model.Game, htmlAttributes: new {@class = "form-control", @id = "GameTypeDropDown"})
-                @Html.ValidationMessageFor(model => model.Game, "", new {@class = "text-danger"})
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.Date, htmlAttributes: new {@for = "EventDate"})
                 @Html.EditorFor(model => model.Date, new {htmlAttributes = new {@type = "date", @class = "form-control", @id = "EventDate"}})
-                @Html.ValidationMessageFor(model => model.Date, "", new {@class = "text-danger"})
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.Time, htmlAttributes: new {@for = "EventTime"})
                 @Html.EditorFor(model => model.Time, new {htmlAttributes = new {@type = "time", @class = "form-control", @id = "EventTime"}})
-                @Html.ValidationMessageFor(model => model.Time, "", new {@class = "text-danger"})
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.AddressName)
+               @* @Html.DropDownListFor(model => model.AddressList, new SelectList(Model.AddressList), String.Empty, new { }), htmlAttributes: new { @class = "form-control"}) *@
             </div>
             <input type="submit" value="Create" class="btn btn-primary"/>
         </div>

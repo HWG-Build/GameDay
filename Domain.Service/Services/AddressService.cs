@@ -4,6 +4,7 @@ using System.Linq;
 using Domain.Layer.DataAccessLayer;
 using Domain.Layer.Models;
 using Domain.Layer.Interfaces;
+using System;
 
 namespace Domain.Service.Services
 {
@@ -48,5 +49,11 @@ namespace Domain.Service.Services
         {
             db.SaveChanges();
         }
+
+        public List<string> GetAddressNames()
+        {
+            return db.Locations.ToList().Select(x => x.Name).ToList();
+        }
+
     }
 }

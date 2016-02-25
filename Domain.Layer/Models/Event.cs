@@ -33,10 +33,10 @@ namespace Domain.Layer.Models
 
         public List<int> PlayerId { get; set; }
 
-        [ForeignKey("AddressId")]
+        [ForeignKey(Constant.Model.AddressId)]
         public virtual Address Location { get; set; }
 
-        [ForeignKey("PlayerId")]
+        [ForeignKey(Constant.Model.PlayerId)]
         public virtual ICollection<Player> Players { get; set; }
 
         [NotMapped]

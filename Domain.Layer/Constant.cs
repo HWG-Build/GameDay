@@ -40,6 +40,16 @@ namespace Domain.Layer
             public const string Email = "Email";
             public const string Code = "Code";
             public const string Password = "Password";
+            public const string FirstName = "First Name";
+            public const string LastName = "Last Name";
+            public const string Location = "Location";
+        }
+
+        public class Model
+        {
+            public const string AddressId = "AddressId";
+            public const string PlayerId = "PlayerId";
+            public const string EventId = "EventId";
         }
         
 

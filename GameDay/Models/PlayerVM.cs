@@ -1,22 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using Domain.Layer;
+using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using TrackerEnabledDbContext.Common.Models;
+using System.Linq;
+using System.Web;
 
-namespace Domain.Layer.Models
+namespace GameDay.Models
 {
-    [TrackChanges]
-    public class Player
+    public class PlayerVM
     {
         [Required]
         public int ID { get; set; }
 
         [Required]
         [StringLength(25)]
+        [Display(Name = Constant.ViewModels.FirstName)]
         public string FirstName { get; set; }
 
         [Required]
         [StringLength(25)]
+        [Display(Name = Constant.ViewModels.LastName)]
         public string LastName { get; set; }
 
         [Required]
@@ -29,10 +32,5 @@ namespace Domain.Layer.Models
 
         public List<int> EventId { get; set; }
 
-        [ForeignKey(Constant.Model.EventId)]
-        public virtual ICollection<Event> Events { get; set; }
-
-        [NotMapped]
-        public virtual List<AuditLog> AuditLogs { get; set; }
     }
 }

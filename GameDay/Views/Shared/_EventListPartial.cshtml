@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.Layer.Models.Event>
+﻿@model IEnumerable<GameDay.Models.EventVM>
 @if (!Model.Any())
 {
     <h4 class="grayFont leftMargin">There are no events</h4>
@@ -21,8 +21,8 @@ else
                 <div class="form-inline">
                     <label class="col-xs-2 col-md-2 col-lg-2 clearfix" for="EventNameLabel">@Html.DisplayNameFor(model => model.Name):</label>
                     <p class="col-xs-4 col-md-4 col-lg-4 clearfix" id="EventNameLabel">@Html.DisplayFor(modelItem => item.Name)</p>
-                    <label class="col-xs-2 col-md-2 col-lg-2 clearfix" for="LocationLabel">@Html.DisplayNameFor(model => model.Location):</label>
-                    <p class="col-xs-4 col-md-4 col-lg-4 clearfix" id="LocationLabel">@Html.DisplayFor(modelItem => item.Location)</p>
+                    <label class="col-xs-2 col-md-2 col-lg-2 clearfix" for="LocationLabel">@Html.DisplayNameFor(model => model.AddressName):</label>
+                    <p class="col-xs-4 col-md-4 col-lg-4 clearfix" id="LocationLabel">@Html.DisplayFor(modelItem => item.AddressName)</p>
                 </div>
             </div>
         </div>

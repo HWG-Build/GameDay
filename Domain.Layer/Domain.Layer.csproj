@@ -132,6 +132,10 @@
     <Compile Include="Migrations\201602250330091_AddAuditLogToModels.Designer.cs">
       <DependentUpon>201602250330091_AddAuditLogToModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201602250714507_UpdateModels.cs" />
+    <Compile Include="Migrations\201602250714507_UpdateModels.Designer.cs">
+      <DependentUpon>201602250714507_UpdateModels.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Event.cs" />
@@ -170,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602250330091_AddAuditLogToModels.resx">
       <DependentUpon>201602250330091_AddAuditLogToModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602250714507_UpdateModels.resx">
+      <DependentUpon>201602250714507_UpdateModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

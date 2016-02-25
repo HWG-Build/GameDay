@@ -35,7 +35,7 @@ namespace Domain.Layer.Models
 
         public List<int> EventId { get; set; }
 
-        [ForeignKey("EventId")]
+        [ForeignKey(Constant.Model.EventId)]
         public virtual ICollection<Event> Events { get; set; }
 
         [NotMapped]

@@ -1,9 +1,7 @@
 ﻿using Domain.Layer.DataAccessLayer;
-using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using Domain.Layer.Models;
 using Domain.Layer.Interfaces;
 
@@ -51,5 +49,10 @@ namespace Domain.Service.Services
             db.Dispose();
         }
 
+        public List<string> GetEventPlayer(int Id)
+        {
+            return db.Players.Where(x => x.EventId.Contains(Id))
+                .Select(x => x.FirstName + " " + x.LastName).ToList();
+        }
     }
 }

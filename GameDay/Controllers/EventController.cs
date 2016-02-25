@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Domain.Layer.Interfaces;
@@ -12,24 +13,35 @@ namespace GameDay.Controllers
     [Authorize]
     public class EventController : Controller
     {
-       private readonly IService<Event> _gameservice;
+        private readonly IService<Event> _gameservice;
+
         public EventController(IService<Event> game)
         {
             //throw new NullReferenceException();
             this._gameservice = game;
         }
+
         AddressService _addressService = new AddressService();
+        PlayerService _playerService = new PlayerService();
+
 
         // GET: Event
         public ActionResult Index()
         {
-            List<Event> games = _gameservice.GetRecords();
-            
-            foreach (var game in games)
+            var games = _gameservice.GetRecords();
+            var events = games.Select(x => new EventVM()
             {
-                Addresses.Add(_addressService.);
-            }
-            return View(Constant.Partial.EventListPartial, games);
+                ID = x.ID,
+                Name = x.Name,
+                Game = x.Game,
+                Date = x.Date,
+                Time = x.Time,
+                AddressName = _addressService.FindRecord(x.AddressId).Name,
+                PlayerNames = _playerService.GetEventPlayer(x.ID),
+                AddressList = _addressService.GetRecords()
+            });
+            
+            return View(Constant.Partial.EventListPartial, events);
         }
 
         // GET: Event/Details/5
@@ -45,7 +57,18 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View(Constant.Partial.EventDetailPartial,@event);
+            EventVM eventVM = new EventVM
+            {
+                ID = @event.ID,
+                Name = @event.Name,
+                Game = @event.Game,
+                Date = @event.Date,
+                Time = @event.Time,
+                AddressName = _addressService.FindRecord(@event.AddressId).Name,
+                PlayerNames = _playerService.GetEventPlayer(@event.ID)
+            };
+
+            return View(Constant.Partial.EventDetailPartial, eventVM);
         }
 
         // POST: Event/Create
@@ -53,11 +76,21 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = Constant.Controller.EventFields)] Event @event)
+        public ActionResult Create(EventVM @event)
         {
             if (ModelState.IsValid)
             {
-                _gameservice.AddRecord(@event);
+                Event e = new Event
+                {
+                    ID = @event.ID,
+                    Name = @event.Name,
+                    Game = @event.Game,
+                    Date = @event.Date,
+                    Time = @event.Time,
+                    AddressId = @event.AddressId,
+                    PlayerId = @event.PlayerId
+                };
+                _gameservice.AddRecord(e);
                 return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
             }
 
@@ -84,14 +117,22 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = Constant.Controller.EventFields)] Event @event)
+        public ActionResult Edit(EventVM @event)
         {
+            Event e = new Event();
             if (ModelState.IsValid)
             {
-                _gameservice.EditRecord(@event);
+                e.ID = @event.ID;
+                e.Name = @event.Name;
+                e.Game = @event.Game;
+                e.Date = @event.Date;
+                e.Time = @event.Time;
+                e.AddressId = @event.AddressId;
+                e.PlayerId = @event.PlayerId;
+                _gameservice.EditRecord(e);
                 return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
             }
-            return View(@event);
+            return View(e);
         }
 
         // GET: Event/Delete/5

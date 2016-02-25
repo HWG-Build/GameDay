@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using Domain.Layer.Interfaces;
 using Domain.Layer.Models;
-
+using Domain.Layer;
 
 namespace GameDay.Controllers
 {
@@ -48,12 +48,12 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Line1,Line2,City,State,Zip")] Address address)
+        public ActionResult Create([Bind(Include = Constants.Controller.AddressFields)] Address address)
         {
             if (ModelState.IsValid)
             {
                 _addressservice.AddRecord(address);
-                return RedirectToAction("Index");
+                return RedirectToAction(Constants.Controller.Index);
             }
 
             return View(address);
@@ -79,12 +79,12 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Line1,Line2,City,State,Zip")] Address address)
+        public ActionResult Edit([Bind(Include = Constants.Controller.AddressFields)] Address address)
         {
             if (ModelState.IsValid)
             {
                 _addressservice.EditRecord(address);
-                return RedirectToAction("Index");
+                return RedirectToAction(Constants.Controller.Index);
             }
             return View(address);
         }
@@ -105,13 +105,13 @@ namespace GameDay.Controllers
         }
 
         // POST: Address/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName(Constants.Controller.Delete)]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Address address = _addressservice.FindRecord(id);
             _addressservice.DeleteRecord(address);
-            return RedirectToAction("Index");
+            return RedirectToAction(Constants.Controller.Index);
         }
 
         protected override void Dispose(bool disposing)

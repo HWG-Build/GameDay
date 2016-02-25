@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using Domain.Layer.Interfaces;
 using Domain.Layer.Models;
 using GameDay.Models;
-
+using Domain.Layer;
 
 namespace GameDay.Controllers
 {
@@ -22,7 +22,7 @@ namespace GameDay.Controllers
         // GET: Event
         public ActionResult Index()
         {
-            return View("_EventListPartial",_gameservice.GetRecords());
+            return View(Constants.Partial.EventListPartial,_gameservice.GetRecords());
         }
 
         // GET: Event/Details/5
@@ -38,7 +38,7 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View("_EventDetailPartial",@event);
+            return View(Constants.Partial.EventDetailPartial,@event);
         }
 
         // POST: Event/Create
@@ -46,15 +46,15 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Game,Date,Time,Location")] Event @event)
+        public ActionResult Create([Bind(Include = Constants.Controller.EventFields)] Event @event)
         {
             if (ModelState.IsValid)
             {
                 _gameservice.AddRecord(@event);
-                return RedirectToAction("Index","Home");
+                return RedirectToAction(Constants.Controller.Index, Constants.Controller.Home);
             }
 
-            return RedirectToAction("Index","Home");
+            return RedirectToAction(Constants.Controller.Index, Constants.Controller.Home);
         }
 
         // GET: Event/Edit/5
@@ -69,7 +69,7 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View("_EditDetailPartial",@event);
+            return View(Constants.Partial.EditDetailPartial,@event);
         }
 
         // POST: Event/Edit/5
@@ -77,12 +77,12 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Game,Date,Time,Location")] Event @event)
+        public ActionResult Edit([Bind(Include = Constants.Controller.EventFields)] Event @event)
         {
             if (ModelState.IsValid)
             {
                 _gameservice.EditRecord(@event);
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction(Constants.Controller.Index, Constants.Controller.Home);
             }
             return View(@event);
         }
@@ -103,13 +103,13 @@ namespace GameDay.Controllers
         }
 
         // POST: Event/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName(Constants.Controller.Delete)]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Event @event = _gameservice.FindRecord(id);
             _gameservice.DeleteRecord(@event);
-            return RedirectToAction("Index","Home");
+            return RedirectToAction(Constants.Controller.Index,Constants.Controller.Home);
         }
 
         protected override void Dispose(bool disposing)

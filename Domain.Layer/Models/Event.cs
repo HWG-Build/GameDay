@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using TrackerEnabledDbContext.Common.Models;
 
 
 namespace Domain.Layer.Models
@@ -25,15 +27,29 @@ namespace Domain.Layer.Models
         [Required]
         [StringLength(50)]
         public string Time { get; set; }
-        public Address Location { get; set; }
-        
 
+        [Required]
+        public int AddressId { get; set; }
+
+        public List<int> PlayerId { get; set; }
+
+        [ForeignKey("AddressId")]
+        public virtual Address Location { get; set; }
+
+        [ForeignKey("PlayerId")]
         public virtual ICollection<Player> Players { get; set; }
+
+        [NotMapped]
+        public virtual List<AuditLog> AuditLogs { get; set; }
     }
 
     public enum GameType
     {
-        Baseball, Basketball, Football, Poker, Soccer
+        Baseball=0,
+        Basketball=1,
+        Football=2,
+        Poker=3,
+        Soccer=4
     }
     
 }

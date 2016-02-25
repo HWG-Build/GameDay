@@ -48,12 +48,12 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = Constants.Controller.AddressFields)] Address address)
+        public ActionResult Create([Bind(Include = Constant.Controller.AddressFields)] Address address)
         {
             if (ModelState.IsValid)
             {
                 _addressservice.AddRecord(address);
-                return RedirectToAction(Constants.Controller.Index);
+                return RedirectToAction(Constant.Controller.Index);
             }
 
             return View(address);
@@ -79,12 +79,12 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = Constants.Controller.AddressFields)] Address address)
+        public ActionResult Edit([Bind(Include = Constant.Controller.AddressFields)] Address address)
         {
             if (ModelState.IsValid)
             {
                 _addressservice.EditRecord(address);
-                return RedirectToAction(Constants.Controller.Index);
+                return RedirectToAction(Constant.Controller.Index);
             }
             return View(address);
         }
@@ -105,13 +105,13 @@ namespace GameDay.Controllers
         }
 
         // POST: Address/Delete/5
-        [HttpPost, ActionName(Constants.Controller.Delete)]
+        [HttpPost, ActionName(Constant.Controller.Delete)]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Address address = _addressservice.FindRecord(id);
             _addressservice.DeleteRecord(address);
-            return RedirectToAction(Constants.Controller.Index);
+            return RedirectToAction(Constant.Controller.Index);
         }
 
         protected override void Dispose(bool disposing)

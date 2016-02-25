@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain.Layer
 {
-    public static class Constants
+    public static class Constant
     {
         public const string Title = "GameDay";
 

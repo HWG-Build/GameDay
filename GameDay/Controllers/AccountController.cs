@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Domain.Layer;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -61,7 +62,7 @@ namespace GameDay.Controllers
             ViewBag.ReturnUrl = returnUrl;
             if (HttpContext.Request.IsAuthenticated)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
             }
             return View();
         }

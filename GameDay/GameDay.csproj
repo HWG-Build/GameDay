@@ -235,7 +235,10 @@
     </Compile>
     <Compile Include="Hubs\GameDayHub.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AddressVM.cs" />
+    <Compile Include="Models\EventVM.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PlayerVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -1402,9 +1405,6 @@
       <Project>{a9086e34-0a45-48a8-9821-cce4c7731328}</Project>
       <Name>Domain.Service</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

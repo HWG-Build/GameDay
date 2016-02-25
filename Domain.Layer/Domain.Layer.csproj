@@ -94,7 +94,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
+    <Compile Include="Constant.cs" />
     <Compile Include="DataAccessLayer\GameDayContext.cs" />
     <Compile Include="Migrations\201602182104482_CreateDatabase.cs" />
     <Compile Include="Migrations\201602182104482_CreateDatabase.Designer.cs">
@@ -111,6 +111,26 @@
     <Compile Include="Migrations\201602192322105_RequireEventFields.cs" />
     <Compile Include="Migrations\201602192322105_RequireEventFields.Designer.cs">
       <DependentUpon>201602192322105_RequireEventFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602250222137_UpdateModelAttributes.cs" />
+    <Compile Include="Migrations\201602250222137_UpdateModelAttributes.Designer.cs">
+      <DependentUpon>201602250222137_UpdateModelAttributes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602250246589_GaveEnumValues.cs" />
+    <Compile Include="Migrations\201602250246589_GaveEnumValues.Designer.cs">
+      <DependentUpon>201602250246589_GaveEnumValues.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602250322003_AddForeignKeyAttr.cs" />
+    <Compile Include="Migrations\201602250322003_AddForeignKeyAttr.Designer.cs">
+      <DependentUpon>201602250322003_AddForeignKeyAttr.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602250325505_FixManyToOne.cs" />
+    <Compile Include="Migrations\201602250325505_FixManyToOne.Designer.cs">
+      <DependentUpon>201602250325505_FixManyToOne.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201602250330091_AddAuditLogToModels.cs" />
+    <Compile Include="Migrations\201602250330091_AddAuditLogToModels.Designer.cs">
+      <DependentUpon>201602250330091_AddAuditLogToModels.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
@@ -135,6 +155,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602192322105_RequireEventFields.resx">
       <DependentUpon>201602192322105_RequireEventFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602250222137_UpdateModelAttributes.resx">
+      <DependentUpon>201602250222137_UpdateModelAttributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602250246589_GaveEnumValues.resx">
+      <DependentUpon>201602250246589_GaveEnumValues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602250322003_AddForeignKeyAttr.resx">
+      <DependentUpon>201602250322003_AddForeignKeyAttr.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602250325505_FixManyToOne.resx">
+      <DependentUpon>201602250325505_FixManyToOne.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201602250330091_AddAuditLogToModels.resx">
+      <DependentUpon>201602250330091_AddAuditLogToModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

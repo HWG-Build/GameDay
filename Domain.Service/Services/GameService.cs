@@ -10,9 +10,10 @@ namespace Domain.Service.Services
     public class GameService : IService<Event>
     {
         GameDayContext db = new GameDayContext();
-
+        
         public List<Event> GetRecords()
         {
+
             return db.Events.ToList();
         }
 

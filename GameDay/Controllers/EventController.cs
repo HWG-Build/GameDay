@@ -1,28 +1,35 @@
-﻿using System.Net;
+﻿using System.Collections.Generic;
+using System.Net;
 using System.Web.Mvc;
 using Domain.Layer.Interfaces;
 using Domain.Layer.Models;
 using GameDay.Models;
 using Domain.Layer;
+using Domain.Service.Services;
 
 namespace GameDay.Controllers
 {
     [Authorize]
     public class EventController : Controller
     {
-        
        private readonly IService<Event> _gameservice;
-
-       public EventController(IService<Event> game)
+        public EventController(IService<Event> game)
         {
             //throw new NullReferenceException();
             this._gameservice = game;
         }
+        AddressService _addressService = new AddressService();
 
         // GET: Event
         public ActionResult Index()
         {
-            return View(Constants.Partial.EventListPartial,_gameservice.GetRecords());
+            List<Event> games = _gameservice.GetRecords();
+            
+            foreach (var game in games)
+            {
+                Addresses.Add(_addressService.);
+            }
+            return View(Constant.Partial.EventListPartial, games);
         }
 
         // GET: Event/Details/5
@@ -38,7 +45,7 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View(Constants.Partial.EventDetailPartial,@event);
+            return View(Constant.Partial.EventDetailPartial,@event);
         }
 
         // POST: Event/Create
@@ -46,15 +53,15 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = Constants.Controller.EventFields)] Event @event)
+        public ActionResult Create([Bind(Include = Constant.Controller.EventFields)] Event @event)
         {
             if (ModelState.IsValid)
             {
                 _gameservice.AddRecord(@event);
-                return RedirectToAction(Constants.Controller.Index, Constants.Controller.Home);
+                return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
             }
 
-            return RedirectToAction(Constants.Controller.Index, Constants.Controller.Home);
+            return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
         }
 
         // GET: Event/Edit/5
@@ -69,7 +76,7 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View(Constants.Partial.EditDetailPartial,@event);
+            return View(Constant.Partial.EditDetailPartial,@event);
         }
 
         // POST: Event/Edit/5
@@ -77,12 +84,12 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = Constants.Controller.EventFields)] Event @event)
+        public ActionResult Edit([Bind(Include = Constant.Controller.EventFields)] Event @event)
         {
             if (ModelState.IsValid)
             {
                 _gameservice.EditRecord(@event);
-                return RedirectToAction(Constants.Controller.Index, Constants.Controller.Home);
+                return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
             }
             return View(@event);
         }
@@ -103,13 +110,13 @@ namespace GameDay.Controllers
         }
 
         // POST: Event/Delete/5
-        [HttpPost, ActionName(Constants.Controller.Delete)]
+        [HttpPost, ActionName(Constant.Controller.Delete)]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Event @event = _gameservice.FindRecord(id);
             _gameservice.DeleteRecord(@event);
-            return RedirectToAction(Constants.Controller.Index,Constants.Controller.Home);
+            return RedirectToAction(Constant.Controller.Index,Constant.Controller.Home);
         }
 
         protected override void Dispose(bool disposing)

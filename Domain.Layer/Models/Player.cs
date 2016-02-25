@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using TrackerEnabledDbContext.Common.Models;
 
 namespace Domain.Layer.Models
 {
@@ -25,7 +27,12 @@ namespace Domain.Layer.Models
         [StringLength(15)]
         public string Phone { get; set; }
 
+        public List<int> EventId { get; set; }
 
+        [ForeignKey("EventId")]
         public virtual ICollection<Event> Events { get; set; }
+
+        [NotMapped]
+        public virtual List<AuditLog> AuditLogs { get; set; }
     }
 }

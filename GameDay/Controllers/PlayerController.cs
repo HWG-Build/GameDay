@@ -48,12 +48,12 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = Constants.Controller.PlayerFields)] Player player)
+        public ActionResult Create([Bind(Include = Constant.Controller.PlayerFields)] Player player)
         {
             if (ModelState.IsValid)
             {
                 _playerservice.AddRecord(player);
-                return RedirectToAction(Constants.Controller.Index);
+                return RedirectToAction(Constant.Controller.Index);
             }
 
             return View(player);
@@ -79,12 +79,12 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = Constants.Controller.PlayerFields)] Player player)
+        public ActionResult Edit([Bind(Include = Constant.Controller.PlayerFields)] Player player)
         {
             if (ModelState.IsValid)
             {
                 _playerservice.EditRecord(player);
-                return RedirectToAction(Constants.Controller.Index);
+                return RedirectToAction(Constant.Controller.Index);
             }
             return View(player);
         }
@@ -105,13 +105,13 @@ namespace GameDay.Controllers
         }
 
         // POST: Player/Delete/5
-        [HttpPost, ActionName(Constants.Controller.Delete)]
+        [HttpPost, ActionName(Constant.Controller.Delete)]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
             Player player = _playerservice.FindRecord(id);
             _playerservice.DeleteRecord(player);
-            return RedirectToAction(Constants.Controller.Index);
+            return RedirectToAction(Constant.Controller.Index);
         }
 
         protected override void Dispose(bool disposing)

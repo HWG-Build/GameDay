@@ -1,6 +1,8 @@
 function showDetails(id) {
     var url = '/Event/Details/' + id;
     $('#DetailsContainer').load(url);
+    $('#EventListDiv>div.panel-primary').removeClass("panel-primary");
+    $(this).addClass("panel-primary");
 }
 ;
 function loadEditScreen(id) {
@@ -16,4 +18,3 @@ $(function () {
     $.connection.hub.start().done(function () {
     });
 });
-//# sourceMappingURL=site.js.map

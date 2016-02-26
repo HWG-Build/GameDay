@@ -1,4 +1,6 @@
 ﻿using System.Web.Mvc;
+using Domain.Service.Services;
+using GameDay.Models;
 
 namespace GameDay.Controllers
 {
@@ -7,7 +9,12 @@ namespace GameDay.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            AddressService _addressService = new AddressService();
+
+            EventVM eventVM = new EventVM();
+            eventVM.Addresses = _addressService.GetRecords();
+
+            return View(eventVM);
         }
 
         //    protected override void OnException(ExceptionContext filterContext)

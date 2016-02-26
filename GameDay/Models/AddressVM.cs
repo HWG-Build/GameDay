@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Domain.Layer.Models;
+using TrackerEnabledDbContext.Common.Models;
 
 namespace GameDay.Models
 {
@@ -35,5 +36,7 @@ namespace GameDay.Models
 
 
         public ICollection<int> EventId { get; set; }
+
+        public List<AuditLog> Audit { get; set; }
     }
 }

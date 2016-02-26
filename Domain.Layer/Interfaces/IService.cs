@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Domain.Layer.Models;
+using TrackerEnabledDbContext.Common.Models;
 
 namespace Domain.Layer.Interfaces
 {
@@ -12,5 +14,6 @@ namespace Domain.Layer.Interfaces
         void DeleteRecord(T t);
         void SaveChanges();
         void Dispose();
+        IQueryable<AuditLog> GetAuditLogs(int id);
     }
 }

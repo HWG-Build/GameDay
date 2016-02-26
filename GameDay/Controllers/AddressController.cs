@@ -46,7 +46,8 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            AddressVM addressVM = MapModelVM(address);            
+            AddressVM addressVM = MapModelVM(address);
+            addressVM.Audit = _addressservice.GetAuditLogs(address.ID).ToList();      
             return View(addressVM);
         }
 

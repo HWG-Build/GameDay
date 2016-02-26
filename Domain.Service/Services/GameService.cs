@@ -4,6 +4,7 @@ using System.Linq;
 using Domain.Layer.DataAccessLayer;
 using Domain.Layer.Models;
 using Domain.Layer.Interfaces;
+using TrackerEnabledDbContext.Common.Models;
 
 namespace Domain.Service.Services
 {
@@ -48,6 +49,11 @@ namespace Domain.Service.Services
         public void Dispose()
         {
             db.Dispose();
+        }
+
+        public IQueryable<AuditLog> GetAuditLogs(int id)
+        {
+            return db.GetLogs<Event>(id);
         }
     }
 }

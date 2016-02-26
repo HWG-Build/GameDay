@@ -3,6 +3,9 @@
 function showDetails(id: number) {
     var url = '/Event/Details/' + id;
     $('#DetailsContainer').load(url);
+    $('#EventListDiv>div.panel-primary').removeClass("panel-primary");
+    $(this).addClass("panel-primary");
+    
 };
 
 function loadEditScreen(id: number) {

@@ -4,6 +4,8 @@ using System.Data.Entity;
 using System.Linq;
 using Domain.Layer.Models;
 using Domain.Layer.Interfaces;
+using TrackerEnabledDbContext.Common.Models;
+using System;
 
 namespace Domain.Service.Services
 {
@@ -53,6 +55,11 @@ namespace Domain.Service.Services
         {
             return db.Players.Where(x => x.EventId.Contains(Id))
                 .Select(x => x.FirstName + " " + x.LastName).ToList();
+        }
+
+        public IQueryable<AuditLog> GetAuditLogs(int id)
+        {
+            return db.GetLogs<Player>(id);
         }
     }
 }

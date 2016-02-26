@@ -5,6 +5,7 @@ using Domain.Layer.DataAccessLayer;
 using Domain.Layer.Models;
 using Domain.Layer.Interfaces;
 using System;
+using TrackerEnabledDbContext.Common.Models;
 
 namespace Domain.Service.Services
 {
@@ -16,6 +17,12 @@ namespace Domain.Service.Services
         {
             return db.Locations.ToList();
         }
+
+        public Dictionary<string, string> GetAddressDropDown()
+        {
+            var addressDictionary = db.Locations.ToDictionary(x => x.ID.ToString(), x => x.Name);
+            return addressDictionary;
+        }  
 
         public Address FindRecord(int? id)
         {
@@ -43,6 +50,11 @@ namespace Domain.Service.Services
         public void Dispose()
         {
             db.Dispose();
+        }
+
+        public IQueryable<AuditLog> GetAuditLogs(int id)
+        {
+            return db.GetLogs<Address>(id);
         }
 
         public void SaveChanges()

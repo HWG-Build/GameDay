@@ -44,6 +44,7 @@ namespace GameDay.Controllers
                 return HttpNotFound();
             }
             PlayerVM playerVM = MapModelVM(player);
+            playerVM.Audit = _playerservice.GetAuditLogs(player.ID).ToList();
             return View(playerVM);
         }
 

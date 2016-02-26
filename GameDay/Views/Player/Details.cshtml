@@ -41,6 +41,60 @@
             </dd>
 
         </dl>
+        <div class="panel panel-warning">
+            <h4 class="panel-heading"><a data-toggle="collapse" data-target="#AuditBody">Audit Logs</a></h4>
+            <div class="panel-body panel-collapse collapse" id="AuditBody">
+                <table class="table">
+                    <tr>
+                        <th>
+                            Type
+                        </th>
+                        <th>
+                            Date (UTC)
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                        <th>
+                            Property
+                        </th>
+                        <th>
+                            From
+                        </th>
+                        <th>
+                            To
+                        </th>
+                    </tr>
+                    @foreach (var item in Model.Audit)
+                    {
+                        foreach (var itemDetail in item.LogDetails)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TypeFullName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EventDateUTC)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EventType)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => itemDetail.PropertyName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => itemDetail.OriginalValue)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => itemDetail.NewValue)
+                                </td>
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+
     </div>
     <p>
         @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |

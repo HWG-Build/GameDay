@@ -14,14 +14,10 @@ body {
   overflow: hidden; }
 
 .eventContainer {
-  box-shadow: #808080 1px 1px 1px 1px;
   height: 6em;
   width: 95%;
-  border-radius: 4px;
-  margin-bottom: 1em;
-  margin-left: 2px;
-  /*overflow-x:scroll;
-    overflow-y:hidden;*/ }
+  box-shadow: 4px;
+  border-radius: #808080 1px 1px 1px 1px; }
 
 .verticalLine {
   border-left: solid #f18c2c;
@@ -49,3 +45,7 @@ img {
 
 .NavbarBackgroup {
   background-color: #f18c2c; }
+
+.transparent {
+  background-color: rgba(204, 204, 204, 0.3);
+  height: 120%; }

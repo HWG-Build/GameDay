@@ -37,9 +37,7 @@ namespace GameDay.Controllers
                 Date = x.Date,
                 Time = x.Time,
                 AddressName = _addressService.FindRecord(x.AddressId).Name,
-                PlayerNames = _playerService.GetEventPlayer(x.ID),
-                AddressList = _addressService.GetRecords()
-            });
+                });
             
             return View(Constant.Partial.EventListPartial, events);
         }
@@ -52,11 +50,14 @@ namespace GameDay.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Event @event =_gameservice.FindRecord(id);
+
             if (@event == null)
             {
                 return HttpNotFound();
             }
+
             EventVM eventVM = new EventVM
             {
                 ID = @event.ID,
@@ -64,8 +65,8 @@ namespace GameDay.Controllers
                 Game = @event.Game,
                 Date = @event.Date,
                 Time = @event.Time,
-                AddressName = _addressService.FindRecord(@event.AddressId).Name,
-                PlayerNames = _playerService.GetEventPlayer(@event.ID)
+                Location = _addressService.FindRecord(@event.AddressId),
+                Audit =  _gameservice.GetAuditLogs(@event.ID).ToList()
             };
 
             return View(Constant.Partial.EventDetailPartial, eventVM);
@@ -88,8 +89,7 @@ namespace GameDay.Controllers
                     Date = @event.Date,
                     Time = @event.Time,
                     AddressId = @event.AddressId,
-                    PlayerId = @event.PlayerId
-                };
+                    };
                 _gameservice.AddRecord(e);
                 return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
             }
@@ -109,7 +109,18 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View(Constant.Partial.EditDetailPartial,@event);
+            EventVM eventVM = new EventVM()
+            {
+                Name = @event.Name,
+                Game = @event.Game,
+                Date = @event.Date,
+                Time = @event.Time,
+                Location = _addressService.FindRecord(@event.AddressId),
+                Addresses = _addressService.GetRecords(),
+                AddressId = @event.AddressId
+        };
+
+            return View(Constant.Partial.EditDetailPartial, eventVM);
         }
 
         // POST: Event/Edit/5
@@ -128,7 +139,7 @@ namespace GameDay.Controllers
                 e.Date = @event.Date;
                 e.Time = @event.Time;
                 e.AddressId = @event.AddressId;
-                e.PlayerId = @event.PlayerId;
+                //e.PlayerId = @event.PlayerId;
                 _gameservice.EditRecord(e);
                 return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
             }
@@ -147,7 +158,17 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            return View(@event);
+            EventVM eventVM = new EventVM()
+            {
+                ID = @event.ID,
+                Name = @event.Name,
+                Game = @event.Game,
+                Date = @event.Date,
+                Time = @event.Time,
+                Location = _addressService.FindRecord(@event.AddressId),
+                //e.PlayerId = @event.PlayerId;
+            };
+            return View(eventVM);
         }
 
         // POST: Event/Delete/5
@@ -168,5 +189,7 @@ namespace GameDay.Controllers
             }
             base.Dispose(disposing);
         }
+
+
     }
 }

@@ -34,13 +34,8 @@ body {
 }
 
 .eventContainer{
-    box-shadow:  $ThemeGray 1px 1px 1px 1px;
     @include height-width(6em, 95%);
-    border-radius:4px;
-    margin-bottom:1em;
-    margin-left:2px;
-    /*overflow-x:scroll;
-    overflow-y:hidden;*/
+    @include border-radius-shadow($ThemeGray 1px 1px 1px 1px, 4px);
 }
 
 .verticalLine{
@@ -73,6 +68,11 @@ img {
 
 .NavbarBackgroup{
     background-color:#f18c2c;
+}
+
+.transparent{
+    background-color:rgba(204,204,204,0.3);
+    height:120%
 }
 
 

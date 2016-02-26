@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using TrackerEnabledDbContext.Common.Models;
 
 namespace GameDay.Models
 {
@@ -32,5 +33,6 @@ namespace GameDay.Models
 
         public List<int> EventId { get; set; }
 
+        public List<AuditLog> Audit { get; set; }
     }
 }

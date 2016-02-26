@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Domain.Layer.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using TrackerEnabledDbContext.Common.Configuration;
 using TrackerEnabledDbContext.Identity;
 
 
@@ -25,6 +26,7 @@ namespace Domain.Layer.DataAccessLayer
     {
         public GameDayContext() : base("GameDay")
         {
+            GlobalTrackingConfig.DisconnectedContext = true;
         }
 
         public DbSet<Player> Players { get; set; }
@@ -44,6 +46,7 @@ namespace Domain.Layer.DataAccessLayer
         {
             return new GameDayContext();
         }
+
     }
 }
 

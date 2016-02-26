@@ -1,0 +1,70 @@
+﻿@model IQueryable<TrackerEnabledDbContext.Common.Models.AuditLog>
+
+<h2>Audit</h2>
+
+<table class="table">
+    <tr>
+        @*<th>
+                Record Id
+            </th>*@
+        <th>
+            Type
+        </th>
+        <th>
+            User
+        </th>
+        <th>
+            Date (UTC)
+        </th>
+        <th>
+            Action
+        </th>
+        <th>
+            Property
+        </th>
+        <th>
+            From
+        </th>
+        <th>
+            To
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        foreach (var itemDetail in item.LogDetails)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.RecordId)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeFullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventDateUTC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => itemDetail.PropertyName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => itemDetail.OriginalValue)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => itemDetail.NewValue)
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+<p>
+    @Html.ActionLink("Back to Details", "Details", new { id = Model.First().RecordId }, new { @class = "btn btn-warning" })
+
+</p>

@@ -35,81 +35,78 @@
         <div class="form-group detail-control">
             <label id="LocationLabel">@Html.DisplayFor(model => model.Location.Name)</label>
             <address>
-                @Html.DisplayFor(model => model.Location.Line1)<br>
-                @Html.DisplayFor(model => model.Location.Line2)<br>
+                @Html.DisplayFor(model => model.Location.Line1) @Html.DisplayFor(model => model.Location.Line2)<br>
                 @Html.DisplayFor(model => model.Location.City), @Html.DisplayFor(model => model.Location.State) @Html.DisplayFor(model => model.Location.Zip)<br>
             </address>
         </div>
 
     </div>
     <div class="col-md-6">
-        <img src="~/Content/Images/map.png"/>
+        <img src="~/Content/Images/map.png" />
     </div>
-    @*<div class="form-group">
-        @*<div class="col-md-12">
-                <label for="DetailPlayerList">Attending:</label>
-                <div class="alert-warning" id="playerBox">
+    <div class="form-group">
+        <div class="col-md-12">
+            <label for="DetailPlayerList">Attending:</label>
+            <div class="alert-warning" id="playerBox">
 
-                </div>
             </div>
-    </div>*@
+        </div>
+    </div>
 </div>
-<div class="panel panel-warning">
-    <h4 class="panel-heading"><a data-toggle="collapse" data-target="#AuditBody">Audit Logs</a></h4>
-    <div class="panel-body panel-collapse collapse" id="AuditBody">
-        <table class="table">
-            <tr>
-                <th>
-                    Type
-                </th>
-                <th>
-                    Date (UTC)
-                </th>
-                <th>
-                    Action
-                </th>
-                <th>
-                    Property
-                </th>
-                <th>
-                    From
-                </th>
-                <th>
-                    To
-                </th>
-            </tr>
-            @foreach (var item in Model.Audit)
-            {
-                foreach (var itemDetail in item.LogDetails)
+<div class="row">
+    <button type="button" class="btn btn-primary clearfix" id="editButton" onclick="loadEditScreen(@Html.DisplayFor(model=>model.ID));">Edit</button>
+    @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "btn btn-danger clearfix" })
+</div>
+@*<div class="panel panel-warning">
+        <h4 class="panel-heading"><a data-toggle="collapse" data-target="#AuditBody">Audit Logs</a></h4>
+        <div class="panel-body panel-collapse collapse" id="AuditBody">
+            <table class="table">
+                <tr>
+                    <th>
+                        Type
+                    </th>
+                    <th>
+                        Date (UTC)
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                    <th>
+                        Property
+                    </th>
+                    <th>
+                        From
+                    </th>
+                    <th>
+                        To
+                    </th>
+                </tr>
+                @foreach (var item in Model.Audit)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TypeFullName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EventDateUTC)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.EventType)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => itemDetail.PropertyName)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => itemDetail.OriginalValue)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => itemDetail.NewValue)
-                        </td>
-                    </tr>
+                    foreach (var itemDetail in item.LogDetails)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TypeFullName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EventDateUTC)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EventType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => itemDetail.PropertyName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => itemDetail.OriginalValue)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => itemDetail.NewValue)
+                            </td>
+                        </tr>
+                    }
                 }
-            }
-        </table>
-    </div>
-</div>
-
-    <div class="row">
-        <button type="button" class="btn btn-primary clearfix" id="editButton" onclick="loadEditScreen(@Html.DisplayFor(model=>model.ID));">Edit</button>
-        @Html.ActionLink("Delete", "Delete", new { id = Model.ID }, new { @class = "btn btn-danger clearfix" })
-    </div>
-
+            </table>
+        </div>
+    </div>*@

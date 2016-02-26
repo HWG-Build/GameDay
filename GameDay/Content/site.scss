@@ -33,11 +33,6 @@ body {
     overflow:hidden;
 }
 
-.eventContainer{
-    @include height-width(6em, 95%);
-    @include border-radius-shadow($ThemeGray 1px 1px 1px 1px, 4px);
-}
-
 .verticalLine{
     border-left: solid $ThemeOrangeYellow;
     height:75%;
@@ -61,18 +56,25 @@ img {
     margin-bottom:2em;
 }
 
-.Scollable{
+.Scrollable{
     height:67em;
     overflow-y:auto;
 }
 
 .NavbarBackgroup{
-    background-color:#f18c2c;
+    //background-color:#f18c2c;
 }
 
 .transparent{
     background-color:rgba(204,204,204,0.3);
     height:120%
 }
+
+.titleFont{
+    font-size:medium;
+    font-weight:700;
+    color:black;
+}
+
 
 

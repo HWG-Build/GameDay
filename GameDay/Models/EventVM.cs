@@ -23,10 +23,12 @@ namespace GameDay.Models
         public GameType Game { get; set; }
 
         [Required]
+        //[DisplayFormat(DataFormatString = "{0:ddd, d MMM yyyy}")]
         [StringLength(50)]
         public string Date { get; set; }
 
         [Required]
+        //[DisplayFormat(DataFormatString = "hh:mm tt")]
         [StringLength(50)]
         public string Time { get; set; }
 

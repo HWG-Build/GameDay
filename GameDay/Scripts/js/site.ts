@@ -3,10 +3,12 @@
 function showDetails(id: number) {
     var url = '/Event/Details/' + id;
     $('#DetailsContainer').load(url);
-    $('#EventListDiv>div.panel-primary').removeClass("panel-primary");
-    $(this).addClass("panel-primary");
-    
 };
+
+$('.eventContainer').on('click', function () {
+    $('#EventListDiv>div .panel-primary').removeClass("panel-primary");
+    $(this).addClass("panel-primary");
+});
 
 function loadEditScreen(id: number) {
     var url = '/Event/Edit/' + id;
@@ -15,7 +17,7 @@ function loadEditScreen(id: number) {
 
 
 $(function () {
-    $.connection.hub.logging = true;
+    
     var myhub = $.connection.gameDayHub;
 
     //myhub.client.hello = function (name) {

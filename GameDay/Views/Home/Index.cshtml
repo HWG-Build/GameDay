@@ -2,9 +2,9 @@
 
 @using (Html.BeginForm("Create", "Event"))
 {
-    <div class="Scollable">
+    <div class="Scrollable">
         <div class="col-xs-3 col-md-2 col-lg-2 transparent">
-            <h5>Create</h5>
+            <h5 class="titleFont">Create</h5>
             <hr/>
             <div class="form-group">
                 @Html.LabelFor(model => model.Name, htmlAttributes: new {@for = "EventNameTextBox"})
@@ -30,16 +30,16 @@
         </div>
 
         <div class="col-xs-6 col-md-4 col-lg-4">
-            <h5>Events</h5>
+            <h5 class="titleFont">Events</h5>
             <hr/>
-            <div class="Scollable" id="EventListDiv">
+            <div class="Scrollable" id="EventListDiv">
                 @{
                     Html.RenderAction("Index", "Event");
                 }
             </div>
         </div>
         <div class="col-xs-8 col-sm-5 col-md-5 col-lg-5 transparent">
-            <h5>Details</h5>
+            <h5 class="titleFont">Details</h5>
             <hr/>
             <div id="DetailsContainer">
             </div>

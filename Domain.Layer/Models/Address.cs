@@ -32,10 +32,6 @@ namespace Domain.Layer.Models
         [Required]
         public float Zip { get; set; }
 
-
-        public List<int> EventId { get; set; }
-
-        [ForeignKey(Constant.Model.EventId)]
         public virtual ICollection<Event> Events { get; set; }
 
         [NotMapped]

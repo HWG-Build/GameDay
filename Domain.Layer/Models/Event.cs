@@ -31,13 +31,13 @@ namespace Domain.Layer.Models
         [Required]
         public int AddressId { get; set; }
 
-        public List<int> PlayerId { get; set; }
+        public string PlayersAttending { get; set; }
 
         [ForeignKey(Constant.Model.AddressId)]
         public virtual Address Location { get; set; }
 
-        [ForeignKey(Constant.Model.PlayerId)]
         public virtual ICollection<Player> Players { get; set; }
+
 
         [NotMapped]
         public virtual List<AuditLog> AuditLogs { get; set; }

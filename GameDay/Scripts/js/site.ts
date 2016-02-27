@@ -15,15 +15,3 @@ function loadEditScreen(id: number) {
     $('#DetailsContainer').load(url);
 }
 
-
-$(function () {
-    
-    var myhub = $.connection.gameDayHub;
-
-    //myhub.client.hello = function (name) {
-    //    alert("Hello " + name);
-    //};
-
-    $.connection.hub.start().done(function () {
-    });
-});

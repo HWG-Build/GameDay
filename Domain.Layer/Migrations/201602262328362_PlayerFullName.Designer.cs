@@ -7,13 +7,13 @@ namespace Domain.Layer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class GaveEnumValues : IMigrationMetadata
+    public sealed partial class PlayerFullName : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(GaveEnumValues));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PlayerFullName));
         
         string IMigrationMetadata.Id
         {
-            get { return "201602250246589_GaveEnumValues"; }
+            get { return "201602262328362_PlayerFullName"; }
         }
         
         string IMigrationMetadata.Source

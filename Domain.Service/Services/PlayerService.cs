@@ -51,10 +51,10 @@ namespace Domain.Service.Services
             db.Dispose();
         }
 
-        public List<string> GetEventPlayer(int Id)
+        public string GetAllPlayerAsString(int Id)
         {
-            return db.Players.Where(x => x.EventId.Contains(Id))
-                .Select(x => x.FirstName + " " + x.LastName).ToList();
+            var players = db.Players;
+            return Enumerable.Aggregate(players, "", (current, player) => current + (player.FullName + ","));
         }
 
         public IQueryable<AuditLog> GetAuditLogs(int id)

@@ -32,7 +32,6 @@ namespace Domain.Layer.DataAccessLayer
         public DbSet<Player> Players { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<Address> Locations { get; set; }
-
        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

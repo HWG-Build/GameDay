@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<GameDay.Models.EventVM>
+
+@Html.AntiForgeryToken()
 @if (!Model.Any())
 {
     <h4 class="grayFont leftMargin">There are no events</h4>

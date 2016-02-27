@@ -7,6 +7,7 @@
     "bootstrap": "3.3.5",
     "Microsoft.jQuery.Unobtrusive.Validation": "~3.2.3",
     "signalr": "~2.2.0",
-    "jquery-ui": "1.11.4"
+    "jquery-ui": "1.11.4",
+
   }
 }

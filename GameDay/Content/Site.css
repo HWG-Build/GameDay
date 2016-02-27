@@ -11,7 +11,12 @@
 body {
   padding-top: 50px;
   padding-bottom: 20px;
-  overflow: hidden; }
+  overflow-y: hidden;
+  height: 100%; }
+
+html {
+  height: 100%;
+  margin: 0; }
 
 .verticalLine {
   border-left: solid #f18c2c;
@@ -21,27 +26,46 @@ img {
   max-width: 100%;
   height: auto; }
 
+.DetailsContainer {
+  height: 100%; }
+
 .detail-control {
   margin-top: .5em;
   margin-bottom: 1.7em; }
 
+.detail-left-margin {
+  margin-left: .5em;
+  margin-bottom: 1.7em;
+  margin-top: .5em; }
+
 #playerBox {
-  min-height: 8em;
+  min-height: 2em;
   height: auto;
   width: 100%;
-  border: solid 2px #808080;
   border-radius: 4px;
   margin-bottom: 2em; }
 
 .Scrollable {
   height: 67em;
-  overflow-y: auto; }
+  overflow-y: scroll; }
+
+.NavbarBackgroup {
+  background-color: #f18c2c; }
 
 .transparent {
   background-color: rgba(204, 204, 204, 0.3);
-  height: 120%; }
+  height: 1080px; }
 
 .titleFont {
   font-size: medium;
   font-weight: 700;
+  color: black; }
+
+.tagsInputField {
+  width: 20em; }
+
+.tagBox {
+  margin-bottom: 3em; }
+
+.blackFont {
   color: black; }

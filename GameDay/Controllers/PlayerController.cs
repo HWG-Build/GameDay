@@ -147,6 +147,7 @@ namespace GameDay.Controllers
                 ID = player.ID,
                 FirstName = player.FirstName,
                 LastName = player.LastName,
+                FullName = player.FirstName + " " + player.LastName,
                 Position = player.Position,
                 Phone = player.Phone,
             };
@@ -160,6 +161,7 @@ namespace GameDay.Controllers
                 ID = playerVM.ID,
                 FirstName = playerVM.FirstName,
                 LastName = playerVM.LastName,
+                FullName = playerVM.FirstName + "" + playerVM.LastName,
                 Position = playerVM.Position,
                 Phone = playerVM.Phone,
             };

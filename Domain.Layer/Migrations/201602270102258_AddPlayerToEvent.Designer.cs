@@ -7,13 +7,13 @@ namespace Domain.Layer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddAuditLogToModels : IMigrationMetadata
+    public sealed partial class AddPlayerToEvent : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddAuditLogToModels));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddPlayerToEvent));
         
         string IMigrationMetadata.Id
         {
-            get { return "201602250330091_AddAuditLogToModels"; }
+            get { return "201602270102258_AddPlayerToEvent"; }
         }
         
         string IMigrationMetadata.Source

@@ -46,12 +46,11 @@ namespace GameDay.Models
         [Display(Name = Constant.ViewModels.Location)]
         public int AddressId { get; set; }
 
-        public List<string> PlayerNames { get; set; }
+        public string PlayersAttending { get; set; }
 
-        public List<int> PlayerId { get; set; }
+        public List<string> PlayerAttendingList { get; set; } 
 
         public List<AuditLog> Audit { get; set; } 
     }
 }
 
-//public IEnumerable<SelectListItem> AddressList => Addresses.Select(x => new SelectListItem { Value = ID.ToString(), Text = x.Name });

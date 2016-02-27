@@ -23,6 +23,9 @@ namespace GameDay.Models
         [Display(Name = Constant.ViewModels.LastName)]
         public string LastName { get; set; }
 
+        [StringLength(50)]
+        public string FullName { get; set; }
+
         [Required]
         [StringLength(25)]
         public string Position { get; set; }

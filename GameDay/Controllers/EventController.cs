@@ -66,9 +66,10 @@ namespace GameDay.Controllers
                 Date = @event.Date,
                 Time = @event.Time,
                 Location = _addressService.FindRecord(@event.AddressId),
-                Audit =  _gameservice.GetAuditLogs(@event.ID).ToList()
+                Audit =  _gameservice.GetAuditLogs(@event.ID).ToList(),
+                PlayersAttending = @event.PlayersAttending,
+                PlayerAttendingList = @event.PlayersAttending?.Split(',').ToList() ?? new List<string>()
             };
-
             return View(Constant.Partial.EventDetailPartial, eventVM);
         }
 
@@ -117,8 +118,9 @@ namespace GameDay.Controllers
                 Time = @event.Time,
                 Location = _addressService.FindRecord(@event.AddressId),
                 Addresses = _addressService.GetRecords(),
-                AddressId = @event.AddressId
-        };
+                AddressId = @event.AddressId,
+                PlayersAttending = @event.PlayersAttending
+            };
 
             return View(Constant.Partial.EditDetailPartial, eventVM);
         }
@@ -139,7 +141,7 @@ namespace GameDay.Controllers
                 e.Date = @event.Date;
                 e.Time = @event.Time;
                 e.AddressId = @event.AddressId;
-                //e.PlayerId = @event.PlayerId;
+                e.PlayersAttending = @event.PlayersAttending;
                 _gameservice.EditRecord(e);
                 return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
             }
@@ -166,7 +168,6 @@ namespace GameDay.Controllers
                 Date = @event.Date,
                 Time = @event.Time,
                 Location = _addressService.FindRecord(@event.AddressId),
-                //e.PlayerId = @event.PlayerId;
             };
             return View(eventVM);
         }

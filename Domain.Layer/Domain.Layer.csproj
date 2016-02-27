@@ -116,25 +116,17 @@
     <Compile Include="Migrations\201602250222137_UpdateModelAttributes.Designer.cs">
       <DependentUpon>201602250222137_UpdateModelAttributes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201602250246589_GaveEnumValues.cs" />
-    <Compile Include="Migrations\201602250246589_GaveEnumValues.Designer.cs">
-      <DependentUpon>201602250246589_GaveEnumValues.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201602250322003_AddForeignKeyAttr.cs" />
     <Compile Include="Migrations\201602250322003_AddForeignKeyAttr.Designer.cs">
       <DependentUpon>201602250322003_AddForeignKeyAttr.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201602250325505_FixManyToOne.cs" />
-    <Compile Include="Migrations\201602250325505_FixManyToOne.Designer.cs">
-      <DependentUpon>201602250325505_FixManyToOne.cs</DependentUpon>
+    <Compile Include="Migrations\201602262328362_PlayerFullName.cs" />
+    <Compile Include="Migrations\201602262328362_PlayerFullName.Designer.cs">
+      <DependentUpon>201602262328362_PlayerFullName.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201602250330091_AddAuditLogToModels.cs" />
-    <Compile Include="Migrations\201602250330091_AddAuditLogToModels.Designer.cs">
-      <DependentUpon>201602250330091_AddAuditLogToModels.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201602250714507_UpdateModels.cs" />
-    <Compile Include="Migrations\201602250714507_UpdateModels.Designer.cs">
-      <DependentUpon>201602250714507_UpdateModels.cs</DependentUpon>
+    <Compile Include="Migrations\201602270102258_AddPlayerToEvent.cs" />
+    <Compile Include="Migrations\201602270102258_AddPlayerToEvent.Designer.cs">
+      <DependentUpon>201602270102258_AddPlayerToEvent.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
@@ -163,20 +155,14 @@
     <EmbeddedResource Include="Migrations\201602250222137_UpdateModelAttributes.resx">
       <DependentUpon>201602250222137_UpdateModelAttributes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602250246589_GaveEnumValues.resx">
-      <DependentUpon>201602250246589_GaveEnumValues.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602250322003_AddForeignKeyAttr.resx">
       <DependentUpon>201602250322003_AddForeignKeyAttr.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602250325505_FixManyToOne.resx">
-      <DependentUpon>201602250325505_FixManyToOne.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602262328362_PlayerFullName.resx">
+      <DependentUpon>201602262328362_PlayerFullName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602250330091_AddAuditLogToModels.resx">
-      <DependentUpon>201602250330091_AddAuditLogToModels.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201602250714507_UpdateModels.resx">
-      <DependentUpon>201602250714507_UpdateModels.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201602270102258_AddPlayerToEvent.resx">
+      <DependentUpon>201602270102258_AddPlayerToEvent.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -15,6 +15,9 @@ namespace Domain.Layer.Models
         [StringLength(25)]
         public string FirstName { get; set; }
 
+        [StringLength(50)]
+        public string FullName { get; set; }
+
         [Required]
         [StringLength(25)]
         public string LastName { get; set; }
@@ -27,9 +30,6 @@ namespace Domain.Layer.Models
         [StringLength(15)]
         public string Phone { get; set; }
 
-        public List<int> EventId { get; set; }
-
-        [ForeignKey(Constant.Model.EventId)]
         public virtual ICollection<Event> Events { get; set; }
 
         [NotMapped]

@@ -1,49 +1,50 @@
 ﻿@model GameDay.Models.EventVM
-
-@using (Html.BeginForm("Create", "Event"))
-{
-    <div class="Scrollable">
+<div>
+    @using (Html.BeginForm("Create", "Event"))
+    {
+        @Html.AntiForgeryToken()
         <div class="col-xs-3 col-md-2 col-lg-2 transparent">
             <h5 class="titleFont">Create</h5>
-            <hr/>
+            <hr />
             <div class="form-group">
-                @Html.LabelFor(model => model.Name, htmlAttributes: new {@for = "EventNameTextBox"})
-                @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "form-control", id = "EventNameTextBox"}})
+                @Html.LabelFor(model => model.Name)
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control"} })
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.Game, htmlAttributes: new {@for = "GameTypeDropDown"})
-                @Html.EnumDropDownListFor(model => model.Game, htmlAttributes: new {@class = "form-control", @id = "GameTypeDropDown"})
+                @Html.LabelFor(model => model.Game)
+                @Html.EnumDropDownListFor(model => model.Game, htmlAttributes: new { @class = "form-control"})
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.Date, htmlAttributes: new {@for = "EventDate"})
-                @Html.EditorFor(model => model.Date, new {htmlAttributes = new {@type = "date", @class = "form-control", @id = "EventDate"}})
+                @Html.LabelFor(model => model.Date)
+                @Html.EditorFor(model => model.Date, new { htmlAttributes = new { @type = "date", @class = "form-control"} })
             </div>
             <div class="form-group">
-                @Html.LabelFor(model => model.Time, htmlAttributes: new {@for = "EventTime"})
-                @Html.EditorFor(model => model.Time, new {htmlAttributes = new {@type = "time", @class = "form-control", @id = "EventTime"}})
+                @Html.LabelFor(model => model.Time)
+                @Html.EditorFor(model => model.Time, new { htmlAttributes = new { @type = "time", @class = "form-control"} })
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.AddressId)
-                @Html.DropDownListFor(model=>model.AddressId, Model.AddressList, htmlAttributes: new { @class = "form-control"})
+                @Html.DropDownListFor(model => model.AddressId, Model.AddressList, htmlAttributes: new { @class = "form-control" })
             </div>
-            <input type="submit" value="Create" class="btn btn-primary"/>
+            <input type="submit" value="Create" class="btn btn-primary" />
         </div>
-
-        <div class="col-xs-6 col-md-4 col-lg-4">
-            <h5 class="titleFont">Events</h5>
-            <hr/>
-            <div class="Scrollable" id="EventListDiv">
-                @{
-                    Html.RenderAction("Index", "Event");
-                }
-            </div>
-        </div>
-        <div class="col-xs-8 col-sm-5 col-md-5 col-lg-5 transparent">
-            <h5 class="titleFont">Details</h5>
-            <hr/>
-            <div id="DetailsContainer">
-            </div>
+    }
+    <div class="col-xs-6 col-md-4 col-lg-5">
+        <h5 class="titleFont">Events</h5>
+        <hr />
+        <div class="Scrollable" id="EventListDiv">
+            @{
+                Html.RenderAction("Index", "Event");
+            }
         </div>
     </div>
-}
+    <div class="col-xs-8 col-sm-5 col-md-5 col-lg-5 transparent DetailsContainer">
+        <h5 class="titleFont">Details</h5>
+        <hr />
+        <div id="DetailsContainer">
+        </div>
+    </div>
+</div>
+
+
 

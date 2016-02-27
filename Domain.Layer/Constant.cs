@@ -48,8 +48,9 @@ namespace Domain.Layer
         public class Model
         {
             public const string AddressId = "AddressId";
-            public const string PlayerId = "PlayerId";
+            public const string AttendingPlayers = "AttendingPlayers";
             public const string EventId = "EventId";
+            public const string EventsAttending = "EventsAttending";
         }
         
 

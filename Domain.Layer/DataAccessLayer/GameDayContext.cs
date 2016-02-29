@@ -2,14 +2,14 @@
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Domain.Layer.Models;
+using Data.Layer.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using TrackerEnabledDbContext.Common.Configuration;
 using TrackerEnabledDbContext.Identity;
 
 
-namespace Domain.Layer.DataAccessLayer
+namespace Data.Layer.DataAccessLayer
 {
     public class ApplicationUser : IdentityUser
     {

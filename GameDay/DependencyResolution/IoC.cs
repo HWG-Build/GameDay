@@ -15,10 +15,10 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-using Domain.Layer.Models;
+using Data.Layer.Models;
 using StructureMap;
-using Domain.Service.Services;
-using Domain.Layer.Interfaces;
+using Domain.Layer.Services;
+using Data.Layer.Interfaces;
 
 namespace GameDay.DependencyResolution {
     

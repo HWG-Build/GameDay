@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Domain.Layer.Models;
+using Data.Layer.Models;
 using TrackerEnabledDbContext.Common.Models;
 
-namespace Domain.Layer.Interfaces
+namespace Data.Layer.Interfaces
 {
     public interface IService<T>
     {

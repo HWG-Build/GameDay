@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using TrackerEnabledDbContext.Common.Models;
 
 
-namespace Domain.Layer.Models
+namespace Data.Layer.Models
 {
     [TrackChanges]
     public class Event

@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using Domain.Layer.DataAccessLayer;
-using Domain.Layer.Models;
-using Domain.Layer.Interfaces;
+using Data.Layer.DataAccessLayer;
+using Data.Layer.Models;
+using Data.Layer.Interfaces;
 using TrackerEnabledDbContext.Common.Models;
 
-namespace Domain.Service.Services
+namespace Domain.Layer.Services
 {
     public class GameService : IService<Event>
     {

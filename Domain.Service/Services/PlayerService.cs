@@ -1,13 +1,12 @@
-﻿using Domain.Layer.DataAccessLayer;
+﻿using Data.Layer.DataAccessLayer;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using Domain.Layer.Models;
-using Domain.Layer.Interfaces;
+using Data.Layer.Models;
+using Data.Layer.Interfaces;
 using TrackerEnabledDbContext.Common.Models;
-using System;
 
-namespace Domain.Service.Services
+namespace Domain.Layer.Services
 {
     public class PlayerService : IService<Player>
     {

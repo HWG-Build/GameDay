@@ -1,4 +1,4 @@
-namespace Domain.Layer.Migrations
+namespace Data.Layer.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;

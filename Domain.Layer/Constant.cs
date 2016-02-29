@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Layer
+namespace Data.Layer
 {
     public static class Constant
     {

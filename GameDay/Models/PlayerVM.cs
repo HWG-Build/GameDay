@@ -1,4 +1,4 @@
-﻿using Domain.Layer;
+﻿using Data.Layer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

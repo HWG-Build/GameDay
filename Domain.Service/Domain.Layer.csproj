@@ -75,9 +75,9 @@
     <Compile Include="Services\PlayerService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Domain.Layer\Domain.Layer.csproj">
+    <ProjectReference Include="..\Domain.Layer\Data.Layer.csproj">
       <Project>{f4ae97f9-742a-4653-bf04-9323ab3cebc0}</Project>
-      <Name>Domain.Layer</Name>
+      <Name>Data.Layer</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

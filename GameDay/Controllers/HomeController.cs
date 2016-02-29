@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using Domain.Service.Services;
+using Domain.Layer.Services;
 using GameDay.Models;
 
 namespace GameDay.Controllers

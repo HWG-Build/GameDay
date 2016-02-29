@@ -1,8 +1,8 @@
 ﻿using System.Net;
 using System.Web.Mvc;
-using Domain.Layer.Interfaces;
-using Domain.Layer.Models;
-using Domain.Layer;
+using Data.Layer.Interfaces;
+using Data.Layer.Models;
+using Data.Layer;
 using GameDay.Models;
 using System.Linq;
 

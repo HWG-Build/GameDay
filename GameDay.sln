@@ -5,11 +5,11 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameDay", "GameDay\GameDay.csproj", "{8F2A3351-5DE3-48D5-841C-9596B6467183}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Layer", "Domain.Layer\Domain.Layer.csproj", "{F4AE97F9-742A-4653-BF04-9323AB3CEBC0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Layer", "Domain.Layer\Data.Layer.csproj", "{F4AE97F9-742A-4653-BF04-9323AB3CEBC0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{B76B4E38-90B2-48DB-A07A-83126010BFD3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Service", "Domain.Service\Domain.Service.csproj", "{A9086E34-0A45-48A8-9821-CCE4C7731328}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Layer", "Domain.Service\Domain.Layer.csproj", "{A9086E34-0A45-48A8-9821-CCE4C7731328}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

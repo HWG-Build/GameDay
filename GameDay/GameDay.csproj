@@ -1420,13 +1420,13 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Domain.Layer\Domain.Layer.csproj">
+    <ProjectReference Include="..\Domain.Layer\Data.Layer.csproj">
       <Project>{f4ae97f9-742a-4653-bf04-9323ab3cebc0}</Project>
-      <Name>Domain.Layer</Name>
+      <Name>Data.Layer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Domain.Service\Domain.Service.csproj">
+    <ProjectReference Include="..\Domain.Service\Domain.Layer.csproj">
       <Project>{a9086e34-0a45-48a8-9821-cce4c7731328}</Project>
-      <Name>Domain.Service</Name>
+      <Name>Domain.Layer</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

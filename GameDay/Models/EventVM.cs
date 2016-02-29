@@ -4,8 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Domain.Layer.Models;
-using Domain.Layer;
+using Data.Layer.Models;
+using Data.Layer;
 using TrackerEnabledDbContext.Common.Models;
 
 namespace GameDay.Models

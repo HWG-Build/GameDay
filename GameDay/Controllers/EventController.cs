@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using Domain.Layer.Interfaces;
-using Domain.Layer.Models;
+using Data.Layer.Interfaces;
+using Data.Layer.Models;
 using GameDay.Models;
-using Domain.Layer;
-using Domain.Service.Services;
+using Data.Layer;
+using Domain.Layer.Services;
 
 namespace GameDay.Controllers
 {

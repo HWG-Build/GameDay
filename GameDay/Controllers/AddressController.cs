@@ -19,6 +19,7 @@ namespace GameDay.Controllers
         }
 
         // GET: Address
+        [HttpGet]
         public ActionResult Index()
         {
 
@@ -31,10 +32,11 @@ namespace GameDay.Controllers
                 City = x.City,
                 State = x.State,
                 Zip = x.Zip
-        }));
+        }).ToList());
         }
 
         // GET: Address/Details/5
+        [HttpGet]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -52,6 +54,7 @@ namespace GameDay.Controllers
         }
 
         // GET: Address/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -76,6 +79,7 @@ namespace GameDay.Controllers
         }
 
         // GET: Address/Edit/5
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -109,6 +113,7 @@ namespace GameDay.Controllers
         }
 
         // GET: Address/Delete/5
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if (id == null)

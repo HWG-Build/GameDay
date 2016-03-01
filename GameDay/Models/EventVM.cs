@@ -39,13 +39,12 @@ namespace GameDay.Models
 
         public List<Address> Addresses { get; set; }
 
-        public IEnumerable<SelectListItem> AddressList => new SelectList(Addresses, "ID", "Name", AddressId);
-
         public Address Location { get; set; }
 
         [Display(Name = Constant.ViewModels.Location)]
         public int AddressId { get; set; }
 
+        //No stringlength is added because this string can become very long.
         public string PlayersAttending { get; set; }
 
         public List<string> PlayerAttendingList { get; set; } 

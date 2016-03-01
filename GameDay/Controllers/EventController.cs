@@ -22,10 +22,9 @@ namespace GameDay.Controllers
         }
 
         AddressService _addressService = new AddressService();
-        PlayerService _playerService = new PlayerService();
-
 
         // GET: Event
+        [HttpGet]
         public ActionResult Index()
         {
             var games = _gameservice.GetRecords();
@@ -44,6 +43,7 @@ namespace GameDay.Controllers
 
         // GET: Event/Details/5
         //[HandleError(ExceptionType = typeof(CustomException), View = "CustomError")]
+        [HttpGet]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -99,6 +99,7 @@ namespace GameDay.Controllers
         }
 
         // GET: Event/Edit/5
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -149,6 +150,7 @@ namespace GameDay.Controllers
         }
 
         // GET: Event/Delete/5
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if (id == null)

@@ -15,12 +15,13 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
+using Data.Layer;
 using GameDay.App_Start;
 
 using WebActivatorEx;
 
-[assembly: PreApplicationStartMethod(typeof(StructuremapMvc), "Start")]
-[assembly: ApplicationShutdownMethod(typeof(StructuremapMvc), "End")]
+[assembly: PreApplicationStartMethod(typeof(StructuremapMvc), Constant.StructuremapMVC.Start)]
+[assembly: ApplicationShutdownMethod(typeof(StructuremapMvc), Constant.StructuremapMVC.End)]
 
 namespace GameDay.App_Start {
 	using System.Web.Mvc;

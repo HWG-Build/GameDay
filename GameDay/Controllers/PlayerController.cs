@@ -19,6 +19,7 @@ namespace GameDay.Controllers
         }
 
         // GET: Player
+        [HttpGet]
         public ActionResult Index()
         {
             return View(_playerservice.GetRecords().Select(x => new PlayerVM()
@@ -32,6 +33,7 @@ namespace GameDay.Controllers
         }
 
         // GET: Player/Details/5
+        [HttpGet]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -49,6 +51,7 @@ namespace GameDay.Controllers
         }
 
         // GET: Player/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -73,6 +76,7 @@ namespace GameDay.Controllers
         }
 
         // GET: Player/Edit/5
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -106,6 +110,7 @@ namespace GameDay.Controllers
         }
 
         // GET: Player/Delete/5
+        [HttpGet]
         public ActionResult Delete(int? id)
         {
             if (id == null)

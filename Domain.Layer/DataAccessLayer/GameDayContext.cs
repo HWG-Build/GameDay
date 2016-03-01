@@ -24,7 +24,7 @@ namespace Data.Layer.DataAccessLayer
 
     public class GameDayContext : TrackerIdentityContext<ApplicationUser>
     {
-        public GameDayContext() : base("GameDay")
+        public GameDayContext() : base(Constant.Title)
         {
             GlobalTrackingConfig.DisconnectedContext = true;
         }

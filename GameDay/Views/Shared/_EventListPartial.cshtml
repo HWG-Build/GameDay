@@ -9,22 +9,22 @@ else
 {
     foreach (var item in Model)
     {
-        <div class="panel panel-body panel-default eventContainer" onclick="showDetails(@Html.DisplayFor(modelItem =>item.ID))">
-            <div class="col-xs-3 col-md-2 col-lg-2">
+        <div class="panel panel-body panel-default eventContainer col-lg-12" onclick="showDetails(@Html.DisplayFor(modelItem =>item.ID))">
+            <div class="col-md-2 pull-left">
                 <img src="~/Content/Images/@Html.DisplayFor(modelItem=> item.Game)'.png" />
             </div>
-            <div class="col-xs-12 col-md-10 col-lg-10 verticalLine">
-                <div class="form-inline" style="margin-top: .7em;">
-                    <label class="col-xs-2 col-md-2 col-lg-2 clearfix" for="EventDateTimeLabel">@Html.DisplayNameFor(model => model.Date):</label>
-                    <p class="col-xs-4 col-md-4 col-lg-4 clearfix" id="EventDateTimeLabel">@Html.DisplayFor(modelItem => item.Date)</p>
-                    <label class="col-xs-2 col-md-2 col-lg-2 clearfix" for="EventDateTimeLabel">@Html.DisplayNameFor(model => model.Time):</label>
-                    <p class="col-xs-4 col-md-4 col-lg-4 clearfix" id="EventDateTimeLabel">@Html.DisplayFor(modelItem => item.Time)</p>
+            <div class="col-md-10 verticalLine">
+                <div class="row" style="margin-top: .7em;">
+                    <label class="col-md-2">@Html.DisplayNameFor(model => model.Date):</label>
+                    <p class="col-md-4">@Html.DisplayFor(modelItem => item.Date)</p>
+                    <label class="col-md-2">@Html.DisplayNameFor(model => model.Time):</label>
+                    <p class="col-md-4">@Html.DisplayFor(modelItem => item.Time)</p>
                 </div>
-                <div class="form-inline">
-                    <label class="col-xs-2 col-md-2 col-lg-2 clearfix" for="EventNameLabel">@Html.DisplayNameFor(model => model.Name):</label>
-                    <p class="col-xs-4 col-md-4 col-lg-4 clearfix" id="EventNameLabel">@Html.DisplayFor(modelItem => item.Name)</p>
-                    <label class="col-xs-2 col-md-2 col-lg-2 clearfix" for="LocationLabel">@Html.DisplayNameFor(model => model.AddressName):</label>
-                    <p class="col-xs-4 col-md-4 col-lg-4 clearfix" id="LocationLabel">@Html.DisplayFor(modelItem => item.AddressName)</p>
+                <div class="row">
+                    <label class="col-md-2">@Html.DisplayNameFor(model => model.Name):</label>
+                    <p class="col-md-4">@Html.DisplayFor(modelItem => item.Name)</p>
+                    <label class="col-md-2">@Html.DisplayNameFor(model => model.AddressName):</label>
+                    <p class="col-md-4">@Html.DisplayFor(modelItem => item.AddressName)</p>
                 </div>
             </div>
         </div>

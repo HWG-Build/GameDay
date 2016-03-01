@@ -1399,7 +1399,6 @@
     <Content Include="Views\Event\Create.cshtml" />
     <Content Include="Views\Shared\_EventDetailPartial.cshtml" />
     <Content Include="Views\Shared\_EditDetailPartial.cshtml" />
-    <Content Include="Views\Shared\_AuditLogDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

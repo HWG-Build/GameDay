@@ -100,7 +100,7 @@ namespace GameDay.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = Constant.Controller.AddressFields)] AddressVM address)
+        public ActionResult Edit(AddressVM address)
         {
             Address a = new Address();
             if (ModelState.IsValid)

@@ -39,6 +39,8 @@ namespace GameDay.Models
 
         public List<Address> Addresses { get; set; }
 
+        public IEnumerable<SelectListItem> AddressList => new SelectList(Addresses, Constant.ViewModels.ID, Constant.ViewModels.Name, AddressId);
+
         public Address Location { get; set; }
 
         [Display(Name = Constant.ViewModels.Location)]

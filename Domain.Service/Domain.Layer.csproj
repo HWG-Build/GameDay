@@ -69,6 +69,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomExceptions\EventException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AddressService.cs" />
     <Compile Include="Services\GameService.cs" />

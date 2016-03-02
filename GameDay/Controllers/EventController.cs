@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Web.Mvc;
 using Data.Layer.Interfaces;
@@ -7,6 +9,7 @@ using Data.Layer.Models;
 using GameDay.Models;
 using Data.Layer;
 using Domain.Layer.Services;
+using Domain.Service.CustomExceptions;
 
 namespace GameDay.Controllers
 {
@@ -36,8 +39,8 @@ namespace GameDay.Controllers
                 Date = x.Date,
                 Time = x.Time,
                 AddressName = _addressService.FindRecord(x.AddressId).Name,
-                });
-            
+            });
+
             return View(Constant.Partial.EventListPartial, events);
         }
 
@@ -51,50 +54,32 @@ namespace GameDay.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            Event @event =_gameservice.FindRecord(id);
+            Event @event = _gameservice.FindRecord(id);
 
             if (@event == null)
             {
                 return HttpNotFound();
             }
 
-            EventVM eventVM = new EventVM
-            {
-                ID = @event.ID,
-                Name = @event.Name,
-                Game = @event.Game,
-                Date = @event.Date,
-                Time = @event.Time,
-                Location = _addressService.FindRecord(@event.AddressId),
-                Audit =  _gameservice.GetAuditLogs(@event.ID).ToList(),
-                PlayersAttending = @event.PlayersAttending,
-                PlayerAttendingList = @event.PlayersAttending?.Split(',').ToList() ?? new List<string>()
-            };
+            EventVM eventVM = MapEventVM(@event);
+            eventVM.Location = _addressService.FindRecord(@event.AddressId);
+            eventVM.Audit = _gameservice.GetAuditLogs(@event.ID).ToList();
+            eventVM.PlayersAttending = @event.PlayersAttending;
+            eventVM.PlayerAttendingList = @event.PlayersAttending?.Split(',').ToList() ?? new List<string>();
             return View(Constant.Partial.EventDetailPartial, eventVM);
         }
 
         // POST: Event/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(EventVM @event)
         {
             if (ModelState.IsValid)
             {
-                Event e = new Event
-                {
-                    ID = @event.ID,
-                    Name = @event.Name,
-                    Game = @event.Game,
-                    Date = @event.Date,
-                    Time = @event.Time,
-                    AddressId = @event.AddressId,
-                    };
+                Event e = MapEvent(@event);
                 _gameservice.AddRecord(e);
                 return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
             }
-
             return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
         }
 
@@ -111,42 +96,26 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            EventVM eventVM = new EventVM()
-            {
-                Name = @event.Name,
-                Game = @event.Game,
-                Date = @event.Date,
-                Time = @event.Time,
-                Location = _addressService.FindRecord(@event.AddressId),
-                Addresses = _addressService.GetRecords(),
-                AddressId = @event.AddressId,
-                PlayersAttending = @event.PlayersAttending
-            };
-
+            EventVM eventVM = MapEventVM(@event);
+            eventVM.Location = _addressService.FindRecord(@event.AddressId);
+            eventVM.Addresses = _addressService.GetRecords();
+            eventVM.PlayersAttending = @event.PlayersAttending;
             return View(Constant.Partial.EditDetailPartial, eventVM);
         }
 
         // POST: Event/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(EventVM @event)
         {
-            Event e = new Event();
             if (ModelState.IsValid)
             {
-                e.ID = @event.ID;
-                e.Name = @event.Name;
-                e.Game = @event.Game;
-                e.Date = @event.Date;
-                e.Time = @event.Time;
-                e.AddressId = @event.AddressId;
+                Event e = MapEvent(@event);
                 e.PlayersAttending = @event.PlayersAttending;
                 _gameservice.EditRecord(e);
                 return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
             }
-            return View(e);
+            throw new EventException("Fields cannot be null");
         }
 
         // GET: Event/Delete/5
@@ -162,15 +131,8 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            EventVM eventVM = new EventVM()
-            {
-                ID = @event.ID,
-                Name = @event.Name,
-                Game = @event.Game,
-                Date = @event.Date,
-                Time = @event.Time,
-                Location = _addressService.FindRecord(@event.AddressId),
-            };
+            EventVM eventVM = MapEventVM(@event);
+            eventVM.Location = _addressService.FindRecord(@event.AddressId);
             return View(eventVM);
         }
 
@@ -181,7 +143,7 @@ namespace GameDay.Controllers
         {
             Event @event = _gameservice.FindRecord(id);
             _gameservice.DeleteRecord(@event);
-            return RedirectToAction(Constant.Controller.Index,Constant.Controller.Home);
+            return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
         }
 
         protected override void Dispose(bool disposing)
@@ -193,6 +155,30 @@ namespace GameDay.Controllers
             base.Dispose(disposing);
         }
 
+
+        public Event MapEvent(EventVM eventVM)
+        {
+            Event e = new Event();
+            e.ID = eventVM.ID;
+            e.Name = eventVM.Name;
+            e.Game = eventVM.Game;
+            e.Date = eventVM.Date;
+            e.Time = eventVM.Time;
+            e.AddressId = eventVM.AddressId;
+            return e;
+        }
+
+        public EventVM MapEventVM(Event e)
+        {
+            EventVM eventVM = new EventVM();
+            eventVM.ID = e.ID;
+            eventVM.Name = e.Name;
+            eventVM.Game = e.Game;
+            eventVM.Date = e.Date;
+            eventVM.Time = e.Time;
+            eventVM.AddressId = e.AddressId;
+            return eventVM;
+        }
 
     }
 }

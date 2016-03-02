@@ -84,7 +84,10 @@ namespace Data.Layer
             public const string EventId = "EventId";
             public const string EventsAttending = "EventsAttending";
         }
-        
 
+        public class Keys
+        {
+            public const string GoogleMapsApiKey = "AIzaSyDqcAyGFqYiYHtuZw7IVmfnz70BTFw-SLk";
+        }
     }
 }

@@ -1,4 +1,7 @@
 ﻿declare var $: any;
+declare var google: any;
+var map;
+var map2;
 
 function showDetails(id: number) {
     var url = '/Event/Details/' + id;
@@ -15,3 +18,14 @@ function loadEditScreen(id: number) {
     $('#DetailsContainer').load(url);
 }
 
+function initMap() {
+    map = new google.maps.Map(document.getElementById('googlemapDetail'), {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 8
+    });
+    
+    map2 = new google.maps.Map(document.getElementById('googlemapEdit'), {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 8
+    });
+}

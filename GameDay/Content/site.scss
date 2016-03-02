@@ -3,6 +3,7 @@ $ThemeGray: #808080;
 $ThemeOrangeYellow: #f18c2c;
 $LightLateGrey: #928c8c;
 $Black: black;
+$imageUrl: "~/Content/Images/";
 
 //Mixins
 @mixin border-radius-shadow($radius, $shadow){
@@ -104,6 +105,4 @@ img {
 .blackFont{
     color:$Black;
 }
-
-
 

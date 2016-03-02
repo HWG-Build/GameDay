@@ -250,6 +250,7 @@
     <Content Include="Content\Images\NoImage.png" />
     <Content Include="Content\Images\Poker%27.png" />
     <Content Include="Content\Images\Soccer%27.png" />
+    <Content Include="Content\Images\SportBackground.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />

@@ -5,6 +5,7 @@ var map;
 function showDetails(id: number, line1: string, line2: string, city: string, state: string, zip: number) {
     var url = '/Event/Details/' + id;
     $('#DetailsContainer').load(url);
+    getCoor(line1, line2, city, state, zip);
 };
 
 $('.eventContainer').on('click', function () {
@@ -15,6 +16,7 @@ $('.eventContainer').on('click', function () {
 function loadEditScreen(id: number, line1: string, line2: string, city: string, state: string, zip: number) {
     var url = '/Event/Edit/' + id;
     $('#DetailsContainer').load(url);
+    getCoor(line1, line2, city, state, zip);
 }
 
 function initMap(latitude, longitude, zoom, exist) {
@@ -33,23 +35,15 @@ function initMap(latitude, longitude, zoom, exist) {
 }
     
 
-function getCoor() {
-    var address = $('#addressLine1').val() + " " + $('#addressLine2').val() + ", " + $('#city').val() + ", " + $('#state').val() + " " + $('#zip').val();
+function getCoor(line1, line2, city, state, zip) {
+    var address = line1 + " " + line2 + ", " + city + ", " + state + " " + zip;
     var coor = new google.maps.Geocoder();
     coor.geocode({ address: address }, function (results, status) {
         console.log(results);
         if (status == google.maps.GeocoderStatus.OK) {
-            var cntl = {
-                lat = results[0].geometry.location.lat(),
-                lng = results[0].geometry.location.lng()
-            }
-            var 
-            var 
-                //cntl.item.addressLine1 = results[0].address_components[0].long_name +" "+ results[0].address_components[1].long_name;
-                //cntl.item.city = results[0].address_components[3].long_name;
-                //cntl.item.state = results[0].address_components[5].long_name;
-                //cntl.item.zip = results[0].address_components[7].long_name;
-            };
+            var lat = results[0].geometry.location.lat();
+            var lng = results[0].geometry.location.lng();
+            initMap(lat, lng, 16, true);
             map.setCenter(results[0].geometry.location);//center the map over the result
             //place a marker at the location
             var marker = new google.maps.Marker(
@@ -57,13 +51,13 @@ function getCoor() {
                     map: map,
                     position: results[0].geometry.location
                 });
-            cntl.submitData();
             if (results[0].geometry.viewport)
-                sabio.page.map.fitBounds(results[0].geometry.viewport);
+                map.fitBounds(results[0].geometry.viewport);
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
         }
     });
+    
 }
 
 

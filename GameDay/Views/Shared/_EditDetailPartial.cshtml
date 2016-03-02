@@ -1,6 +1,5 @@
 ﻿@model GameDay.Models.EventVM
 
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -46,9 +45,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6" id="googlemapEdit">
-                    @*<img src="~/Content/Images/map.png" />*@
-                </div>
                 <div class="form-group tagBox">
                     <div class="col-md-12">
                         <label for="playerBox">Attending:</label><br/>
@@ -58,12 +54,16 @@
                 </div>
                 <div class="form-group">
                     <div class="col-md-10">
-                        <input type="submit" value="Save" class="btn btn-primary" id="saveButton" onclick="showDetails(@Html.DisplayFor(model => model.ID))" />
+                        <input type="submit" value="Save" class="btn btn-primary" id="saveButton" 
+                               onclick="showDetails(@Html.DisplayFor(model => model.ID),
+                               @Html.DisplayFor(model => model.Location.Line1), 
+                                @Html.DisplayFor(model => model.Location.Line2),
+                                @Html.DisplayFor(model => model.Location.City),
+                                @Html.DisplayFor(model => model.Location.State), 
+                                @Html.DisplayFor(model => model.Location.Zip))" />
                         @Html.ActionLink("Cancel", "Index", "Home", null, new { @class = "btn-warning btn" })
                     </div>
                 </div>
             </div>
         </div>
     }
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqcAyGFqYiYHtuZw7IVmfnz70BTFw-SLk&callback=initMap"
-        type="text/javascript"></script>

@@ -30,11 +30,8 @@ $imageUrl: "~/Content/Images/";
 }
 
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-    //overflow-y:hidden;
+    overflow-y:hidden;
     height:100%;
-    //margin:0;
 }
 
 html {
@@ -76,7 +73,6 @@ img {
 .Scrollable{
     height:67em;
     overflow-y:scroll;
-    //display: block;
 }
 
 .NavbarBackgroup{
@@ -104,5 +100,9 @@ img {
 
 .blackFont{
     color:$Black;
+}
+
+#map{
+    height:100%
 }
 

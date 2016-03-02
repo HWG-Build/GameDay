@@ -9,8 +9,7 @@
   color: #928c8c; }
 
 body {
-  padding-top: 50px;
-  padding-bottom: 20px;
+  overflow-y: hidden;
   height: 100%; }
 
 html {
@@ -68,3 +67,6 @@ img {
 
 .blackFont {
   color: black; }
+
+#map {
+  height: 100%; }

@@ -42,9 +42,6 @@
             </div>
 
         </div>
-        <div class="col-md-6" id="googlemapDetail">
-            @*<img src="~/Content/Images/map.png" />*@
-        </div>
         <div class="form-group tagBox">
             <div class="col-md-12">
                 <label>Attending:</label><br/>
@@ -55,11 +52,16 @@
             </div>
         </div>
         <div>
-            <button type="button" class="btn btn-primary clearfix" id="editButton" onclick="loadEditScreen(@Html.DisplayFor(model => model.ID));">Edit</button>
+            <button type="button" class="btn btn-primary clearfix" id="editButton" 
+                    onclick="loadEditScreen(@Html.DisplayFor(model => model.ID),
+                    @Html.DisplayFor(model => model.Location.Line1), 
+                    @Html.DisplayFor(model => model.Location.Line2),
+                    @Html.DisplayFor(model => model.Location.City),
+                    @Html.DisplayFor(model => model.Location.State), 
+                    @Html.DisplayFor(model => model.Location.Zip));">Edit</button>
             @Html.ActionLink("Delete", "Delete", new {id = Model.ID}, new {@class = "btn btn-danger clearfix"})
         </div>
     </div>
 </div>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqcAyGFqYiYHtuZw7IVmfnz70BTFw-SLk&callback=initMap"
-        type="text/javascript"></script>
+
 

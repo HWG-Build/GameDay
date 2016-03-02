@@ -24,6 +24,7 @@ namespace GameDay.Models
 
         [Required]
         [StringLength(50)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public string Date { get; set; }
 
         [Required]

@@ -1,4 +1,4 @@
-/// <binding BeforeBuild='clean, min, styles' ProjectOpened='watch' />
+/// <binding BeforeBuild='clean, min, styles, bundle' ProjectOpened='watch' />
 /*
 This file in the main entry point for defining Gulp tasks and using Gulp plugins.
 Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
@@ -15,7 +15,7 @@ var gulp = require("gulp"),
     util = require("gulp-util"),
     sass = require("gulp-sass"),
     ts = require("gulp-typescript"),
-    bundler = require("gulp-bundle-assets");
+    bundle = require("gulp-bundle-assets");
 
 var paths = {
     webroot: "./"
@@ -88,8 +88,11 @@ gulp.task('typescript', function () {
 		.pipe(gulp.dest(paths.js));
 });
 
-gulp.task('bundle', function () {
-    return gulp.src('./bundle.config.js')
-      .pipe(bundle())
-      .pipe(gulp.dest('./public'));
+gulp.task('bundle', function() {
+        return gulp.src('./bundle.config.js')
+            .pipe(bundle())
+            .pipe(bundle.results({
+                pathPrefix: '/public/'
+            }))
+    .pipe(gulp.dest('./public'));
 });

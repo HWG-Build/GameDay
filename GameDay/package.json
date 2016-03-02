@@ -10,6 +10,7 @@
     "gulp-uglifyjs": "0.6.2",
     "gulp-sass": "2.2.0",
     "gulp-util": "3.0.7",
-    "gulp-typescript": "2.11.0"
+    "gulp-typescript": "2.11.0",
+    "gulp-bundle-assets": "2.23.0"
   }
 }

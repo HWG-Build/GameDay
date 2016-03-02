@@ -14,7 +14,8 @@ var gulp = require("gulp"),
     uglify = require("gulp-uglifyjs"),
     util = require("gulp-util"),
     sass = require("gulp-sass"),
-    ts = require("gulp-typescript");
+    ts = require("gulp-typescript"),
+    bundler = require("gulp-bundle-assets");
 
 var paths = {
     webroot: "./"
@@ -85,4 +86,10 @@ gulp.task('typescript', function () {
 		    out: 'site.js'
 		}))
 		.pipe(gulp.dest(paths.js));
+});
+
+gulp.task('bundle', function () {
+    return gulp.src('./bundle.config.js')
+      .pipe(bundle())
+      .pipe(gulp.dest('./public'));
 });

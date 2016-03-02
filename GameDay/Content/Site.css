@@ -68,4 +68,5 @@ img {
 
 #map {
   height: 100%;
-  max-height: 44em; }
+  max-height: 40em;
+  margin-bottom: 2em; }

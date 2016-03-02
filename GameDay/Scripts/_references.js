@@ -1,4 +1,5 @@
 ﻿/// <autosync enabled="true" />
+/// <reference path="../bundle.config.js" />
 /// <reference path="../gulpfile.js" />
 /// <reference path="../lib/angular/angular.js" />
 /// <reference path="../lib/bootstrap/dist/js/bootstrap.js" />

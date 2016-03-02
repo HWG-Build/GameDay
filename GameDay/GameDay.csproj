@@ -1250,6 +1250,7 @@
     <Content Include="lib\bootstrap-tagsinput\dist\bootstrap-tagsinput.less" />
     <Content Include="lib\bootstrap-tagsinput\dist\bootstrap-tagsinput.min.js.map" />
     <Content Include="lib\bootstrap-tagsinput\dist\bootstrap-tagsinput.zip" />
+    <Content Include="bundle.config.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="lib\jquery\dist\jquery.js" />
     <Content Include="lib\jquery\dist\jquery.min.js" />

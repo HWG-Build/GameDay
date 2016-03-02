@@ -1,8 +1,24 @@
 var map;
-function showDetails(id, line1, line2, city, state, zip) {
+var Address = (function () {
+    function Address() {
+    }
+    return Address;
+})();
+function showDetails(id) {
+    $('#map').removeClass('hidden');
     var url = '/Event/Details/' + id;
-    $('#DetailsContainer').load(url);
-    getCoor(line1, line2, city, state, zip);
+    $.ajax({
+        type: "GET",
+        url: url,
+        data: null,
+        success: function (result) {
+            $('#DetailsContainer').html(result);
+            getCoor();
+        },
+        error: function (req, status, error) {
+            // do something with error   
+        }
+    });
 }
 ;
 $('.eventContainer').on('click', function () {
@@ -12,7 +28,7 @@ $('.eventContainer').on('click', function () {
 function loadEditScreen(id, line1, line2, city, state, zip) {
     var url = '/Event/Edit/' + id;
     $('#DetailsContainer').load(url);
-    getCoor(line1, line2, city, state, zip);
+    $('#map').addClass('hidden');
 }
 function initMap(latitude, longitude, zoom, exist) {
     var myLatlng = new google.maps.LatLng(parseFloat(latitude), parseFloat(longitude));
@@ -28,11 +44,11 @@ function initMap(latitude, longitude, zoom, exist) {
         });
     }
 }
-function getCoor(line1, line2, city, state, zip) {
-    var address = line1 + " " + line2 + ", " + city + ", " + state + " " + zip;
+function getCoor() {
+    console.log('hello');
+    var address = $('#addressElem').text();
     var coor = new google.maps.Geocoder();
     coor.geocode({ address: address }, function (results, status) {
-        console.log(results);
         if (status == google.maps.GeocoderStatus.OK) {
             var lat = results[0].geometry.location.lat();
             var lng = results[0].geometry.location.lng();
@@ -47,23 +63,7 @@ function getCoor(line1, line2, city, state, zip) {
                 map.fitBounds(results[0].geometry.viewport);
         }
         else {
-            alert('Geocode was not successful for the following reason: ' + status);
+            console.log('Geocode was not successful for the following reason: ' + status);
         }
     });
 }
-//sabio.page.loadGoogleMaps = function (lat, lng, zoom, exist) {
-//    var myLatlng = new google.maps.LatLng(parseFloat(lat), parseFloat(lng));
-//    var mapOptions = {
-//        center: myLatlng,
-//        zoom: parseInt(zoom)
-//    };
-//    sabio.page.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-//    if (exist == true) {
-//        var marker = new google.maps.Marker({
-//            map: sabio.page.map,
-//            position: myLatlng
-//        });
-//    }
-//}
-//D: \Workspaces\C07\Sabio.Web\Views\Address\AddressIndex.cshtml(151):                        sabio.page.loadGoogleMaps(viewModel.item.lat, viewModel.item.lng, 16, true);
-//# sourceMappingURL=site.js.map

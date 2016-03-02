@@ -20,27 +20,26 @@
                 <label>@Html.DisplayNameFor(model => model.AddressName):</label>
             </div>
         </div>
-        <div class="col-md-4 verticalLine">
-            <div class="detail-left-margin">
+        <div class="col-md-6 verticalLine">
+            <div class="detail-left-margin col-md-12">
                 <label id="DetailEventNameLabel">@Html.DisplayFor(model => model.Name)</label>
             </div>
-            <div class="detail-left-margin">
+            <div class="detail-left-margin col-md-12">
                 <label id="DetailGameTypeLabel">@Html.DisplayFor(model => model.Game)</label>
             </div>
-            <div class="detail-left-margin">
+            <div class="detail-left-margin col-md-12">
                 <label id="DetailEventDateLabel">@Html.DisplayFor(model => model.Date)</label>
             </div>
-            <div class="detail-left-margin">
+            <div class="detail-left-margin col-md-12">
                 <label id="DetailEventTimeLabel">@Html.DisplayFor(model => model.Time)</label>
             </div>
             <div class="detail-left-margin">
-                <label id="LocationLabel">@Html.DisplayFor(model => model.Location.Name)</label>
-                <address>
-                    @Html.DisplayFor(model => model.Location.Line1) @Html.DisplayFor(model => model.Location.Line2)<br>
-                    @Html.DisplayFor(model => model.Location.City), @Html.DisplayFor(model => model.Location.State) @Html.DisplayFor(model => model.Location.Zip)<br>
-                </address>
+                <label class="col-md-12" id="LocationLabel">@Html.DisplayFor(model => model.Location.Name)</label>
+                <label class="col-md-12" id="addressElem">
+                    @Html.DisplayFor(model => model.Location.Line1) @Html.DisplayFor(model => model.Location.Line2) <br/>
+                    @Html.DisplayFor(model => model.Location.City), @Html.DisplayFor(model => model.Location.State) @Html.DisplayFor(model => model.Location.Zip)
+                </label>
             </div>
-
         </div>
         <div class="form-group tagBox">
             <div class="col-md-12">
@@ -53,12 +52,7 @@
         </div>
         <div>
             <button type="button" class="btn btn-primary clearfix" id="editButton" 
-                    onclick="loadEditScreen(@Html.DisplayFor(model => model.ID),
-                    @Html.DisplayFor(model => model.Location.Line1), 
-                    @Html.DisplayFor(model => model.Location.Line2),
-                    @Html.DisplayFor(model => model.Location.City),
-                    @Html.DisplayFor(model => model.Location.State), 
-                    @Html.DisplayFor(model => model.Location.Zip));">Edit</button>
+                    onclick="loadEditScreen(@Model.ID);">Edit</button>
             @Html.ActionLink("Delete", "Delete", new {id = Model.ID}, new {@class = "btn btn-danger clearfix"})
         </div>
     </div>

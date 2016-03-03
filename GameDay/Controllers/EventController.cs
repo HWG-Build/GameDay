@@ -20,13 +20,13 @@ namespace GameDay.Controllers
 
         public EventController(IService<Event> game)
         {
-            //throw new NullReferenceException();
             this._gameservice = game;
         }
 
         AddressService _addressService = new AddressService();
 
         // GET: Event
+        //Load list of event with their addresses and the count of players attending the event
         [HttpGet]
         public ActionResult Index()
         {
@@ -37,15 +37,15 @@ namespace GameDay.Controllers
                 Name = x.Name,
                 Game = x.Game,
                 DateTime = x.DateTime,
-                Time = x.Time,
                 AddressName = _addressService.FindRecord(x.AddressId).Name,
-            });
+                PlayerCount = x.PlayersAttending != null ? x.PlayersAttending?.Split(',').ToList().Count() : 0
+        });
 
             return View(Constant.Partial.EventListPartial, events);
         }
 
         // GET: Event/Details/5
-        //[HandleError(ExceptionType = typeof(CustomException), View = "CustomError")]
+        //Get event record with players attending as a string(comma seperated for tagsinput)
         [HttpGet]
         public ActionResult Details(int? id)
         {
@@ -155,7 +155,7 @@ namespace GameDay.Controllers
             base.Dispose(disposing);
         }
 
-
+        //Map EventViewModel to Event
         public Event MapEvent(EventVM eventVM)
         {
             Event e = new Event();
@@ -163,11 +163,11 @@ namespace GameDay.Controllers
             e.Name = eventVM.Name;
             e.Game = eventVM.Game;
             e.DateTime = eventVM.DateTime;
-            e.Time = eventVM.Time;
             e.AddressId = eventVM.AddressId;
             return e;
         }
 
+        //Map Event to EventViewModel
         public EventVM MapEventVM(Event e)
         {
             EventVM eventVM = new EventVM();
@@ -175,7 +175,6 @@ namespace GameDay.Controllers
             eventVM.Name = e.Name;
             eventVM.Game = e.Game;
             eventVM.DateTime = e.DateTime;
-            eventVM.Time = e.Time;
             eventVM.AddressId = e.AddressId;
             return eventVM;
         }

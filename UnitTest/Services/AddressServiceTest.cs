@@ -18,6 +18,7 @@ namespace UnitTest.Services
         private List<Address> listAddress;
         private List<AddressVM> listAddressVM;
 
+        //Intialize the addressservice as a mock
         public AddressServiceTest()
         {
             _addressServiceMock = new Mock<IService<Address>>();
@@ -36,6 +37,7 @@ namespace UnitTest.Services
             };
         }
 
+        //test to make sure that we get all result when we invoke the getrecord method
         [Fact]
         public void Address_Get_All()
         {
@@ -53,6 +55,7 @@ namespace UnitTest.Services
             Assert.Equal("test3", result[2].Name);
         }
 
+        //Make sure that the create function in the address controller returns the correct view
         [Fact]
         public void Event_Create_Route()
         {
@@ -67,6 +70,7 @@ namespace UnitTest.Services
             Assert.Equal(Constant.Controller.Index, result.RouteValues[Constant.Controller.Action]);
         }
 
+        //test to make sure that the correct details are returned from the getdetails function
         [Fact]
         public void Event_Details()
         {
@@ -80,21 +84,5 @@ namespace UnitTest.Services
             //Assert
             Assert.Equal("test1", result.Name);
         }
-
-        //[Fact]
-        //public void Event_Edit_Route()
-        //{
-        //    //Arrange
-        //    int id = 1;
-        //    var addressVM = new AddressVM() { ID = 1, Name = "test1", Line1 = "1 street", City = "City1", State = (State)1, Zip = 91234 };
-
-        //    //Act
-        //    var result = (ViewResult)objController.Edit(id);
-
-        //    //Assert
-        //    _addressServiceMock.Verify(m => m.FindRecord(It.IsAny<Int32>()), Times.Once);
-        //    Assert.Equal(test1, result);
-        //}
-
     }
 }

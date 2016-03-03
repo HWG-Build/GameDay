@@ -24,15 +24,8 @@ namespace GameDay.Models
 
         [Required]
         [Display(Name = Constant.ViewModels.DateTime)]
-        //[StringLength(50)]
-        //[DisplayFormat(DataFormatString = "{0:yyyy-mm-dd hh:mm am}", ApplyFormatInEditMode = true)]
         public DateTime DateTime { get; set; }
 
-        [Required]
-        [StringLength(50)]
-        public string Time { get; set; }
-
-        
         [StringLength(50)]
         [Display(Name = Constant.ViewModels.Location)]
         public string AddressName { get; set; }
@@ -50,6 +43,8 @@ namespace GameDay.Models
         public string PlayersAttending { get; set; }
 
         public List<string> PlayerAttendingList { get; set; } 
+
+        public int? PlayerCount { get; set; }
 
         public List<AuditLog> Audit { get; set; } 
     }

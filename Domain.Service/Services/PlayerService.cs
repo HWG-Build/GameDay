@@ -50,6 +50,7 @@ namespace Domain.Layer.Services
             db.Dispose();
         }
 
+        //Tags input take a string
         public string GetAllPlayerAsString(int Id)
         {
             var players = db.Players;

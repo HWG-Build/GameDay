@@ -25,10 +25,6 @@ namespace Data.Layer.Models
         public DateTime DateTime { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string Time { get; set; }
-
-        [Required]
         public int AddressId { get; set; }
 
         public string PlayersAttending { get; set; }

@@ -1,9 +1,11 @@
 var map;
+//Address class which im not using
 var Address = (function () {
     function Address() {
     }
     return Address;
 })();
+//show details of the event clicked in the event list
 function showDetails(id) {
     $('#map').removeClass('hidden');
     var url = '/Event/Details/' + id;
@@ -15,45 +17,44 @@ function showDetails(id) {
             $('#DetailsContainer').html(result);
             getCoor();
         },
-        error: function (req, status, error) {
-            // do something with error   
-        }
     });
 }
 ;
+//Highlight the event click in the event list
 $('.eventContainer').on('click', function () {
     $('#EventListDiv>div .panel-primary').removeClass("panel-primary");
     $(this).addClass("panel-primary");
 });
+//load the edit screen of the event when the "edit" button is clicked
 function loadEditScreen(id, line1, line2, city, state, zip) {
     var url = '/Event/Edit/' + id;
     $('#DetailsContainer').load(url);
     $('#map').addClass('hidden');
 }
+//this function loads the google maps onto the page
 function initMap(latitude, longitude, zoom, exist) {
+    //assign lat and long to a google variable
     var myLatlng = new google.maps.LatLng(parseFloat(latitude), parseFloat(longitude));
+    //give the map the settings we want
     var mapOptions = {
         center: myLatlng,
         zoom: parseInt(zoom)
     };
+    //loads the map
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
-    if (exist == true) {
-        var marker = new google.maps.Marker({
-            map: map,
-            position: myLatlng
-        });
-    }
 }
+//get coordinates of the address passed to google
 function getCoor() {
-    console.log('hello');
     var address = $('#addressElem').text();
+    //initialize the function that gets the google coordinates
     var coor = new google.maps.Geocoder();
     coor.geocode({ address: address }, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
             var lat = results[0].geometry.location.lat();
             var lng = results[0].geometry.location.lng();
             initMap(lat, lng, 16, true);
-            map.setCenter(results[0].geometry.location); //center the map over the result
+            //center the map over the result
+            map.setCenter(results[0].geometry.location);
             //place a marker at the location
             var marker = new google.maps.Marker({
                 map: map,

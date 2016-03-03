@@ -61,6 +61,7 @@ namespace Domain.Layer.Services
             db.SaveChanges();
         }
 
+        //Gather the name of all address in string form
         public List<string> GetAddressNames()
         {
             return db.Locations.ToList().Select(x => x.Name).ToList();

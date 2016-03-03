@@ -11,7 +11,7 @@ namespace GameDay.Controllers
     [Authorize]
     public class AddressController : Controller
     {
-        
+        //Inject Address Service into the controller
         private readonly IService<Address> _addressservice;
         public AddressController(IService<Address> addressservice)
         {
@@ -19,6 +19,7 @@ namespace GameDay.Controllers
         }
 
         // GET: Address
+        //Getting a list of all addresses
         [HttpGet]
         public ActionResult Index()
         {
@@ -36,6 +37,7 @@ namespace GameDay.Controllers
         }
 
         // GET: Address/Details/5
+        //grabbing record and its audit logs
         [HttpGet]
         public ActionResult Details(int? id)
         {
@@ -96,8 +98,6 @@ namespace GameDay.Controllers
         }
 
         // POST: Address/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(AddressVM address)
@@ -148,6 +148,7 @@ namespace GameDay.Controllers
             base.Dispose(disposing);
         }
 
+        //Mapping Model to ModelViewModel without the use of AutoMapper
         private AddressVM MapModelVM(Address address)
         {
             AddressVM addressVM = new AddressVM
@@ -163,6 +164,7 @@ namespace GameDay.Controllers
             return addressVM;
         }
 
+        //Mapping ModelViewModel to Model without the use of AutoMapper
         private Address MapModel(AddressVM address)
         {
             Address a = new Address

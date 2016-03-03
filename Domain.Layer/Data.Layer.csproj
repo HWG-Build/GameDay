@@ -132,6 +132,10 @@
     <Compile Include="Migrations\201603022347196_ChangeDateTime.Designer.cs">
       <DependentUpon>201603022347196_ChangeDateTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603030425341_DeleteTime.cs" />
+    <Compile Include="Migrations\201603030425341_DeleteTime.Designer.cs">
+      <DependentUpon>201603030425341_DeleteTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Event.cs" />
@@ -170,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603022347196_ChangeDateTime.resx">
       <DependentUpon>201603022347196_ChangeDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603030425341_DeleteTime.resx">
+      <DependentUpon>201603030425341_DeleteTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

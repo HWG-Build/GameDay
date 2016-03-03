@@ -23,9 +23,10 @@ namespace GameDay.Models
         public GameType Game { get; set; }
 
         [Required]
-        [StringLength(50)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
-        public string Date { get; set; }
+        [Display(Name = Constant.ViewModels.DateTime)]
+        //[StringLength(50)]
+        //[DisplayFormat(DataFormatString = "{0:yyyy-mm-dd hh:mm am}", ApplyFormatInEditMode = true)]
+        public DateTime DateTime { get; set; }
 
         [Required]
         [StringLength(50)]

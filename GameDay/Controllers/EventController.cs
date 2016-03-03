@@ -36,7 +36,7 @@ namespace GameDay.Controllers
                 ID = x.ID,
                 Name = x.Name,
                 Game = x.Game,
-                Date = x.Date,
+                DateTime = x.DateTime,
                 Time = x.Time,
                 AddressName = _addressService.FindRecord(x.AddressId).Name,
             });
@@ -162,7 +162,7 @@ namespace GameDay.Controllers
             e.ID = eventVM.ID;
             e.Name = eventVM.Name;
             e.Game = eventVM.Game;
-            e.Date = eventVM.Date;
+            e.DateTime = eventVM.DateTime;
             e.Time = eventVM.Time;
             e.AddressId = eventVM.AddressId;
             return e;
@@ -174,7 +174,7 @@ namespace GameDay.Controllers
             eventVM.ID = e.ID;
             eventVM.Name = e.Name;
             eventVM.Game = e.Game;
-            eventVM.Date = e.Date;
+            eventVM.DateTime = e.DateTime;
             eventVM.Time = e.Time;
             eventVM.AddressId = e.AddressId;
             return eventVM;

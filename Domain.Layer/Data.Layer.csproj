@@ -128,6 +128,10 @@
     <Compile Include="Migrations\201602270102258_AddPlayerToEvent.Designer.cs">
       <DependentUpon>201602270102258_AddPlayerToEvent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603022347196_ChangeDateTime.cs" />
+    <Compile Include="Migrations\201603022347196_ChangeDateTime.Designer.cs">
+      <DependentUpon>201603022347196_ChangeDateTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Event.cs" />
@@ -163,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201602270102258_AddPlayerToEvent.resx">
       <DependentUpon>201602270102258_AddPlayerToEvent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603022347196_ChangeDateTime.resx">
+      <DependentUpon>201603022347196_ChangeDateTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

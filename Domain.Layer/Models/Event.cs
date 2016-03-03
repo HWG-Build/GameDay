@@ -21,8 +21,8 @@ namespace Data.Layer.Models
         public GameType Game { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string Date { get; set; }
+        //[StringLength(50)]
+        public DateTime DateTime { get; set; }
 
         [Required]
         [StringLength(50)]

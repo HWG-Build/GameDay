@@ -90,5 +90,10 @@ namespace Data.Layer
         {
             public const string GoogleMapsApiKey = "AIzaSyDqcAyGFqYiYHtuZw7IVmfnz70BTFw-SLk";
         }
+
+        public class EventExceptions
+        {
+            public const string Message = "Fields cannot be null";
+        }
     }
 }

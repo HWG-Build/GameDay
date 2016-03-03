@@ -50,13 +50,6 @@ namespace Domain.Layer.Services
             db.Dispose();
         }
 
-        //Tags input take a string
-        public string GetAllPlayerAsString(int Id)
-        {
-            var players = db.Players;
-            return Enumerable.Aggregate(players, "", (current, player) => current + (player.FullName + ","));
-        }
-
         public IQueryable<AuditLog> GetAuditLogs(int id)
         {
             return db.GetLogs<Player>(id);

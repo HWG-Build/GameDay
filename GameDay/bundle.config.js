@@ -5,7 +5,6 @@
                 "./Scripts/js/site.js"
             ],
             styles: [
-            //'./content/**/*.css',
             "./lib/bootstrap/dist/css/bootstrap.css",
             "./lib/bootstrap/dist/css/bootstrap-theme.css",
             "./lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.css",

@@ -115,7 +115,7 @@ namespace GameDay.Controllers
                 _gameservice.EditRecord(e);
                 return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
             }
-            throw new EventException("Fields cannot be null");
+            throw new EventException(Constant.EventExceptions.Message);
         }
 
         // GET: Event/Delete/5

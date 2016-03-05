@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
 using System.Web.Mvc;
+using AutoMapper;
 using Data.Layer.Interfaces;
 using Data.Layer.Models;
 using GameDay.Models;
@@ -31,17 +32,20 @@ namespace GameDay.Controllers
         public ActionResult Index()
         {
             var games = _gameservice.GetRecords();
-            var events = games.Select(x => new EventVM()
+            var eventListPartial = new EventListPartialVM()
             {
-                ID = x.ID,
-                Name = x.Name,
-                Game = x.Game,
-                DateTime = x.DateTime,
-                AddressName = _addressService.FindRecord(x.AddressId).Name,
-                PlayerCount = x.PlayersAttending != null ? x.PlayersAttending?.Split(',').ToList().Count() : 0
-        });
+                Events = games.Select(x => new EventListPartialVM.EventBucket()
+                {
+                    ID = x.ID,
+                    Name = x.Name,
+                    Game = x.Game,
+                    DateTime = x.DateTime,
+                    AddressName = _addressService.FindRecord(x.AddressId).Name,
+                    PlayerCount = x.PlayersAttending != null ? x.PlayersAttending?.Split(',').ToList().Count() : 0
+                })
+            };
 
-            return View(Constant.Partial.EventListPartial, events);
+            return View(Constant.Partial.EventListPartial, eventListPartial);
         }
 
         // GET: Event/Details/5
@@ -61,12 +65,20 @@ namespace GameDay.Controllers
                 return HttpNotFound();
             }
 
-            EventVM eventVM = MapEventVM(@event);
-            eventVM.Location = _addressService.FindRecord(@event.AddressId);
-            eventVM.Audit = _gameservice.GetAuditLogs(@event.ID).ToList();
-            eventVM.PlayersAttending = @event.PlayersAttending;
-            eventVM.PlayerAttendingList = @event.PlayersAttending?.Split(',').ToList() ?? new List<string>();
-            return View(Constant.Partial.EventDetailPartial, eventVM);
+            EventDetailsPartialVM eventDetailsPartialVM = new EventDetailsPartialVM()
+            {
+                ID = @event.ID,
+                Name = @event.Name,
+                Game = @event.Game,
+                DateTime = @event.DateTime,
+                Location = _addressService.FindRecord(@event.AddressId),
+                Audit = _gameservice.GetAuditLogs(@event.ID).ToList(),
+                PlayersAttending = @event.PlayersAttending,
+                PlayerAttendingList = @event.PlayersAttending?.Split(',').ToList() ?? new List<string>()
+            };
+            
+            return View(Constant.Partial.EventDetailPartial, eventDetailsPartialVM);
+
         }
 
         // POST: Event/Create
@@ -76,7 +88,13 @@ namespace GameDay.Controllers
         {
             if (ModelState.IsValid)
             {
-                Event e = MapEvent(@event);
+                Event e = new Event()
+                {
+                    Name = @event.Name,
+                    Game = @event.Game,
+                    DateTime = @event.DateTime,
+                    AddressId = @event.AddressId
+                };
                 _gameservice.AddRecord(e);
                 return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
             }
@@ -96,22 +114,36 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            EventVM eventVM = MapEventVM(@event);
-            eventVM.Location = _addressService.FindRecord(@event.AddressId);
-            eventVM.Addresses = _addressService.GetRecords();
-            eventVM.PlayersAttending = @event.PlayersAttending;
-            return View(Constant.Partial.EditDetailPartial, eventVM);
+            EditDetailsPartialVM editDetailsPartialVM = new EditDetailsPartialVM()
+            {
+                ID = @event.ID,
+                Name = @event.Name,
+                Game = @event.Game,
+                DateTime = @event.DateTime,
+                AddressId = @event.AddressId,
+                Addresses = _addressService.GetRecords(),
+                PlayersAttending = @event.PlayersAttending
+            };
+
+            return View(Constant.Partial.EditDetailPartial, editDetailsPartialVM);
         }
 
         // POST: Event/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(EventVM @event)
+        public ActionResult Edit(EditDetailsPartialVM editDetailsPartialVM)
         {
             if (ModelState.IsValid)
             {
-                Event e = MapEvent(@event);
-                e.PlayersAttending = @event.PlayersAttending;
+                Event e = new Event()
+                {
+                    ID = editDetailsPartialVM.ID,
+                    Name = editDetailsPartialVM.Name,
+                    Game = editDetailsPartialVM.Game,
+                    DateTime = editDetailsPartialVM.DateTime,
+                    AddressId = editDetailsPartialVM.AddressId,
+                    PlayersAttending = editDetailsPartialVM.PlayersAttending
+                };
                 _gameservice.EditRecord(e);
                 return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
             }
@@ -131,9 +163,15 @@ namespace GameDay.Controllers
             {
                 return HttpNotFound();
             }
-            EventVM eventVM = MapEventVM(@event);
-            eventVM.Location = _addressService.FindRecord(@event.AddressId);
-            return View(eventVM);
+            EventDeleteVM eventDeleteVM = new EventDeleteVM()
+            {
+                ID = @event.ID,
+                Name = @event.Name,
+                Game = @event.Game,
+                DateTime = @event.DateTime,
+                Location = _addressService.FindRecord(@event.AddressId)
+            };
+            return View(eventDeleteVM);
         }
 
         // POST: Event/Delete/5
@@ -156,28 +194,5 @@ namespace GameDay.Controllers
         }
 
         //Map EventViewModel to Event
-        public Event MapEvent(EventVM eventVM)
-        {
-            Event e = new Event();
-            e.ID = eventVM.ID;
-            e.Name = eventVM.Name;
-            e.Game = eventVM.Game;
-            e.DateTime = eventVM.DateTime;
-            e.AddressId = eventVM.AddressId;
-            return e;
-        }
-
-        //Map Event to EventViewModel
-        public EventVM MapEventVM(Event e)
-        {
-            EventVM eventVM = new EventVM();
-            eventVM.ID = e.ID;
-            eventVM.Name = e.Name;
-            eventVM.Game = e.Game;
-            eventVM.DateTime = e.DateTime;
-            eventVM.AddressId = e.AddressId;
-            return eventVM;
-        }
-
     }
 }

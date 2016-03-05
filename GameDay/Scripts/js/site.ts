@@ -33,7 +33,7 @@ $('.eventContainer').on('click', function () {
 });
 
 //load the edit screen of the event when the "edit" button is clicked
-function loadEditScreen(id: number, line1: string, line2: string, city: string, state: string, zip: number) {
+function loadEditScreen(id: number) {
     var url = '/Event/Edit/' + id;
     $('#DetailsContainer').load(url);
     $('#map').addClass('hidden');

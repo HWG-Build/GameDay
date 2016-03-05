@@ -50,6 +50,10 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework.MappingAPI, Version=6.1.0.9, Culture=neutral, PublicKeyToken=7ee2e825d201459e, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.MappingAPI.6.1.0.9\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
       <Private>True</Private>
@@ -236,6 +240,10 @@
     <Compile Include="Hubs\GameDayHub.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddressVM.cs" />
+    <Compile Include="Models\EditDetailsPartialVM.cs" />
+    <Compile Include="Models\EventDeleteVM.cs" />
+    <Compile Include="Models\EventDetailsPartialVM.cs" />
+    <Compile Include="Models\EventListPartialVM.cs" />
     <Compile Include="Models\EventVM.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PlayerVM.cs" />
@@ -1251,7 +1259,8 @@
     <Content Include="lib\bootstrap-tagsinput\dist\bootstrap-tagsinput.min.js.map" />
     <Content Include="lib\bootstrap-tagsinput\dist\bootstrap-tagsinput.zip" />
     <Content Include="bundle.config.js" />
-    <Content Include="public\main-f9b3001dbc.js" />
+    <Content Include="public\main-c90f621841.js" />
+    <Content Include="public\main-ce349f6680.css" />
     <Content Include="public\maps\main-ce349f6680.css.map" />
     <Content Include="public\maps\vendor-1187800ef2.js.map" />
     <Content Include="bundle.result.json" />
@@ -1356,7 +1365,6 @@
     <Content Include="public\content\Images\Poker%27.png" />
     <Content Include="public\content\Images\Soccer%27.png" />
     <Content Include="public\content\Images\SportBackground.jpg" />
-    <Content Include="public\main-ce349f6680.css" />
     <Content Include="public\vendor-1187800ef2.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />

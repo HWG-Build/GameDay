@@ -26,7 +26,7 @@ $('.eventContainer').on('click', function () {
     $(this).addClass("panel-primary");
 });
 //load the edit screen of the event when the "edit" button is clicked
-function loadEditScreen(id, line1, line2, city, state, zip) {
+function loadEditScreen(id) {
     var url = '/Event/Edit/' + id;
     $('#DetailsContainer').load(url);
     $('#map').addClass('hidden');

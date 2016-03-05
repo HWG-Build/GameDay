@@ -1,4 +1,7 @@
-﻿using Microsoft.Owin;
+﻿using AutoMapper;
+using Data.Layer.Models;
+using GameDay.Models;
+using Microsoft.Owin;
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(GameDay.Startup))]

@@ -1,13 +1,13 @@
-﻿@model IEnumerable<GameDay.Models.EventVM>
+﻿@model GameDay.Models.EventListPartialVM
 
 @Html.AntiForgeryToken()
-@if (!Model.Any())
+@if (!Model.Events.Any())
 {
     <h4 class="grayFont leftMargin">There are no events</h4>
 }
 else
 {
-    foreach (var item in Model)
+    foreach (var item in Model.Events)
     {
         <div class="panel panel-body panel-default eventContainer col-lg-12" onclick="showDetails(@Html.DisplayFor(modelItem =>item.ID))">
             <div class="col-md-2 pull-left">
@@ -15,15 +15,15 @@ else
             </div>
             <div class="col-md-10 verticalLine">
                 <div class="row" style="margin-top: .7em;">
-                    <label class="col-md-2">@Html.DisplayNameFor(model => model.Name):</label>
+                    <label class="col-md-2">@Html.DisplayNameFor(model => model.EventSingle.Name):</label>
                     <p class="col-md-4">@Html.DisplayFor(modelItem => item.Name)</p>
-                    <label class="col-md-2">@Html.DisplayNameFor(model => model.AddressName):</label>
+                    <label class="col-md-2">@Html.DisplayNameFor(model => model.EventSingle.AddressName):</label>
                     <p class="col-md-4">@Html.DisplayFor(modelItem => item.AddressName)</p>
                 </div>
                 <div class="row">
-                    <label class="col-md-2">@Html.DisplayNameFor(model => model.DateTime):</label>
+                    <label class="col-md-2">@Html.DisplayNameFor(model => model.EventSingle.DateTime):</label>
                     <p class="col-md-4">@Html.DisplayFor(modelItem => item.DateTime)</p>
-                    <label class="col-md-2">Players:</label>
+                    <label class="col-md-2">@Html.DisplayNameFor(model => model.EventSingle.PlayerCount):</label>
                     <p class="col-md-4">@Html.DisplayFor(modelItem => item.PlayerCount)</p>
                 </div>
             </div>

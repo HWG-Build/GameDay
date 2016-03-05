@@ -76,6 +76,7 @@ namespace Data.Layer
             public const string Name = "Name";
             public const string ConfirmPassword = "Confirm password";
             public const string DateTime = "Date/Time";
+            public const string PlayerCount = "Players:";
         }
 
         public class Model

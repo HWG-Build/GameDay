@@ -11,8 +11,8 @@ namespace GameDay.Controllers
         {
             AddressService _addressService = new AddressService();
 
-            EventVM eventVM = new EventVM();
-            eventVM.Addresses = _addressService.GetRecords();
+            EventVM eventVM = new EventVM(){
+                Addresses = _addressService.GetRecords()};
 
             return View(eventVM);
         }

@@ -1,4 +1,4 @@
-﻿@model GameDay.Models.EventVM
+﻿@model GameDay.Models.EventDeleteVM
 
 <div class="container">
     <h2>Delete</h2>
@@ -16,10 +16,7 @@
                     @Html.DisplayNameFor(model => model.Game):
                 </div>
                 <div style="margin-bottom:.3em">
-                    @Html.DisplayNameFor(model => model.Date):
-                </div>
-                <div style="margin-bottom:.3em">
-                    @Html.DisplayNameFor(model => model.Time):
+                    @Html.DisplayNameFor(model => model.DateTime):
                 </div>
                 <div style="margin-bottom:.3em">
                     @Html.DisplayNameFor(model => model.Location):
@@ -34,10 +31,7 @@
                 <label>@Html.DisplayFor(model => model.Game)</label>
             </div>
             <div>
-                <label>@Html.DisplayFor(model => model.Date)</label>
-            </div>
-            <div>
-                <label>@Html.DisplayFor(model => model.Time)</label>
+                <label>@Html.DisplayFor(model => model.DateTime)</label>
             </div>
             <div>
                 <label id="LocationLabel">@Html.DisplayFor(model => model.Location.Name)</label>
@@ -57,5 +51,4 @@
             @Html.ActionLink("Back to List", "Index", "Home", null, new { @class = "btn-warning btn" })
         </div>
     }
-</div>
 </div>

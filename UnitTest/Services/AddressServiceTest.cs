@@ -37,9 +37,9 @@ namespace UnitTest.Services
             };
         }
 
-        //test to make sure that we get all result when we invoke the getrecord method
+        //test to make sure that we get the count and all results when we invoke the getrecord method
         [Fact]
-        public void Address_Get_All()
+        public void Get_All_Addresses_From_GetRecord_Test()
         {
             // Arrange
             _addressServiceMock.Setup(x => x.GetRecords()).Returns(listAddress);
@@ -57,7 +57,7 @@ namespace UnitTest.Services
 
         //Make sure that the create function in the address controller returns the correct view
         [Fact]
-        public void Event_Create_Route()
+        public void Verify_Correct_Route_When_Calling_Create()
         {
             //Arrange
             var addressVM = new AddressVM() { ID = 1, Name = "test1", Line1 = "1 street", City = "City1", State = (State)1, Zip = 91234 };
@@ -72,7 +72,7 @@ namespace UnitTest.Services
 
         //test to make sure that the correct details are returned from the getdetails function
         [Fact]
-        public void Event_Details()
+        public void Get_Correct_Values_From_GetRecord()
         {
             //Arrange
             var address = new Address() { ID = 1, Name = "test1", Line1 = "1 street", City = "City1", State = (State)1, Zip = 91234 };

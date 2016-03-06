@@ -239,6 +239,7 @@
     </Compile>
     <Compile Include="Hubs\GameDayHub.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AddressListVM.cs" />
     <Compile Include="Models\AddressVM.cs" />
     <Compile Include="Models\EditDetailsPartialVM.cs" />
     <Compile Include="Models\EventDeleteVM.cs" />

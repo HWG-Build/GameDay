@@ -55,7 +55,6 @@ function showDetails(id: number) {
 //details page and updates the event list page all without refreshing the page
 $('#editDetailForm').submit(function(e) {
     e.preventDefault();
-    
     var inputs = $('#editDetailForm :input');
     var values = {};
     inputs.each(function () {

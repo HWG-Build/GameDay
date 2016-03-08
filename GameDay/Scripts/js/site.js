@@ -120,4 +120,3 @@ function getCoor() {
     });
 }
 //----------------------------Google Maps End---------------------------------//
-//# sourceMappingURL=site.js.map

@@ -4,7 +4,7 @@ var Address = (function () {
     }
     return Address;
 })();
-$('#createButton').submit(function (e) {
+$('#createForm').submit(function (e) {
     e.preventDefault();
     var inputs = $('#createForm :input');
     var values = {};
@@ -24,8 +24,13 @@ $('#createButton').submit(function (e) {
         },
         success: function (result) {
             $('#EventListDiv').load('/Event/Index');
+            $('#EventNameTextBox').val('').focus();
+            $('#EventGameDropDown').val(0);
+            $('#EventDateTime').val('');
+            $('#AddressDropDown').val(0);
         }
     });
+    $(this).unbind();
 });
 //show details of the event clicked in the event list
 function showDetails(id) {

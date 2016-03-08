@@ -1,7 +1,7 @@
 ﻿@model GameDay.Models.EditDetailsPartialVM
 
     @Html.HiddenFor(model => model.ID)
-    <form class="form-horizontal" id="editDetailForm" action="#" method="post">
+    <form class="form-horizontal" id="editDetailForm">
     
             <div id="detail-form">
                 <div class="col-md-2">
@@ -37,7 +37,7 @@
                 </div>
                 <div class="form-group tagBox">
                     <div class="col-md-12">
-                        <label for="playerBox">Attending:</label><br/>
+                        <label>Attending:</label><br/>
                         @Html.EditorFor(model => model.PlayersAttending, new {htmlAttributes = new {data_role = "tagsinput", @class = "form-control tagsInputField"}})<br/>
                         &nbsp;*To add another player, enter name and press ","                    
                     </div>

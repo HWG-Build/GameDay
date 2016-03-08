@@ -11,7 +11,7 @@ class Address {
     zip: number;
 }
 
-$('#createButton').submit(function (e) {
+$('#createForm').submit(function (e) {
     e.preventDefault();
     var inputs = $('#createForm :input');
     var values = {};
@@ -29,10 +29,15 @@ $('#createButton').submit(function (e) {
             DateTime: values['DateTime'],
             AddressId: values['AddressId']
         },
-        success: function (result) {
+        success(result) {
             $('#EventListDiv').load('/Event/Index');
+            $('#EventNameTextBox').val('').focus();
+            $('#EventGameDropDown').val(0);
+            $('#EventDateTime').val('');
+            $('#AddressDropDown').val(0);
         }
     });
+    $(this).unbind();
 });
 
 //show details of the event clicked in the event list
@@ -43,7 +48,7 @@ function showDetails(id: number) {
         type: "GET",
         url: url,
         data: null,
-        success: function (result) {
+        success(result) {
             $('#DetailsContainer').html(result);
             getCoor();
         },
@@ -53,7 +58,7 @@ function showDetails(id: number) {
 
 //The save button on the edit screen saves the information, while reloading the updated 
 //details page and updates the event list page all without refreshing the page
-$('#editDetailForm').submit(function(e) {
+$('#editDetailForm').submit(e => {
     e.preventDefault();
     var inputs = $('#editDetailForm :input');
     var values = {};
@@ -73,7 +78,7 @@ $('#editDetailForm').submit(function(e) {
             AddressId: values['AddressId'],
             PlayersAttending: values['PlayersAttending']
         },
-        success: function(result) {
+        success(result) {
             showDetails(values['ID']);
             $('#EventListDiv').load('/Event/Index');
         }
@@ -115,7 +120,7 @@ function getCoor() {
     var address = $('#addressElem').text();
     //initialize the function that gets the google coordinates
     var coor = new google.maps.Geocoder();
-    coor.geocode({ address: address }, function (results, status:string) {
+    coor.geocode({ address: address }, (results, status:string) => {
         if (status == google.maps.GeocoderStatus.OK) {
             var lat = results[0].geometry.location.lat();
             var lng = results[0].geometry.location.lng();
@@ -124,10 +129,10 @@ function getCoor() {
             map.setCenter(results[0].geometry.location);
             //place a marker at the location
             var marker = new google.maps.Marker(
-                {
-                    map: map,
-                    position: results[0].geometry.location
-                });
+            {
+                map: map,
+                position: results[0].geometry.location
+            });
             if (results[0].geometry.viewport)
                 map.fitBounds(results[0].geometry.viewport);
         } else {

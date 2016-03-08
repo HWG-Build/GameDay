@@ -9,7 +9,7 @@
   color: #928c8c; }
 
 body {
-  overflow-y: hidden;
+  overflow-y: auto;
   height: 100%; }
 
 html {
@@ -57,11 +57,10 @@ img {
   font-weight: 700;
   color: black; }
 
-.tagsInputField {
-  width: 20em; }
-
 .tagBox {
   margin-bottom: 3em; }
+  .tagBox .tagsInputField {
+    width: 20em; }
 
 .blackFont {
   color: black; }
@@ -71,7 +70,9 @@ img {
   max-height: 40em;
   margin-bottom: 2em; }
 
-/*background-color: #99CCFF;
-                    border: thick solid #808080;
-                    padding: 20px;
-                    margin: 20px;*/
+.chatContainer {
+  height: 100%;
+  margin-top: 2em; }
+  .chatContainer .bodyContainer {
+    height: 525px;
+    margin-left: -2em; }

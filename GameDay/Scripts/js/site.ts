@@ -1,6 +1,6 @@
 ﻿declare var $: any;
 declare var google: any;
-var map;
+declare var map: any;
 
 //Address class which im not using
 class Address {
@@ -26,6 +26,25 @@ function showDetails(id: number) {
     });
 };
 
+$('Form').submit(function(e) {
+    e.preventDefault();
+    
+    var inputs = $('#editDetailForm :input');
+    var values = {};
+    inputs.each(function () {
+        values[this.name] = $(this).val();
+    });
+    var url = '/Event/Edit/' + values['ID'];
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: values,
+        success: function(result) {
+            showDetails(values['ID']);
+        }
+    });
+});
+
 //Highlight the event click in the event list
 $('.eventContainer').on('click', function () {
     $('#EventListDiv>div .panel-primary').removeClass("panel-primary");
@@ -39,14 +58,17 @@ function loadEditScreen(id: number) {
     $('#map').addClass('hidden');
 }
 
+
+//----------------------------Google Maps---------------------------------//
+
 //this function loads the google maps onto the page
-function initMap(latitude, longitude, zoom, exist) {
+function initMap(latitude: string, longitude: string, zoom: number, exist:boolean) {
 //assign lat and long to a google variable
     var myLatlng = new google.maps.LatLng(parseFloat(latitude), parseFloat(longitude));
     //give the map the settings we want
     var mapOptions = {
         center: myLatlng,
-        zoom: parseInt(zoom)
+        zoom: zoom
     };
     //loads the map
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
@@ -58,7 +80,7 @@ function getCoor() {
     var address = $('#addressElem').text();
     //initialize the function that gets the google coordinates
     var coor = new google.maps.Geocoder();
-    coor.geocode({ address: address }, function (results, status) {
+    coor.geocode({ address: address }, function (results, status:string) {
         if (status == google.maps.GeocoderStatus.OK) {
             var lat = results[0].geometry.location.lat();
             var lng = results[0].geometry.location.lng();
@@ -79,3 +101,10 @@ function getCoor() {
     });
     
 }
+
+//----------------------------Google Maps End---------------------------------//
+
+
+
+
+

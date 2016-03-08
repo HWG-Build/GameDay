@@ -10,6 +10,7 @@ namespace Data.Layer.Models
     [TrackChanges]
     public class Event
     {
+        [Key]
         [Required]
         public int ID { get; set; }
 

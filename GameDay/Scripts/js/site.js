@@ -1,4 +1,3 @@
-var map;
 //Address class which im not using
 var Address = (function () {
     function Address() {
@@ -20,6 +19,23 @@ function showDetails(id) {
     });
 }
 ;
+$('Form').submit(function (e) {
+    e.preventDefault();
+    var inputs = $('#editDetailForm :input');
+    var values = {};
+    inputs.each(function () {
+        values[this.name] = $(this).val();
+    });
+    var url = '/Event/Edit/' + values['ID'];
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: values,
+        success: function (result) {
+            showDetails(values['ID']);
+        }
+    });
+});
 //Highlight the event click in the event list
 $('.eventContainer').on('click', function () {
     $('#EventListDiv>div .panel-primary').removeClass("panel-primary");
@@ -31,6 +47,7 @@ function loadEditScreen(id) {
     $('#DetailsContainer').load(url);
     $('#map').addClass('hidden');
 }
+//----------------------------Google Maps---------------------------------//
 //this function loads the google maps onto the page
 function initMap(latitude, longitude, zoom, exist) {
     //assign lat and long to a google variable
@@ -38,7 +55,7 @@ function initMap(latitude, longitude, zoom, exist) {
     //give the map the settings we want
     var mapOptions = {
         center: myLatlng,
-        zoom: parseInt(zoom)
+        zoom: zoom
     };
     //loads the map
     map = new google.maps.Map(document.getElementById('map'), mapOptions);
@@ -68,4 +85,4 @@ function getCoor() {
         }
     });
 }
-//# sourceMappingURL=site.js.map
+//----------------------------Google Maps End---------------------------------//

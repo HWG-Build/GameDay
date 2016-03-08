@@ -1,4 +1,5 @@
-﻿@model GameDay.Models.AddressVM
+﻿@using Antlr.Runtime.Tree
+@model GameDay.Models.AddressVM
 
 <div class="container container-fluid">
     <h2>Create</h2>
@@ -70,7 +71,7 @@
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Index")
+        @Html.ActionLink(Constant.Controller.BackToListButtonTitle, Constant.Controller.Index, null, new { @class = "btn btn-primary" })
     </div>
 </div>
 <script src="~/lib/jquery.validation/dist/jquery.validate.js"></script>

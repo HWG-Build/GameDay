@@ -8,7 +8,7 @@
             "./lib/bootstrap/dist/css/bootstrap.css",
             "./lib/bootstrap/dist/css/bootstrap-theme.css",
             "./lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.css",
-            "./Content/site.css"
+            //"./Content/site.css"
             ]
         },
         vendor: {

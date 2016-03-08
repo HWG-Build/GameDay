@@ -1,38 +1,41 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lets Get A Game Going!</title>
-    <link rel="stylesheet" type="text/css" href="~/public/main-ce349f6680.css"/>
+    <link rel="stylesheet" type="text/css" href="~/public/main-2d5bb3e9c5.css"/>
+    <link rel="stylesheet" type="text/css" href="~/Content/site.css" />
 </head>
 <body>
-    <div class="navbar navbar-fixed-top NavbarBackgroup">
-        <div>
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("GameDay", "Index", "Home", new { area = "" }, new { @class = "navbar-brand blackFont"})
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    @Html.ActionLink("Location", "Index" , "Address", new { area = "" }, new { @class = "navbar-brand blackFont"})
-                    @*<li>@Html.ActionLink("Player", "Index", "Player")</li>*@
-                </ul>
-                <div style="margin-right: 1em;">
-                    @Html.Partial("_LoginPartial")
-                </div>
+<div class="navbar navbar-fixed-top NavbarBackgroup">
+    <div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @Html.ActionLink(Constant.Title, Constant.Controller.Index, Constant.Controller.Home, new {area = ""}, new {@class = "navbar-brand blackFont"})
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                @Html.ActionLink(Constant.ViewModels.Location, Constant.Controller.Index, Constant.Controller.Address, new {area = ""}, new {@class = "navbar-brand blackFont"})
+                @*<li>@Html.ActionLink("Player", "Index", "Player")</li>*@
+            </ul>
+            <div style="margin-right: 1em;">
+                @Html.Partial(Constant.Partial.LoginPartial)
             </div>
         </div>
     </div>
-    <div class="body-content">
-        @RenderBody()
-    </div>
+</div>
+<div class="body-content">
+    @RenderBody()
+</div>
 </body>
 </html>
 <script src="~/public/vendor-1187800ef2.js"></script>
 <script src="~/signalr/hubs"></script>
-<script src="~/public/main-c90f621841.js"></script>
+<script src="~/Scripts/js/site.js"></script>
+
+@*<script src="~/public/main-e60d58aa44.js"></script>*@

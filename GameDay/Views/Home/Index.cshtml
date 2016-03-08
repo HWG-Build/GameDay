@@ -1,50 +1,55 @@
 ﻿@model GameDay.Models.EventVM
 <div class="container-fluid">
-    @using (Html.BeginForm("Create", "Event"))
-    {
-        @Html.AntiForgeryToken()
-        <div class="col-xs-3 col-md-2 col-lg-2 transparent">
+    <div class="col-xs-3 col-md-2 col-lg-2 transparent">
+        @using (Html.BeginForm(Constant.Controller.Create, Constant.Controller.Event))
+        {
+            @Html.AntiForgeryToken()
+
             <h5 class="titleFont">Create</h5>
             <hr />
             <div class="form-group">
                 @Html.LabelFor(model => model.Name)
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.Game)
-                @Html.EnumDropDownListFor(model => model.Game, htmlAttributes: new { @class = "form-control"})
+                @Html.EnumDropDownListFor(model => model.Game, htmlAttributes: new { @class = "form-control" })
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.DateTime)
-                @Html.EditorFor(model => model.DateTime, new { htmlAttributes = new { @type = "datetime-local", @class = "form-control"} })
+                @Html.EditorFor(model => model.DateTime, new { htmlAttributes = new { @type = "datetime-local", @class = "form-control" } })
             </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.AddressId)
                 @Html.DropDownListFor(model => model.AddressId, Model.AddressList, htmlAttributes: new { @class = "form-control" })
             </div>
-            <input type="submit" value="Create" class="btn btn-primary" />
-        </div>
-    }
+            <input type="submit" value="Create" class="btn btn-primary"/>
+            <div id="chatRoom">
+                @{
+                    Html.RenderPartial(Constant.Partial.ChatRoomPartial);
+                }
+            </div>
+        }
+    </div>
     <div class="col-xs-6 col-md-4 col-lg-5">
         <h5 class="titleFont">Events</h5>
         <hr />
         <div class="Scrollable" id="EventListDiv">
             @{
-                Html.RenderAction("Index", "Event");
+                Html.RenderAction(Constant.Controller.Index, Constant.Controller.Event);
             }
         </div>
     </div>
     <div class="col-xs-8 col-sm-5 col-md-5 col-lg-5 transparent DetailsContainer">
         <h5 class="titleFont">Details</h5>
-        <hr/>
+        <hr />
         <div id="map"></div>
         <div id="DetailsContainer">
         </div>
-        
     </div>
 </div>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqcAyGFqYiYHtuZw7IVmfnz70BTFw-SLk"
-        async defer></script>   
+        async defer></script>
 
 
 

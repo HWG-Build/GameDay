@@ -112,7 +112,7 @@
         </div>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn btn-primary" })
-        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success" })
+        @Html.ActionLink(Constant.Controller.Edit, Constant.Controller.Edit, new { id = Model.ID }, new { @class = "btn btn-success" }) | 
+        @Html.ActionLink(Constant.Controller.BackToListButtonTitle, Constant.Controller.Index, null, new { @class = "btn btn-primary" })
     </p>
 </div>

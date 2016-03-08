@@ -237,7 +237,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Hubs\GameDayHub.cs" />
+    <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddressVM.cs" />
     <Compile Include="Models\EditDetailsPartialVM.cs" />
@@ -1259,8 +1259,7 @@
     <Content Include="lib\bootstrap-tagsinput\dist\bootstrap-tagsinput.min.js.map" />
     <Content Include="lib\bootstrap-tagsinput\dist\bootstrap-tagsinput.zip" />
     <Content Include="bundle.config.js" />
-    <Content Include="public\main-c90f621841.js" />
-    <Content Include="public\main-ce349f6680.css" />
+    <Content Include="public\main-2d5bb3e9c5.css" />
     <Content Include="public\maps\main-ce349f6680.css.map" />
     <Content Include="public\maps\vendor-1187800ef2.js.map" />
     <Content Include="bundle.result.json" />
@@ -1370,6 +1369,7 @@
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <Content Include="Scripts\jquery.signalR-2.1.2.js" />
     <Content Include="Scripts\jquery.signalR-2.1.2.min.js" />
+    <Content Include="Scripts\js\ChatRoom.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\js\site.js" />
     <Content Include="Views\Event\Delete.cshtml" />
@@ -1424,6 +1424,7 @@
     <Content Include="Views\Event\Create.cshtml" />
     <Content Include="Views\Shared\_EventDetailPartial.cshtml" />
     <Content Include="Views\Shared\_EditDetailPartial.cshtml" />
+    <Content Include="Views\Shared\_ChatRoomPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1437,6 +1438,7 @@
     <None Include="Scripts\_references.js" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="Scripts\js\chatroom.ts" />
     <TypeScriptCompile Include="Scripts\js\site.ts" />
   </ItemGroup>
   <ItemGroup>

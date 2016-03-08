@@ -47,7 +47,7 @@
         <div>
             <button type="button" class="btn btn-primary clearfix" id="editButton" 
                     onclick="loadEditScreen(@Model.ID);">Edit</button>
-            @Html.ActionLink("Delete", "Delete", new {id = Model.ID }, new {@class = "btn btn-danger clearfix"})
+            @Html.ActionLink(Constant.Controller.Delete, Constant.Controller.Delete, new {id = Model.ID }, new {@class = "btn btn-danger clearfix"})
         </div>
     </div>
 </div>

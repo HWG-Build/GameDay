@@ -23,6 +23,8 @@ namespace Data.Layer
             public const string EventListPartial = "_EventListPartial";
             public const string EventDetailPartial = "_EventDetailPartial";
             public const string EditDetailPartial = "_EditDetailPartial";
+            public const string LoginPartial = "_LoginPartial";
+            public const string ChatRoomPartial = "_ChatRoomPartial";
         }
 
         public class StartAuth
@@ -48,6 +50,11 @@ namespace Data.Layer
             public const string Action = "Action";
             public const string Account = "Account";
             public const string Login = "Login";
+            public const string Address = "Address";
+            public const string Event = "Event";
+            public const string CancelButtonTitle = "Cancel";
+            public const string BackToListButtonTitle = "Back to List";
+            public const string CreateNewButtonTitle = "Create New";
             public const string ManageLogin = "ManageLogins";
             public const string Manage = "Manage";
             public const string VerifyPhoneNumber = "VerifyPhoneNumber";

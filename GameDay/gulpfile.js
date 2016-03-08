@@ -29,7 +29,8 @@ paths.concatJsDest = paths.webroot + "Public/*.js";
 paths.concatCssDest = paths.webroot + "Public/*.css";
 paths.concatJsMapDest = paths.webroot + "Scripts/js/site.min.js.map";
 paths.sass = paths.webroot + "Content/*.scss";
-paths.typescript = paths.webroot + "Scripts/js/*.ts";
+paths.typescript = paths.webroot + "Scripts/js/site.ts";
+paths.typescriptChatRoom = paths.webroot + "Scripts/js/chatroom.ts";
 
 
 gulp.task("clean:js", function (cb) {
@@ -77,6 +78,7 @@ gulp.task('styles', function () {
 gulp.task('watch', function () {
     gulp.watch(paths.sass, ['styles']);
     gulp.watch(paths.typescript, ['typescript']);
+    gulp.watch(paths.typescriptChatRoom, ['typescriptChatRoom']);
 });
 
 gulp.task('typescript', function () {
@@ -84,6 +86,15 @@ gulp.task('typescript', function () {
 		.pipe(ts({
 		    noImplicitAny: true,
 		    out: 'site.js'
+		}))
+		.pipe(gulp.dest(paths.js));
+});
+
+gulp.task('typescriptChatRoom', function () {
+    return gulp.src(paths.typescriptChatRoom)
+		.pipe(ts({
+		    noImplicitAny: true,
+		    out: 'chatroom.js'
 		}))
 		.pipe(gulp.dest(paths.js));
 });

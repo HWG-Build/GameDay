@@ -8,6 +8,7 @@ namespace Data.Layer.Models
     [TrackChanges]
     public class Address
     {
+        [Key]
         [Required]
         public int ID { get; set; }
 

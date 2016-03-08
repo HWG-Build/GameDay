@@ -23,8 +23,8 @@ namespace GameDay.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-
-            return View(_addressservice.GetRecords().Select(x=>new AddressVM()
+            AddressListVM AddressList = new AddressListVM();
+            AddressList.AddressList = _addressservice.GetRecords().Select(x => new AddressListVM.AddressBucket()
             {
                 ID = x.ID,
                 Name = x.Name,
@@ -33,7 +33,8 @@ namespace GameDay.Controllers
                 City = x.City,
                 State = x.State,
                 Zip = x.Zip
-        }).ToList());
+            }).ToList();
+            return View(AddressList);
         }
 
         // GET: Address/Details/5

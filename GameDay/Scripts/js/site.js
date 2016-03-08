@@ -4,6 +4,29 @@ var Address = (function () {
     }
     return Address;
 })();
+$('#createButton').submit(function (e) {
+    e.preventDefault();
+    var inputs = $('#createForm :input');
+    var values = {};
+    inputs.each(function () {
+        values[this.name] = $(this).val();
+    });
+    var url = '/Event/Create';
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: {
+            __RequestVerificationToken: $('[name= "__RequestVerificationToken"]').val(),
+            Name: values['Name'],
+            Game: values['Game'],
+            DateTime: values['DateTime'],
+            AddressId: values['AddressId']
+        },
+        success: function (result) {
+            $('#EventListDiv').load('/Event/Index');
+        }
+    });
+});
 //show details of the event clicked in the event list
 function showDetails(id) {
     $('#map').removeClass('hidden');
@@ -19,7 +42,9 @@ function showDetails(id) {
     });
 }
 ;
-$('Form').submit(function (e) {
+//The save button on the edit screen saves the information, while reloading the updated 
+//details page and updates the event list page all without refreshing the page
+$('#editDetailForm').submit(function (e) {
     e.preventDefault();
     var inputs = $('#editDetailForm :input');
     var values = {};
@@ -30,9 +55,18 @@ $('Form').submit(function (e) {
     $.ajax({
         type: "POST",
         url: url,
-        data: values,
+        data: {
+            __RequestVerificationToken: $('[name= "__RequestVerificationToken"]').val(),
+            ID: values['ID'],
+            Name: values['Name'],
+            Game: values['Game'],
+            DateTime: values['DateTime'],
+            AddressId: values['AddressId'],
+            PlayersAttending: values['PlayersAttending']
+        },
         success: function (result) {
             showDetails(values['ID']);
+            $('#EventListDiv').load('/Event/Index');
         }
     });
 });
@@ -86,3 +120,4 @@ function getCoor() {
     });
 }
 //----------------------------Google Maps End---------------------------------//
+//# sourceMappingURL=site.js.map

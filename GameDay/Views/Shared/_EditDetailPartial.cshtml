@@ -2,9 +2,10 @@
 
 @*@using (Html.BeginForm())
 {*@
-    @Html.AntiForgeryToken()
+    @*@Html.AntiForgeryToken()*@
     @Html.HiddenFor(model => model.ID)
-    <form class="form-horizontal" id="editDetailForm">
+    <form class="form-horizontal" id="editDetailForm" action="#" method="post">
+    <%= Html.AntiForgeryToken()%>
             <div id="detail-form">
                 <div class="col-md-2">
                     <div class="form-group marginDetails">

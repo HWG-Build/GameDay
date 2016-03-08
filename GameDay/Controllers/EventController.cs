@@ -84,21 +84,21 @@ namespace GameDay.Controllers
         // POST: Event/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(EventVM @event)
+        public ActionResult Create(string name, GameType game, DateTime datetime, int addressid)
         {
             if (ModelState.IsValid)
             {
                 Event e = new Event()
                 {
-                    Name = @event.Name,
-                    Game = @event.Game,
-                    DateTime = @event.DateTime,
-                    AddressId = @event.AddressId
+                    Name = name,
+                    Game = game,
+                    DateTime = datetime,
+                    AddressId = addressid
                 };
                 _gameservice.AddRecord(e);
                 return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
             }
-            return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
+            throw new EventException(Constant.EventExceptions.Message);
         }
 
         // GET: Event/Edit/5
@@ -131,18 +131,18 @@ namespace GameDay.Controllers
         // POST: Event/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(EditDetailsPartialVM editDetailsPartialVM)
+        public ActionResult Edit(int id, string name, GameType game, DateTime datetime, int addressid, string playersattending)
         {
             if (ModelState.IsValid)
             {
                 Event e = new Event()
                 {
-                    ID = editDetailsPartialVM.ID,
-                    Name = editDetailsPartialVM.Name,
-                    Game = editDetailsPartialVM.Game,
-                    DateTime = editDetailsPartialVM.DateTime,
-                    AddressId = editDetailsPartialVM.AddressId,
-                    PlayersAttending = editDetailsPartialVM.PlayersAttending
+                    ID = id,
+                    Name = name,
+                    Game = game,
+                    DateTime = datetime,
+                    AddressId = addressid,
+                    PlayersAttending = playersattending
                 };
                 _gameservice.EditRecord(e);
                 return RedirectToAction(Constant.Controller.Index, Constant.Controller.Home);
@@ -192,7 +192,5 @@ namespace GameDay.Controllers
             }
             base.Dispose(disposing);
         }
-
-        //Map EventViewModel to Event
     }
 }

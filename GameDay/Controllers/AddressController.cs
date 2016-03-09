@@ -64,11 +64,9 @@ namespace GameDay.Controllers
         }
 
         // POST: Address/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(/*[Bind(Include = Constant.Controller.AddressFields)]*/ AddressVM address)
+        public ActionResult Create(AddressVM address)
         {
             Address a = new Address();
             if (ModelState.IsValid)

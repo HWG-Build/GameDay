@@ -58,8 +58,6 @@ namespace GameDay.Controllers
         }
 
         // POST: Player/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(PlayerVM player)
@@ -93,11 +91,9 @@ namespace GameDay.Controllers
         }
 
         // POST: Player/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(/*[Bind(Include = Constant.Controller.PlayerFields)]*/ PlayerVM player)
+        public ActionResult Edit(PlayerVM player)
         {
             Player p = new Player();
             if (ModelState.IsValid)

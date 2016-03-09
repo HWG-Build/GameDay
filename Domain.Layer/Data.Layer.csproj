@@ -136,6 +136,10 @@
     <Compile Include="Migrations\201603030425341_DeleteTime.Designer.cs">
       <DependentUpon>201603030425341_DeleteTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603090151054_AddCommentsFieldToEvents.cs" />
+    <Compile Include="Migrations\201603090151054_AddCommentsFieldToEvents.Designer.cs">
+      <DependentUpon>201603090151054_AddCommentsFieldToEvents.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Event.cs" />
@@ -177,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603030425341_DeleteTime.resx">
       <DependentUpon>201603030425341_DeleteTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603090151054_AddCommentsFieldToEvents.resx">
+      <DependentUpon>201603090151054_AddCommentsFieldToEvents.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

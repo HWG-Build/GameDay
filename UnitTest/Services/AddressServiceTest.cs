@@ -4,6 +4,7 @@ using Data.Layer.Models;
 using GameDay.Controllers;
 using Moq;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 using System.Web.Mvc;
 using Data.Layer;
@@ -46,13 +47,26 @@ namespace UnitTest.Services
 
             // Act
             //System.Diagnostics.Debugger.Launch();
-            var result = (List<AddressVM>)((ViewResult)objController.Index()).Model;
+            var result = ((AddressListVM)((ViewResult)objController.Index()).Model).AddressList.ToList();
+            //var result2 = result.AddressList.ToList();
 
             // Assert
             Assert.Equal(3, result.Count);
             Assert.Equal("test1", result[0].Name);
+            Assert.Equal("1 street", result[0].Line1);
+            Assert.Equal("City1", result[0].City);
+            Assert.Equal((State)1, result[0].State);
+            Assert.Equal(91234, result[0].Zip);
             Assert.Equal("test2", result[1].Name);
+            Assert.Equal("2 street", result[1].Line1);
+            Assert.Equal("City2", result[1].City);
+            Assert.Equal((State)2, result[1].State);
+            Assert.Equal(91234, result[1].Zip);
             Assert.Equal("test3", result[2].Name);
+            Assert.Equal("3 street", result[2].Line1);
+            Assert.Equal("City3", result[2].City);
+            Assert.Equal((State)3, result[2].State);
+            Assert.Equal(91245, result[2].Zip);
         }
 
         //Make sure that the create function in the address controller returns the correct view
@@ -72,17 +86,34 @@ namespace UnitTest.Services
 
         //test to make sure that the correct details are returned from the getdetails function
         [Fact]
-        public void Get_Correct_Values_From_GetRecord()
+        public void Detail_Get_Correct_Values_From_GetRecord()
         {
             //Arrange
-            var address = new Address() { ID = 1, Name = "test1", Line1 = "1 street", City = "City1", State = (State)1, Zip = 91234 };
-            _addressServiceMock.Setup(x => x.FindRecord(address.ID)).Returns(address);
+            _addressServiceMock.Setup(x => x.FindRecord(listAddress[0].ID)).Returns(listAddress[0]);
 
             //Act
-            var result = (AddressVM)((ViewResult)objController.Details(address.ID)).Model;
+            var result = (AddressVM)((ViewResult)objController.Details(listAddress[0].ID)).Model;
 
             //Assert
             Assert.Equal("test1", result.Name);
+            Assert.Equal("1 street", result.Line1);
+            Assert.Equal("City1", result.City);
+            Assert.Equal((State)1, result.State);
+            Assert.Equal(91234, result.Zip);
+        }
+
+        [Fact]
+        public void Edit_Calls_EditRecord()
+        {
+            //Arrange
+            _addressServiceMock.Setup(x => x.EditRecord(listAddress[0]));
+
+            //Act
+            var result = (RedirectToRouteResult)objController.Edit(listAddressVM[0]);
+
+            //Assert
+            _addressServiceMock.Verify(x=>x.EditRecord(It.IsAny<Address>()), Times.Once);
+            Assert.Equal(Constant.Controller.Index, result.RouteValues[Constant.Controller.Action]);
         }
     }
 }

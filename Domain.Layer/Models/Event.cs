@@ -28,6 +28,9 @@ namespace Data.Layer.Models
         [Required]
         public int AddressId { get; set; }
 
+        [StringLength(5000)]
+        public string Comments { get; set; }
+
         public string PlayersAttending { get; set; }
 
         [ForeignKey(Constant.Model.AddressId)]

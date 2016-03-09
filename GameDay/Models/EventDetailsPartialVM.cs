@@ -28,6 +28,9 @@ namespace GameDay.Models
         [Display(Name = Constant.ViewModels.Location)]
         public string AddressName { get; set; }
 
+        [StringLength(5000)]
+        public string Comments { get; set; }
+
         [Display(Name = Constant.ViewModels.PlayerCount)]
         public int? PlayerCount { get; set; }
 

@@ -22,6 +22,7 @@ namespace GameDay.Models
 
         [Required]
         [Display(Name = Constant.ViewModels.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-ddTHH:mm}", ApplyFormatInEditMode = true)]
         public DateTime DateTime { get; set; }
 
         [StringLength(50)]
@@ -31,6 +32,9 @@ namespace GameDay.Models
         [Display(Name = Constant.ViewModels.Location)]
         public int AddressId { get; set; }
 
+        [StringLength(5000)]
+        public string Comments { get; set; }
+
         //Populates the Location dropdown in the event page
         public IEnumerable<SelectListItem> AddressList => new SelectList(Addresses, Constant.ViewModels.ID, Constant.ViewModels.Name, AddressId);
 
@@ -39,6 +43,7 @@ namespace GameDay.Models
         //No stringlength is added because this string can become very long.
         public string PlayersAttending { get; set; }
 
+        //Gets the list of players as strings
         public List<string> PlayerAttendingList { get; set; }
 
         public List<AuditLog> Audit { get; set; }

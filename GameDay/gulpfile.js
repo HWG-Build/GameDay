@@ -21,6 +21,8 @@ var paths = {
     webroot: "./"
 };
 
+
+//assign paths to js and css files into a variable
 paths.js = paths.webroot + "Scripts/js/*.js";
 paths.minJs = paths.webroot + "Scripts/js/*.min.js";
 paths.css = paths.webroot + "Content/*.css";
@@ -33,22 +35,26 @@ paths.typescript = paths.webroot + "Scripts/js/site.ts";
 paths.typescriptChatRoom = paths.webroot + "Scripts/js/chatroom.ts";
 
 
+//grabs all minified js files in location given and deletes them
 gulp.task("clean:js", function (cb) {
     rimraf(paths.concatJsDest, cb);
 });
 
+//grabs all minified css files in given location and deletes them
 gulp.task("clean:css", function (cb) {
     rimraf(paths.concatCssDest, cb);
 });
 
+//grabs all js.map files in given location and deletes them
 gulp.task("clean:jsmap", function (cb) {
     rimraf(paths.concatJsMapDest, cb);
 });
 
+//fires all task in the [] when "clean" is called
 gulp.task("clean", ["clean:js", "clean:css", "clean:jsmap"]);
 
 
-
+//grabs all js files in location given and minifies them
 gulp.task("min:js", function () {
     return gulp.src(paths.js)
         .pipe(concat(paths.concatJsDest))
@@ -58,6 +64,7 @@ gulp.task("min:js", function () {
         .pipe(gulp.dest("./"));
 });
 
+//grabs all css files in location given and minifies them
 gulp.task("min:css", function () {
     return gulp.src(paths.css)
         .pipe(concat(paths.concatCssDest))
@@ -65,22 +72,25 @@ gulp.task("min:css", function () {
         .pipe(gulp.dest("./"));
 });
 
+//fires all task in [] when "min" is called
 gulp.task("min", ["min:js", "min:css"]);
 
 
+//compiles sass files into css in the given location
 gulp.task('styles', function () {
     gulp.src(paths.sass)
         .pipe(sass().on('error', util.log))
         .pipe(gulp.dest('./Content/'));
 });
 
-//Watch task
+//Watch task that fires whenever what is being watched is changed
 gulp.task('watch', function () {
     gulp.watch(paths.sass, ['styles']);
     gulp.watch(paths.typescript, ['typescript']);
     gulp.watch(paths.typescriptChatRoom, ['typescriptChatRoom']);
 });
 
+//compiles sass files in the given location
 gulp.task('typescript', function () {
     return gulp.src(paths.typescript)
 		.pipe(ts({
@@ -90,6 +100,7 @@ gulp.task('typescript', function () {
 		.pipe(gulp.dest(paths.js));
 });
 
+//compiles sass files in the given location
 gulp.task('typescriptChatRoom', function () {
     return gulp.src(paths.typescriptChatRoom)
 		.pipe(ts({
@@ -99,6 +110,7 @@ gulp.task('typescriptChatRoom', function () {
 		.pipe(gulp.dest(paths.js));
 });
 
+//bundles files
 gulp.task('bundle', function() {
         return gulp.src('./bundle.config.js')
             .pipe(bundle())

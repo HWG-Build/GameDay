@@ -2,6 +2,7 @@
 
 //----------------------------SignalR Chathub---------------------------------//
 
+
 $(() => {
     $.connection.hub.logging = true;
     var chat = $.connection.chatHub;

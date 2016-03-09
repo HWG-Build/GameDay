@@ -4,6 +4,8 @@ var Address = (function () {
     }
     return Address;
 })();
+//submit for the create event. This stops the page from refreshing from the post.
+//Calls the create event and then reloads the event list
 $('#createForm').submit(function (e) {
     e.preventDefault();
     var inputs = $('#createForm :input');
@@ -67,6 +69,7 @@ $('#editDetailForm').submit(function (e) {
             Game: values['Game'],
             DateTime: values['DateTime'],
             AddressId: values['AddressId'],
+            Comments: values['Comments'],
             PlayersAttending: values['PlayersAttending']
         },
         success: function (result) {
@@ -125,3 +128,4 @@ function getCoor() {
     });
 }
 //----------------------------Google Maps End---------------------------------//
+//# sourceMappingURL=site.js.map

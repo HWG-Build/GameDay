@@ -72,6 +72,7 @@ namespace GameDay.Controllers
                 Game = @event.Game,
                 DateTime = @event.DateTime,
                 Location = _addressService.FindRecord(@event.AddressId),
+                Comments = @event.Comments,
                 Audit = _gameservice.GetAuditLogs(@event.ID).ToList(),
                 PlayersAttending = @event.PlayersAttending,
                 PlayerAttendingList = @event.PlayersAttending?.Split(',').ToList() ?? new List<string>()
@@ -121,6 +122,7 @@ namespace GameDay.Controllers
                 Game = @event.Game,
                 DateTime = @event.DateTime,
                 AddressId = @event.AddressId,
+                Comments = @event.Comments,
                 Addresses = _addressService.GetRecords(),
                 PlayersAttending = @event.PlayersAttending
             };
@@ -131,7 +133,7 @@ namespace GameDay.Controllers
         // POST: Event/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, string name, GameType game, DateTime datetime, int addressid, string playersattending)
+        public ActionResult Edit(int id, string name, GameType game, DateTime datetime, int addressid, string comments, string playersattending)
         {
             if (ModelState.IsValid)
             {
@@ -142,6 +144,7 @@ namespace GameDay.Controllers
                     Game = game,
                     DateTime = datetime,
                     AddressId = addressid,
+                    Comments = comments,
                     PlayersAttending = playersattending
                 };
                 _gameservice.EditRecord(e);

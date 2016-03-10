@@ -17,6 +17,7 @@
                 "./lib/bootstrap/dist/js/bootstrap.js",
                 "./lib/jquery-ui/jquery-ui.js",
                 "./Scripts/jquery.signalR-2.1.2.js",
+                "./lib/angular/angular.js",
                 "./lib/bootstrap-tagsinput/dist/bootstrap-tagsinput.js"
           ]
         }

@@ -89,7 +89,7 @@ namespace UnitTest.Services
         public void Detail_Get_Correct_Values_From_GetRecord()
         {
             //Arrange
-            _addressServiceMock.Setup(x => x.FindRecord(listAddress[0].ID)).Returns(listAddress[0]);
+            _addressServiceMock.Setup(x => x.FindRecord(It.IsAny<int>())).Returns(listAddress[0]);
 
             //Act
             var result = (AddressVM)((ViewResult)objController.Details(listAddress[0].ID)).Model;
@@ -103,16 +103,30 @@ namespace UnitTest.Services
         }
 
         [Fact]
-        public void Edit_Calls_EditRecord()
+        public void Edit_Get_Action_Calls_EditRecord()
         {
             //Arrange
-            _addressServiceMock.Setup(x => x.EditRecord(listAddress[0]));
+            _addressServiceMock.Setup(x => x.EditRecord(It.IsAny<Address>()));
 
             //Act
             var result = (RedirectToRouteResult)objController.Edit(listAddressVM[0]);
 
             //Assert
             _addressServiceMock.Verify(x=>x.EditRecord(It.IsAny<Address>()), Times.Once);
+            Assert.Equal(Constant.Controller.Index, result.RouteValues[Constant.Controller.Action]);
+        }
+
+        [Fact]
+        public void Delete_Post_Action_Calls_DeleteRecord()
+        {
+            //Arrange
+            _addressServiceMock.Setup(x => x.DeleteRecord(It.IsAny<Address>()));
+
+            //Act
+            var result = (RedirectToRouteResult)objController.DeleteConfirmed(1);
+
+            //Assert
+            _addressServiceMock.Verify(x=>x.DeleteRecord(It.IsAny<Address>()), Times.Once);
             Assert.Equal(Constant.Controller.Index, result.RouteValues[Constant.Controller.Action]);
         }
     }

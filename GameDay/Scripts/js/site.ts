@@ -1,6 +1,7 @@
 ﻿declare var $: any;
 declare var google: any;
 declare var map: any;
+declare var angular: any;
 
 //Address class which im not using
 class Address {
@@ -14,6 +15,12 @@ class Address {
 
 //submit for the create event. This stops the page from refreshing from the post.
 //Calls the create event and then reloads the event list
+//var createApp = angular.module('create', [])
+//    .controller('CreateController', function($scope, $http) {
+//        $scope.setFilters = function(e) {
+//            e.preventDefault();
+//        }
+//    });
 $('#createForm').submit(function (e) {
     e.preventDefault();
     var inputs = $('#createForm :input');

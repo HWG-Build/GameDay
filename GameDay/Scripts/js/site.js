@@ -6,6 +6,12 @@ var Address = (function () {
 })();
 //submit for the create event. This stops the page from refreshing from the post.
 //Calls the create event and then reloads the event list
+//var createApp = angular.module('create', [])
+//    .controller('CreateController', function($scope, $http) {
+//        $scope.setFilters = function(e) {
+//            e.preventDefault();
+//        }
+//    });
 $('#createForm').submit(function (e) {
     e.preventDefault();
     var inputs = $('#createForm :input');
@@ -128,4 +134,3 @@ function getCoor() {
     });
 }
 //----------------------------Google Maps End---------------------------------//
-//# sourceMappingURL=site.js.map

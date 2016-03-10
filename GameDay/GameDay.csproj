@@ -1365,7 +1365,7 @@
     <Content Include="public\content\Images\Poker%27.png" />
     <Content Include="public\content\Images\Soccer%27.png" />
     <Content Include="public\content\Images\SportBackground.jpg" />
-    <Content Include="public\vendor-1187800ef2.js" />
+    <Content Include="public\vendor-1b2fbe4541.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />
     <Content Include="Scripts\jquery.signalR-2.1.2.js" />
